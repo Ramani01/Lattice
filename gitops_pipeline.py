@@ -213,7 +213,7 @@ def create_github_pull_request(
             
         b64_content = base64.b64encode(content.encode("utf-8")).decode("utf-8")
         put_payload = {
-            "message": f"Lattica PQC Migration Ingestion: update {os.path.basename(path)}",
+            "message": f"Lattica Microservices Migration Ingestion: update {os.path.basename(path)}",
             "content": b64_content,
             "branch": branch_name
         }

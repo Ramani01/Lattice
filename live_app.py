@@ -408,6 +408,20 @@ def check_ollama_status():
     except Exception:
         return False
 
+def get_ollama_models():
+    """Fetch installed models dynamically from local Ollama service."""
+    try:
+        r = requests.get("http://127.0.0.1:11434/api/tags", timeout=2)
+        if r.status_code == 200:
+            models_data = r.json().get("models", [])
+            names = [m.get("name") for m in models_data if m.get("name")]
+            if names:
+                return names
+    except Exception:
+        pass
+    return ["qwen2:1.5b", "phi3:mini", "gemma:7b-instruct-q4_K_M", "gemma3:4b", "tinyllama:latest"]
+
+
 def check_neo4j_status():
     try:
         driver = GraphDatabase.driver(NEO4J_URI, auth=(NEO4J_USER, NEO4J_PASSWORD))
@@ -437,16 +451,33 @@ def connect_neo4j():
 
 def parse_json_from_response(text: str) -> dict:
     """Extract and parse JSON from LLM text output using substring boundaries."""
-    start = text.find('{')
-    end = text.rfind('}')
+    if not text:
+        return {}
+    cleaned = text
+    if "```json" in cleaned:
+        cleaned = cleaned.split("```json")[1].split("```")[0]
+    elif "```" in cleaned:
+        cleaned = cleaned.split("```")[1].split("```")[0]
+        
+    start = cleaned.find('{')
+    end = cleaned.rfind('}')
     if start != -1 and end != -1 and start < end:
+        candidate = cleaned[start:end+1].strip()
         try:
-            parsed = json.loads(text[start:end+1].strip())
+            parsed = json.loads(candidate)
             if isinstance(parsed, dict):
                 return parsed
         except json.JSONDecodeError:
-            pass
+            import re
+            fixed = re.sub(r',\s*([\}\]])', r'\1', candidate)
+            try:
+                parsed = json.loads(fixed)
+                if isinstance(parsed, dict):
+                    return parsed
+            except Exception:
+                pass
     return {}
+
 
 def calculate_pagerank(nodes, edges, d=0.85, max_iter=100, tol=1.0e-6):
     """Calculates PageRank metrics using pure Python power iteration."""
@@ -1870,11 +1901,13 @@ env_mode = st.sidebar.radio(
     index=0
 )
 
+available_models = get_ollama_models()
 ollama_model = st.sidebar.selectbox(
     "Select Local Ollama Model:",
-    ["gemma3:4b", "phi3:mini", "qwen2:1.5b", "qwen:9b", "gemma:7b-instruct-q4_K_M"],
-    index=3
+    available_models,
+    index=0
 )
+
 
 # Render input forms based on mode selection
 github_repo = ""
@@ -3204,8 +3237,9 @@ else:
     with tab_analytics:
         st.markdown('<div class="premium-card">', unsafe_allow_html=True)
         st.markdown("### 📊 Graph Metrics & Blast Radius Ingestion")
-        st.info("Calculate degree centralities, quantum blast radii, and dependency impacts by executing the pipeline.")
+        st.info("Calculate degree centralities, change blast radii, and dependency impacts by executing the pipeline.")
         st.markdown('</div>', unsafe_allow_html=True)
+
         
     with tab_agent:
         st.markdown('<div class="premium-card">', unsafe_allow_html=True)
