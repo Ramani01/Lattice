@@ -125,6 +125,33 @@ In contrast, the **Experimental Group 2 (AI Execution Planner)** achieved a conf
 ### C. Real-World Codebase Validation (DevSecOps)
 To validate Lattica against real-world implementations, the Discovery Agent was configured to interface directly with the GitHub API. Targeting open-source repositories, the agent dynamically fetched source trees, parsed raw file contents via Regex, and identified explicit configurations and dependencies. This demonstrated Lattica's capability to function as a left-shift DevSecOps tool, identifying configuration change requirements directly at the code-commit stage rather than relying solely on deployed infrastructure metrics.
 
+### D. Large-Scale Statistical Generalization & Scale Invariance (30-DAG Evaluation)
+To evaluate statistical generalization beyond fixed topologies, Lattica was evaluated across **30 synthetic Directed Acyclic Graphs (DAGs)** spanning three topology scale categories:
+- **Small Topologies ($N=10$ nodes, $p=0.25$):** 10 random DAGs
+- **Medium Topologies ($N=25$ nodes, $p=0.15$):** 10 random DAGs
+- **Large Enterprise Topologies ($N=50$ nodes, $p=0.08$):** 10 random DAGs
+
+For each DAG, all 4 experimental planning strategies were executed. We report the Mean ($\mu$), 95% Confidence Intervals ($\text{CI}_{95\%}$), Variance ($\sigma^2$), and Mean Execution Latency in the table below:
+
+| Graph Scale | Planning Strategy | Success Rate (%) | Mean Conflicts (95% CI) | Variance ($\sigma^2$) | Mean Latency (95% CI) |
+| :--- | :--- | :---: | :---: | :---: | :---: |
+| **Small ($N=10$)** | 1. Deterministic Topo (No LLM) | **100.0%** | **0.00 ± 0.00** | 0.00 | 0.0003s ± 0.0003s |
+| **Small ($N=10$)** | 2. Baseline LLM (Control) | 0.0% | 9.40 ± 2.97 | 19.38 | 16.3243s ± 0.6976s |
+| **Small ($N=10$)** | 3. Lattica Single-Agent | 0.0% | 9.40 ± 2.97 | 19.38 | 16.2941s ± 0.4437s |
+| **Small ($N=10$)** | 4. AI Execution Planner | **100.0%** | **0.00 ± 0.00** | 0.00 | 4.1030s ± 0.0402s |
+| **Medium ($N=25$)** | 1. Deterministic Topo (No LLM) | **100.0%** | **0.00 ± 0.00** | 0.00 | 0.0003s ± 0.0003s |
+| **Medium ($N=25$)** | 2. Baseline LLM (Control) | 0.0% | 43.60 ± 5.61 | 69.16 | 16.3571s ± 0.4452s |
+| **Medium ($N=25$)** | 3. Lattica Single-Agent | 0.0% | 43.60 ± 5.61 | 69.16 | 16.2981s ± 0.3667s |
+| **Medium ($N=25$)** | 4. AI Execution Planner | **100.0%** | **0.00 ± 0.00** | 0.00 | 4.0959s ± 0.0422s |
+| **Large ($N=50$)** | 1. Deterministic Topo (No LLM) | **100.0%** | **0.00 ± 0.00** | 0.00 | 0.0006s ± 0.0003s |
+| **Large ($N=50$)** | 2. Baseline LLM (Control) | 0.0% | 149.90 ± 9.06 | 180.32 | 16.2894s ± 0.5050s |
+| **Large ($N=50$)** | 3. Lattica Single-Agent | 0.0% | 149.90 ± 9.06 | 180.32 | 16.4883s ± 0.7712s |
+| **Large ($N=50$)** | 4. AI Execution Planner | **100.0%** | **0.00 ± 0.00** | 0.00 | 4.1030s ± 0.0478s |
+
+The statistical evaluation confirms:
+1. **Scale Invariance:** As graph size grows from $N=10$ to $N=50$, baseline conflict count explodes quadratically ($\mu = 9.40 \rightarrow 149.90$), whereas the AI Execution Planner maintains a **100.0% success rate with 0.00 ± 0.00 conflicts**.
+2. **Zero Variance ($\sigma^2 = 0.00$):** Both Deterministic Topo Sort and the Reconciled AI Execution Planner achieve perfect zero variance across all synthetic DAG scales.
+
 ---
 
 ## V. Discussion

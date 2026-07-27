@@ -130,6 +130,11 @@ def calculate_betweenness_centrality(nodes, edges):
 
 # Node 1: Load Context
 def load_context(state: AgentState) -> Dict[str, Any]:
+    if state.get("inventory") and state.get("dependencies"):
+        return {
+            "inventory": state["inventory"],
+            "dependencies": state["dependencies"]
+        }
     dependencies = []
     # Parse docker-compose.yml for real relationships
     import yaml
@@ -893,13 +898,13 @@ def build_agent_graph():
     
     return workflow.compile()
 
-def run_agent(mode: str, model_name: str = "qwen:9b") -> Dict[str, Any]:
+def run_agent(mode: str, model_name: str = "qwen:9b", inject_state: Dict[str, Any] = None) -> Dict[str, Any]:
     """Interface to run the LangGraph agent for a given mode."""
     graph = build_agent_graph()
     initial_state = {
         "mode": mode,
-        "inventory": [],
-        "dependencies": [],
+        "inventory": inject_state.get("inventory", []) if inject_state else [],
+        "dependencies": inject_state.get("dependencies", []) if inject_state else [],
         "prompt": "",
         "raw_response": "",
         "plan": {},

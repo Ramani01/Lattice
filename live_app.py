@@ -904,6 +904,28 @@ def render_4way_comparison_ui():
     """, unsafe_allow_html=True)
     st.markdown('</div>', unsafe_allow_html=True)
 
+    # 30-DAG Statistical Generalization Section
+    st.markdown('<div class="premium-card">', unsafe_allow_html=True)
+    st.markdown("### 📊 30-DAG Statistical Generalization & Scale Invariance Suite")
+    st.write("Statistical validation evaluating 30 synthetic microservice DAG topologies across Small (N=10), Medium (N=25), and Large Enterprise (N=50) graph scales with 95% Confidence Intervals.")
+    
+    if st.button("🧪 RUN 30-DAG BENCHMARK", key="run_30dag_synth_btn"):
+        with st.spinner("Executing 30-DAG Statistical Benchmark across 120 DAG evaluations..."):
+            from synthetic_benchmark import run_synthetic_benchmark
+            run_synthetic_benchmark(total_dags=30)
+            st.success("30-DAG Benchmark complete! Updated statistical tables & figures.")
+            
+    if os.path.exists("synthetic_results_summary.md"):
+        with open("synthetic_results_summary.md", "r") as f:
+            syn_summary_md = f.read()
+        with st.expander("📄 View 30-DAG Statistical Metric Matrix (Mean ± 95% CI, Variance)", expanded=True):
+            st.markdown(syn_summary_md)
+            
+    if os.path.exists("synthetic_statistical_rigor.png"):
+        st.image("synthetic_statistical_rigor.png", caption="30-DAG Statistical Rigor Publication Plot (N=10, N=25, N=50 Scales)", use_column_width=True)
+        
+    st.markdown('</div>', unsafe_allow_html=True)
+
     # Interactive Visual Benchmark Gallery
     st.markdown('<div class="premium-card">', unsafe_allow_html=True)
     st.markdown("### 📈 Multi-Dimensional Scientific Visualizations Gallery")
