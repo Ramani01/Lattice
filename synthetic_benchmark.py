@@ -180,14 +180,14 @@ def run_synthetic_benchmark(total_dags: int = 30):
             ])
             
     # Output Raw JSON Dataset
-    with open("synthetic_evaluation_results.json", "w") as f:
+    with open("synthetic_evaluation_results.json", "w", encoding="utf-8") as f:
         json.dump(raw_results, f, indent=4)
         
     # Output Markdown Table
-    headers = ["Graph Scale", "Planning Strategy", "Success Rate (%)", "Mean Conflicts (95% CI)", "Variance (σ²)", "Mean Latency (95% CI)"]
+    headers = ["Graph Scale", "Planning Strategy", "Success Rate (%)", "Mean Conflicts (95% CI)", "Variance (Var)", "Mean Latency (95% CI)"]
     summary_md = tabulate(table_rows, headers=headers, tablefmt="github")
     
-    with open("synthetic_results_summary.md", "w") as f:
+    with open("synthetic_results_summary.md", "w", encoding="utf-8") as f:
         f.write("# 30-DAG Statistical Generalization Benchmark Results\n\n")
         f.write(summary_md + "\n")
         

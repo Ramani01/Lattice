@@ -1,35 +1,5 @@
 [
     {
-        "service": "payment-db",
-        "algorithm": "AES-256-GCM",
-        "vulnerable": true,
-        "change_blast_radius": 0,
-        "quantum_blast_radius": 0,
-        "dependency_impact": 3,
-        "pagerank": 0.1857,
-        "betweenness_centrality": 0.0
-    },
-    {
-        "service": "payment-service",
-        "algorithm": "RSA-2048",
-        "vulnerable": true,
-        "change_blast_radius": 1,
-        "quantum_blast_radius": 1,
-        "dependency_impact": 2,
-        "pagerank": 0.1189,
-        "betweenness_centrality": 0.0667
-    },
-    {
-        "service": "user-db",
-        "algorithm": "AES-256-GCM",
-        "vulnerable": true,
-        "change_blast_radius": 0,
-        "quantum_blast_radius": 0,
-        "dependency_impact": 3,
-        "pagerank": 0.2163,
-        "betweenness_centrality": 0.0
-    },
-    {
         "service": "auth-service",
         "algorithm": "RSA-4096",
         "vulnerable": true,
@@ -68,5 +38,35 @@
         "dependency_impact": 1,
         "pagerank": 0.1207,
         "betweenness_centrality": 0.1
+    },
+    {
+        "service": "payment-db",
+        "algorithm": "AES-256-GCM",
+        "vulnerable": true,
+        "change_blast_radius": 0,
+        "quantum_blast_radius": 0,
+        "dependency_impact": 3,
+        "pagerank": 0.1857,
+        "betweenness_centrality": 0.0
+    },
+    {
+        "service": "payment-service",
+        "algorithm": "RSA-2048",
+        "vulnerable": true,
+        "change_blast_radius": 1,
+        "quantum_blast_radius": 1,
+        "dependency_impact": 2,
+        "pagerank": 0.1189,
+        "betweenness_centrality": 0.0667
+    },
+    {
+        "service": "user-db",
+        "algorithm": "AES-256-GCM",
+        "vulnerable": true,
+        "change_blast_radius": 0,
+        "quantum_blast_radius": 0,
+        "dependency_impact": 3,
+        "pagerank": 0.2163,
+        "betweenness_centrality": 0.0
     }
 ]

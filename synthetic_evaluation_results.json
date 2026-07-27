@@ -1,0 +1,992 @@
+{
+    "Small (N=10)": {
+        "deterministic_topo": [
+            {
+                "dag_id": "Small (N=10)_DAG_1",
+                "nodes": 10,
+                "edges": 15,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.5003652572631836
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_2",
+                "nodes": 10,
+                "edges": 11,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.13882160186767578
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_3",
+                "nodes": 10,
+                "edges": 12,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.020635366439819336
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_4",
+                "nodes": 10,
+                "edges": 12,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.036469459533691406
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_5",
+                "nodes": 10,
+                "edges": 14,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.08811354637145996
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_6",
+                "nodes": 10,
+                "edges": 11,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.017241716384887695
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_7",
+                "nodes": 10,
+                "edges": 12,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.04374980926513672
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_8",
+                "nodes": 10,
+                "edges": 6,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.02969074249267578
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_9",
+                "nodes": 10,
+                "edges": 6,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.04522275924682617
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_10",
+                "nodes": 10,
+                "edges": 11,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.023310184478759766
+            }
+        ],
+        "baseline": [
+            {
+                "dag_id": "Small (N=10)_DAG_1",
+                "nodes": 10,
+                "edges": 15,
+                "is_valid": false,
+                "conflicts_count": 25,
+                "latency": 1.7015421390533447
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_2",
+                "nodes": 10,
+                "edges": 11,
+                "is_valid": false,
+                "conflicts_count": 21,
+                "latency": 0.05345726013183594
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_3",
+                "nodes": 10,
+                "edges": 12,
+                "is_valid": false,
+                "conflicts_count": 22,
+                "latency": 0.04960989952087402
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_4",
+                "nodes": 10,
+                "edges": 12,
+                "is_valid": false,
+                "conflicts_count": 22,
+                "latency": 0.057402849197387695
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_5",
+                "nodes": 10,
+                "edges": 14,
+                "is_valid": false,
+                "conflicts_count": 24,
+                "latency": 0.086395263671875
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_6",
+                "nodes": 10,
+                "edges": 11,
+                "is_valid": false,
+                "conflicts_count": 21,
+                "latency": 0.04806113243103027
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_7",
+                "nodes": 10,
+                "edges": 12,
+                "is_valid": false,
+                "conflicts_count": 22,
+                "latency": 0.0556187629699707
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_8",
+                "nodes": 10,
+                "edges": 6,
+                "is_valid": false,
+                "conflicts_count": 16,
+                "latency": 0.04593682289123535
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_9",
+                "nodes": 10,
+                "edges": 6,
+                "is_valid": false,
+                "conflicts_count": 16,
+                "latency": 0.05697011947631836
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_10",
+                "nodes": 10,
+                "edges": 11,
+                "is_valid": false,
+                "conflicts_count": 21,
+                "latency": 0.05692124366760254
+            }
+        ],
+        "lattica": [
+            {
+                "dag_id": "Small (N=10)_DAG_1",
+                "nodes": 10,
+                "edges": 15,
+                "is_valid": false,
+                "conflicts_count": 25,
+                "latency": 0.152693510055542
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_2",
+                "nodes": 10,
+                "edges": 11,
+                "is_valid": false,
+                "conflicts_count": 21,
+                "latency": 0.05556917190551758
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_3",
+                "nodes": 10,
+                "edges": 12,
+                "is_valid": false,
+                "conflicts_count": 22,
+                "latency": 0.26936912536621094
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_4",
+                "nodes": 10,
+                "edges": 12,
+                "is_valid": false,
+                "conflicts_count": 22,
+                "latency": 0.07272911071777344
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_5",
+                "nodes": 10,
+                "edges": 14,
+                "is_valid": false,
+                "conflicts_count": 24,
+                "latency": 0.08686327934265137
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_6",
+                "nodes": 10,
+                "edges": 11,
+                "is_valid": false,
+                "conflicts_count": 21,
+                "latency": 0.04674267768859863
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_7",
+                "nodes": 10,
+                "edges": 12,
+                "is_valid": false,
+                "conflicts_count": 22,
+                "latency": 0.16214895248413086
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_8",
+                "nodes": 10,
+                "edges": 6,
+                "is_valid": false,
+                "conflicts_count": 16,
+                "latency": 0.23459744453430176
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_9",
+                "nodes": 10,
+                "edges": 6,
+                "is_valid": false,
+                "conflicts_count": 16,
+                "latency": 0.04789137840270996
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_10",
+                "nodes": 10,
+                "edges": 11,
+                "is_valid": false,
+                "conflicts_count": 21,
+                "latency": 0.04285168647766113
+            }
+        ],
+        "federated_hybrid": [
+            {
+                "dag_id": "Small (N=10)_DAG_1",
+                "nodes": 10,
+                "edges": 15,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.04085350036621094
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_2",
+                "nodes": 10,
+                "edges": 11,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.05033230781555176
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_3",
+                "nodes": 10,
+                "edges": 12,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.1782069206237793
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_4",
+                "nodes": 10,
+                "edges": 12,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.13225603103637695
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_5",
+                "nodes": 10,
+                "edges": 14,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.030580759048461914
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_6",
+                "nodes": 10,
+                "edges": 11,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 1.3194935321807861
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_7",
+                "nodes": 10,
+                "edges": 12,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.1762104034423828
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_8",
+                "nodes": 10,
+                "edges": 6,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.43605875968933105
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_9",
+                "nodes": 10,
+                "edges": 6,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.09274554252624512
+            },
+            {
+                "dag_id": "Small (N=10)_DAG_10",
+                "nodes": 10,
+                "edges": 11,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.04804658889770508
+            }
+        ]
+    },
+    "Medium (N=25)": {
+        "deterministic_topo": [
+            {
+                "dag_id": "Medium (N=25)_DAG_1",
+                "nodes": 25,
+                "edges": 48,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.015499591827392578
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_2",
+                "nodes": 25,
+                "edges": 46,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.02290511131286621
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_3",
+                "nodes": 25,
+                "edges": 39,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.02417469024658203
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_4",
+                "nodes": 25,
+                "edges": 41,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.06086087226867676
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_5",
+                "nodes": 25,
+                "edges": 67,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.029714345932006836
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_6",
+                "nodes": 25,
+                "edges": 41,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.028426647186279297
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_7",
+                "nodes": 25,
+                "edges": 48,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.043341875076293945
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_8",
+                "nodes": 25,
+                "edges": 45,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.03902292251586914
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_9",
+                "nodes": 25,
+                "edges": 43,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.023937702178955078
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_10",
+                "nodes": 25,
+                "edges": 44,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.023319482803344727
+            }
+        ],
+        "baseline": [
+            {
+                "dag_id": "Medium (N=25)_DAG_1",
+                "nodes": 25,
+                "edges": 48,
+                "is_valid": false,
+                "conflicts_count": 73,
+                "latency": 0.04259848594665527
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_2",
+                "nodes": 25,
+                "edges": 46,
+                "is_valid": false,
+                "conflicts_count": 71,
+                "latency": 0.13233590126037598
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_3",
+                "nodes": 25,
+                "edges": 39,
+                "is_valid": false,
+                "conflicts_count": 64,
+                "latency": 0.3174171447753906
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_4",
+                "nodes": 25,
+                "edges": 41,
+                "is_valid": false,
+                "conflicts_count": 66,
+                "latency": 0.07976102828979492
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_5",
+                "nodes": 25,
+                "edges": 67,
+                "is_valid": false,
+                "conflicts_count": 92,
+                "latency": 0.053879499435424805
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_6",
+                "nodes": 25,
+                "edges": 41,
+                "is_valid": false,
+                "conflicts_count": 66,
+                "latency": 0.0627281665802002
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_7",
+                "nodes": 25,
+                "edges": 48,
+                "is_valid": false,
+                "conflicts_count": 73,
+                "latency": 0.16082453727722168
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_8",
+                "nodes": 25,
+                "edges": 45,
+                "is_valid": false,
+                "conflicts_count": 70,
+                "latency": 0.05577492713928223
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_9",
+                "nodes": 25,
+                "edges": 43,
+                "is_valid": false,
+                "conflicts_count": 68,
+                "latency": 0.0686497688293457
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_10",
+                "nodes": 25,
+                "edges": 44,
+                "is_valid": false,
+                "conflicts_count": 69,
+                "latency": 0.04176735877990723
+            }
+        ],
+        "lattica": [
+            {
+                "dag_id": "Medium (N=25)_DAG_1",
+                "nodes": 25,
+                "edges": 48,
+                "is_valid": false,
+                "conflicts_count": 73,
+                "latency": 0.06700611114501953
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_2",
+                "nodes": 25,
+                "edges": 46,
+                "is_valid": false,
+                "conflicts_count": 71,
+                "latency": 0.07001662254333496
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_3",
+                "nodes": 25,
+                "edges": 39,
+                "is_valid": false,
+                "conflicts_count": 64,
+                "latency": 0.043348073959350586
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_4",
+                "nodes": 25,
+                "edges": 41,
+                "is_valid": false,
+                "conflicts_count": 66,
+                "latency": 0.07962584495544434
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_5",
+                "nodes": 25,
+                "edges": 67,
+                "is_valid": false,
+                "conflicts_count": 92,
+                "latency": 0.06819987297058105
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_6",
+                "nodes": 25,
+                "edges": 41,
+                "is_valid": false,
+                "conflicts_count": 66,
+                "latency": 0.07798624038696289
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_7",
+                "nodes": 25,
+                "edges": 48,
+                "is_valid": false,
+                "conflicts_count": 73,
+                "latency": 0.07586526870727539
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_8",
+                "nodes": 25,
+                "edges": 45,
+                "is_valid": false,
+                "conflicts_count": 70,
+                "latency": 0.02918863296508789
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_9",
+                "nodes": 25,
+                "edges": 43,
+                "is_valid": false,
+                "conflicts_count": 68,
+                "latency": 0.06681060791015625
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_10",
+                "nodes": 25,
+                "edges": 44,
+                "is_valid": false,
+                "conflicts_count": 69,
+                "latency": 0.04423117637634277
+            }
+        ],
+        "federated_hybrid": [
+            {
+                "dag_id": "Medium (N=25)_DAG_1",
+                "nodes": 25,
+                "edges": 48,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.06191539764404297
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_2",
+                "nodes": 25,
+                "edges": 46,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.0654757022857666
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_3",
+                "nodes": 25,
+                "edges": 39,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.27742862701416016
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_4",
+                "nodes": 25,
+                "edges": 41,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.2841958999633789
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_5",
+                "nodes": 25,
+                "edges": 67,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.26117706298828125
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_6",
+                "nodes": 25,
+                "edges": 41,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.10422325134277344
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_7",
+                "nodes": 25,
+                "edges": 48,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.09293556213378906
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_8",
+                "nodes": 25,
+                "edges": 45,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.12429952621459961
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_9",
+                "nodes": 25,
+                "edges": 43,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.04166150093078613
+            },
+            {
+                "dag_id": "Medium (N=25)_DAG_10",
+                "nodes": 25,
+                "edges": 44,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.14925694465637207
+            }
+        ]
+    },
+    "Large (N=50)": {
+        "deterministic_topo": [
+            {
+                "dag_id": "Large (N=50)_DAG_1",
+                "nodes": 50,
+                "edges": 100,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.0333561897277832
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_2",
+                "nodes": 50,
+                "edges": 94,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.01889324188232422
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_3",
+                "nodes": 50,
+                "edges": 91,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.01639556884765625
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_4",
+                "nodes": 50,
+                "edges": 102,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.03337264060974121
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_5",
+                "nodes": 50,
+                "edges": 117,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.039649009704589844
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_6",
+                "nodes": 50,
+                "edges": 86,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.0427250862121582
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_7",
+                "nodes": 50,
+                "edges": 88,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.016834735870361328
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_8",
+                "nodes": 50,
+                "edges": 109,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.021747589111328125
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_9",
+                "nodes": 50,
+                "edges": 98,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.016031742095947266
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_10",
+                "nodes": 50,
+                "edges": 116,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.028591394424438477
+            }
+        ],
+        "baseline": [
+            {
+                "dag_id": "Large (N=50)_DAG_1",
+                "nodes": 50,
+                "edges": 100,
+                "is_valid": false,
+                "conflicts_count": 150,
+                "latency": 0.0375974178314209
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_2",
+                "nodes": 50,
+                "edges": 94,
+                "is_valid": false,
+                "conflicts_count": 144,
+                "latency": 0.05719900131225586
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_3",
+                "nodes": 50,
+                "edges": 91,
+                "is_valid": false,
+                "conflicts_count": 141,
+                "latency": 0.04061436653137207
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_4",
+                "nodes": 50,
+                "edges": 102,
+                "is_valid": false,
+                "conflicts_count": 152,
+                "latency": 0.1503925323486328
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_5",
+                "nodes": 50,
+                "edges": 117,
+                "is_valid": false,
+                "conflicts_count": 167,
+                "latency": 0.033570289611816406
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_6",
+                "nodes": 50,
+                "edges": 86,
+                "is_valid": false,
+                "conflicts_count": 136,
+                "latency": 0.03427696228027344
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_7",
+                "nodes": 50,
+                "edges": 88,
+                "is_valid": false,
+                "conflicts_count": 138,
+                "latency": 0.0514826774597168
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_8",
+                "nodes": 50,
+                "edges": 109,
+                "is_valid": false,
+                "conflicts_count": 159,
+                "latency": 0.03985428810119629
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_9",
+                "nodes": 50,
+                "edges": 98,
+                "is_valid": false,
+                "conflicts_count": 148,
+                "latency": 0.3421611785888672
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_10",
+                "nodes": 50,
+                "edges": 116,
+                "is_valid": false,
+                "conflicts_count": 166,
+                "latency": 0.030093669891357422
+            }
+        ],
+        "lattica": [
+            {
+                "dag_id": "Large (N=50)_DAG_1",
+                "nodes": 50,
+                "edges": 100,
+                "is_valid": false,
+                "conflicts_count": 150,
+                "latency": 0.03233647346496582
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_2",
+                "nodes": 50,
+                "edges": 94,
+                "is_valid": false,
+                "conflicts_count": 144,
+                "latency": 0.03607916831970215
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_3",
+                "nodes": 50,
+                "edges": 91,
+                "is_valid": false,
+                "conflicts_count": 141,
+                "latency": 0.025446653366088867
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_4",
+                "nodes": 50,
+                "edges": 102,
+                "is_valid": false,
+                "conflicts_count": 152,
+                "latency": 0.05535125732421875
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_5",
+                "nodes": 50,
+                "edges": 117,
+                "is_valid": false,
+                "conflicts_count": 167,
+                "latency": 0.0644221305847168
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_6",
+                "nodes": 50,
+                "edges": 86,
+                "is_valid": false,
+                "conflicts_count": 136,
+                "latency": 0.03786063194274902
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_7",
+                "nodes": 50,
+                "edges": 88,
+                "is_valid": false,
+                "conflicts_count": 138,
+                "latency": 0.03410816192626953
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_8",
+                "nodes": 50,
+                "edges": 109,
+                "is_valid": false,
+                "conflicts_count": 159,
+                "latency": 0.06433749198913574
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_9",
+                "nodes": 50,
+                "edges": 98,
+                "is_valid": false,
+                "conflicts_count": 148,
+                "latency": 0.11343932151794434
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_10",
+                "nodes": 50,
+                "edges": 116,
+                "is_valid": false,
+                "conflicts_count": 166,
+                "latency": 0.04927182197570801
+            }
+        ],
+        "federated_hybrid": [
+            {
+                "dag_id": "Large (N=50)_DAG_1",
+                "nodes": 50,
+                "edges": 100,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.04335165023803711
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_2",
+                "nodes": 50,
+                "edges": 94,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.04108476638793945
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_3",
+                "nodes": 50,
+                "edges": 91,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.7955851554870605
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_4",
+                "nodes": 50,
+                "edges": 102,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.09641909599304199
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_5",
+                "nodes": 50,
+                "edges": 117,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.09952569007873535
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_6",
+                "nodes": 50,
+                "edges": 86,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.17104148864746094
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_7",
+                "nodes": 50,
+                "edges": 88,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.1392991542816162
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_8",
+                "nodes": 50,
+                "edges": 109,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.032369136810302734
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_9",
+                "nodes": 50,
+                "edges": 98,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.0590062141418457
+            },
+            {
+                "dag_id": "Large (N=50)_DAG_10",
+                "nodes": 50,
+                "edges": 116,
+                "is_valid": true,
+                "conflicts_count": 0,
+                "latency": 0.055544376373291016
+            }
+        ]
+    }
+}

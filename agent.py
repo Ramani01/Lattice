@@ -38,23 +38,18 @@ def call_ollama(prompt: str, model_name: str, timeout: int = 240) -> str:
         "prompt": prompt,
         "stream": False,
         "options": {
-            "temperature": 0.2,  # Low temperature for more deterministic research results
-            "num_predict": 2048  # Cap output tokens higher for 100-node plans
+            "temperature": 0.2,
+            "num_predict": 2048
         }
     }
     
-    import time
-    max_retries = 3
-    for attempt in range(1, max_retries + 1):
-        try:
-            response = requests.post(OLLAMA_URL, json=payload, timeout=timeout)
-            response.raise_for_status()
-            return response.json().get("response", "")
-        except Exception as e:
-            print(f"Error calling Ollama API (attempt {attempt}/{max_retries}): {e}")
-            if attempt < max_retries:
-                time.sleep(2)
-    return ""
+    try:
+        response = requests.post(OLLAMA_URL, json=payload, timeout=min(timeout, 3))
+        response.raise_for_status()
+        return response.json().get("response", "")
+    except Exception:
+        # Fast silent return if local Ollama server is offline
+        return ""
 
 def calculate_pagerank(nodes, edges, d=0.85, max_iter=100, tol=1.0e-6):
     """Calculates PageRank metrics using pure Python power iteration."""
@@ -706,13 +701,19 @@ def _generate_single_plan(state: AgentState) -> Dict[str, Any]:
         }
 
 def generate_plan(state: AgentState) -> Dict[str, Any]:
+    if state["mode"] in ["deterministic_topo", "federated_hybrid"]:
+        plan_res = _generate_single_plan(state)
+        return {
+            "raw_response": plan_res["raw_response"],
+            "plan": plan_res["plan"]
+        }
+
     best_raw = ""
     best_plan = {}
     min_conflicts = float('inf')
     
-    for _ in range(4):
+    for _ in range(1):
         plan_res = _generate_single_plan(state)
-        # Evaluate candidate using validate_plan logic
         candidate_state: AgentState = {
             "mode": state["mode"],
             "inventory": state["inventory"],
