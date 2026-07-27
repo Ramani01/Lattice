@@ -168,9 +168,19 @@ def create_github_pull_request(
     base_branch: str, 
     file_changes: List[Tuple[str, str]], 
     pr_title: str, 
-    pr_body: str
+    pr_body: str,
+    dry_run: bool = True
 ) -> str:
-    """Interfaces directly with the GitHub REST API to push commits and open a Pull Request."""
+    """Interfaces with GitHub REST API. Enforces mandatory dry_run=True default safeguard."""
+    if dry_run:
+        files_list = ", ".join([f[0] for f in file_changes])
+        return (
+            f"🔒 [DRY-RUN SAFEGUARD PASSED] GitHub PR Simulation complete.\n"
+            f"Target Repo: {repo_name} | Branch: {branch_name} -> {base_branch}\n"
+            f"Files to commit: {files_list}\n"
+            f"PR Title: {pr_title}\n"
+            f"No remote GitHub API mutations performed. Pass dry_run=False or click '--apply' UI confirm to push live."
+        )
     headers = {
         "Authorization": f"token {github_token}",
         "Accept": "application/vnd.github.v3+json"

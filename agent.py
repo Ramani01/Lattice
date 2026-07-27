@@ -529,18 +529,25 @@ Do not output any text after the JSON block.
 
 def create_provenance_edge(caller: str, callee: str, source: str = "eBPF", confidence: float = 1.0, namespace: str = "default", observed_time: Optional[str] = None) -> Dict[str, Any]:
     """
-    Creates an Edge Provenance record attaching source, timestamp, confidence score, and namespace metadata.
+    Creates an Edge Provenance record attaching source, timestamp, confidence score, namespace, and multi-source observations array.
     """
     if not observed_time:
         import datetime
         observed_time = datetime.datetime.utcnow().isoformat() + "Z"
+    obs_record = {
+        "source": source,
+        "confidence": confidence,
+        "namespace": namespace,
+        "timestamp": observed_time
+    }
     return {
         "caller": caller,
         "callee": callee,
         "source": source,
         "confidence": confidence,
         "namespace": namespace,
-        "observed_time": observed_time
+        "observed_time": observed_time,
+        "observations": [obs_record]
     }
 
 def compute_scc_condensation(service_names: List[str], dependencies: Any) -> Tuple[List[List[str]], List[Tuple[int, int]]]:

@@ -231,6 +231,13 @@ def run_ingestion_and_analysis(provider: DiscoveryProvider):
     analyzed_inventory = []
     if neo4j_available:
         with driver.session() as session:
+            # Create Schema Indexes and Constraints
+            try:
+                session.run("CREATE CONSTRAINT IF NOT EXISTS FOR (s:Service) REQUIRE s.name IS UNIQUE")
+                session.run("CREATE INDEX IF NOT EXISTS FOR (s:Service) ON (s.run_id)")
+            except Exception as schema_err:
+                print(f"Notice: Neo4j Schema initialization: {schema_err}")
+
             # Clear Neo4j
             print("Clearing Neo4j database...")
             session.run("MATCH (n) DETACH DELETE n")
