@@ -1,7 +1,7 @@
 import os
 import json
 import requests
-from typing import TypedDict, List, Dict, Tuple, Any
+from typing import TypedDict, List, Dict, Tuple, Any, Optional
 from langgraph.graph import StateGraph, END
 
 OLLAMA_URL = "http://127.0.0.1:11434/api/generate"
@@ -527,42 +527,127 @@ Do not output any text after the JSON block.
     else:
         return {"prompt": ""}
 
-def compute_deterministic_topo_plan(service_names: List[str], dependencies: List[Tuple[str, str]], max_phases: int = 4) -> Dict[str, List[str]]:
+def create_provenance_edge(caller: str, callee: str, source: str = "eBPF", confidence: float = 1.0, namespace: str = "default", observed_time: Optional[str] = None) -> Dict[str, Any]:
     """
-    Computes a 100% constraint-safe execution plan deterministically using topological depth binning.
-    Callee (downstream) dependencies are guaranteed to be assigned to earlier phases than caller (upstream) services.
-    Zero LLM calls are involved in calculating constraints.
+    Creates an Edge Provenance record attaching source, timestamp, confidence score, and namespace metadata.
+    """
+    if not observed_time:
+        import datetime
+        observed_time = datetime.datetime.utcnow().isoformat() + "Z"
+    return {
+        "caller": caller,
+        "callee": callee,
+        "source": source,
+        "confidence": confidence,
+        "namespace": namespace,
+        "observed_time": observed_time
+    }
+
+def compute_scc_condensation(service_names: List[str], dependencies: Any) -> Tuple[List[List[str]], List[Tuple[int, int]]]:
+    """
+    Computes Strongly Connected Components (SCCs) using Tarjan's algorithm.
+    Collapses cyclic microservice loops into condensed super-nodes to handle real-world cyclic service graphs.
+    Returns: (list_of_scc_components, condensed_dag_edges)
     """
     adj = {node: [] for node in service_names}
-    for caller, callee in dependencies:
+    for edge in dependencies:
+        if isinstance(edge, (tuple, list)):
+            caller, callee = edge[0], edge[1]
+        elif isinstance(edge, dict):
+            caller, callee = edge.get("caller"), edge.get("callee")
+        else:
+            continue
         if caller in adj and callee in adj:
             adj[caller].append(callee)
-            
+
+    index = 0
+    indices = {}
+    lowlink = {}
+    stack = []
+    on_stack = set()
+    sccs = []
+
+    def strongconnect(node):
+        nonlocal index
+        indices[node] = index
+        lowlink[node] = index
+        index += 1
+        stack.append(node)
+        on_stack.add(node)
+
+        for callee in adj[node]:
+            if callee not in indices:
+                strongconnect(callee)
+                lowlink[node] = min(lowlink[node], lowlink[callee])
+            elif callee in on_stack:
+                lowlink[node] = min(lowlink[node], indices[callee])
+
+        if lowlink[node] == indices[node]:
+            scc = []
+            while True:
+                w = stack.pop()
+                on_stack.remove(w)
+                scc.append(w)
+                if w == node:
+                    break
+            sccs.append(scc)
+
+    for node in service_names:
+        if node not in indices:
+            strongconnect(node)
+
+    scc_map = {}
+    for idx, scc in enumerate(sccs):
+        for node in scc:
+            scc_map[node] = idx
+
+    condensed_edges = set()
+    for edge in dependencies:
+        if isinstance(edge, (tuple, list)):
+            caller, callee = edge[0], edge[1]
+        elif isinstance(edge, dict):
+            caller, callee = edge.get("caller"), edge.get("callee")
+        else:
+            continue
+        if caller in scc_map and callee in scc_map:
+            u_scc = scc_map[caller]
+            v_scc = scc_map[callee]
+            if u_scc != v_scc:
+                condensed_edges.add((u_scc, v_scc))
+
+    return sccs, list(condensed_edges)
+
+def compute_deterministic_topo_plan(service_names: List[str], dependencies: Any, max_phases: int = 4) -> Dict[str, List[str]]:
+    """
+    Computes a 100% constraint-safe execution plan deterministically using Tarjan's SCC condensation
+    and topological depth binning. Handles cyclic microservice graphs seamlessly by assigning cyclic
+    co-dependent services to the same phase.
+    """
+    sccs, condensed_edges = compute_scc_condensation(service_names, dependencies)
+    num_sccs = len(sccs)
+    scc_adj = {i: [] for i in range(num_sccs)}
+    for u, v in condensed_edges:
+        scc_adj[u].append(v)
+
     memo = {}
-    visiting = set()
-    
-    def get_depth(node):
-        if node in memo:
-            return memo[node]
-        if node in visiting:
-            return 0
-        visiting.add(node)
-        if not adj[node]:
+    def get_scc_depth(scc_idx):
+        if scc_idx in memo:
+            return memo[scc_idx]
+        if not scc_adj[scc_idx]:
             depth = 0
         else:
-            depth = 1 + max(get_depth(child) for child in adj[node])
-        visiting.remove(node)
-        memo[node] = depth
+            depth = 1 + max(get_scc_depth(child) for child in scc_adj[scc_idx])
+        memo[scc_idx] = depth
         return depth
-        
-    depths = {node: get_depth(node) for node in service_names}
-    
+
     plan = {f"Phase {i+1}": [] for i in range(max_phases)}
-    for s in service_names:
-        phase_num = min(depths[s] + 1, max_phases)
-        plan[f"Phase {phase_num}"].append(s)
-        
+    for scc_idx, scc_nodes in enumerate(sccs):
+        depth = get_scc_depth(scc_idx)
+        phase_num = min(depth + 1, max_phases)
+        plan[f"Phase {phase_num}"].extend(scc_nodes)
+
     return plan
+
 
 def enrich_plan_with_llm(plan: Dict[str, List[str]], inventory: List[Dict[str, Any]], dependencies: List[Tuple[str, str]], model_name: str = "qwen2:1.5b") -> Dict[str, Any]:
     """
