@@ -1,0 +1,7 @@
+{"src_service": "edge-gateway", "dst_service": "auth-service"}
+{"src_service": "edge-gateway", "dst_service": "order-service"}
+{"src_service": "auth-service", "dst_service": "user-db"}
+{"src_service": "order-service", "dst_service": "auth-service"}
+{"src_service": "order-service", "dst_service": "payment-service"}
+{"src_service": "order-service", "dst_service": "order-db"}
+{"src_service": "payment-service", "dst_service": "payment-db"}

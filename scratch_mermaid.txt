@@ -1,0 +1,18 @@
+graph TD
+    classDef vulnerable stroke:#ef4444,stroke-width:2px,fill:#2d1414,color:#f87171
+    classDef choke stroke:#8b5cf6,stroke-width:2px,fill:#231438,color:#c084fc
+    classDef standard stroke:#00f2fe,stroke-width:1px,fill:#0d1829,color:#00f2fe
+    auth_service["auth-service ⚠️"]:::vulnerable
+    edge_gateway["edge-gateway ⚠️"]:::vulnerable
+    order_db["order-db ⚠️"]:::vulnerable
+    order_service["order-service ⚠️"]:::vulnerable
+    payment_db["payment-db ⚠️"]:::vulnerable
+    payment_service["payment-service ⚠️"]:::vulnerable
+    user_db["user-db ⚠️"]:::vulnerable
+    auth_service --> user_db
+    payment_service --> payment_db
+    order_service --> auth_service
+    order_service --> payment_service
+    order_service --> order_db
+    edge_gateway --> auth_service
+    edge_gateway --> order_service

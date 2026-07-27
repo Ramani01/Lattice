@@ -1,0 +1,168 @@
+# Neo4j Enterprise Production Deployment Manifest
+# Configures a highly available, multi-AZ Causal Cluster with encryption-at-rest and encryption-in-transit.
+
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: Lattica-security
+---
+# StorageClass configuring EBS Volume Encryption-at-Rest via AWS KMS customer managed key (CMK)
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: encrypted-gp3
+provisioner: ebs.csi.aws.com
+volumeBindingMode: WaitForFirstConsumer
+parameters:
+  type: gp3
+  encrypted: "true"
+  kmsKeyId: "arn:aws:kms:us-east-1:123456789012:key/lattica-pqc-database-encryption-key"
+---
+# Headless service for clustered routing and discovery
+apiVersion: v1
+kind: Service
+metadata:
+  name: neo4j-discovery
+  namespace: Lattica-security
+  labels:
+    app: neo4j
+spec:
+  clusterIP: None
+  ports:
+  - port: 5001
+    name: discovery
+  - port: 6001
+    name: tx
+  - port: 7001
+    name: raft
+  selector:
+    app: neo4j
+---
+# Production Neo4j StatefulSet across multiple AZs
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: neo4j-core
+  namespace: Lattica-security
+spec:
+  serviceName: neo4j-discovery
+  replicas: 3
+  selector:
+    matchLabels:
+      app: neo4j
+  template:
+    metadata:
+      labels:
+        app: neo4j
+    spec:
+      # Pod Topology Spread Constraints to enforce Multi-AZ Core placement
+      topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: topology.kubernetes.io/zone
+        whenUnsatisfiable: DoNotSchedule
+        labelSelector:
+          matchLabels:
+            app: neo4j
+            
+      # Node Affinity to run on designated security node groups
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: node-role.kubernetes.io/database
+                operator: In
+                values:
+                - production
+                
+      containers:
+      - name: neo4j
+        image: neo4j:5.12.0-enterprise
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 7474
+          name: http
+        - containerPort: 7473
+          name: https
+        - containerPort: 7687
+          name: bolt
+        env:
+        # Accept Neo4j License Agreement
+        - name: NEO4J_ACCEPT_LICENSE_AGREEMENT
+          value: "yes"
+          
+        # Retrieve Neo4j credentials dynamically from Secrets Manager/vault via mounted environment variable
+        - name: NEO4J_admin_password
+          valueFrom:
+            secretKeyRef:
+              name: lattica-vault-credentials
+              key: neo4j_password
+              
+        # 1. CAUSAL CLUSTERING CONFIGURATION
+        - name: NEO4J_dbms_mode
+          value: "CORE"
+        - name: NEO4J_dbms_cluster_discovery_endpoints
+          value: "neo4j-core-0.neo4j-discovery.Lattica-security.svc.cluster.local:5001,neo4j-core-1.neo4j-discovery.Lattica-security.svc.cluster.local:5001,neo4j-core-2.neo4j-discovery.Lattica-security.svc.cluster.local:5001"
+          
+        # 2. ENCRYPTION-IN-TRANSIT (TLS POLICY BINDING)
+        # Enable Bolt SSL/TLS
+        - name: NEO4J_dbms_ssl_policy_bolt_enabled
+          value: "true"
+        - name: NEO4J_dbms_ssl_policy_bolt_client__auth
+          value: "NONE"
+        - name: NEO4J_dbms_ssl_policy_bolt_private__key
+          value: "/var/lib/neo4j/certificates/bolt/private.key"
+        - name: NEO4J_dbms_ssl_policy_bolt_public__certificate
+          value: "/var/lib/neo4j/certificates/bolt/public.crt"
+          
+        # Enable HTTPS SSL/TLS
+        - name: NEO4J_dbms_ssl_policy_https_enabled
+          value: "true"
+        - name: NEO4J_dbms_ssl_policy_https_client__auth
+          value: "NONE"
+        - name: NEO4J_dbms_ssl_policy_https_private__key
+          value: "/var/lib/neo4j/certificates/https/private.key"
+        - name: NEO4J_dbms_ssl_policy_https_public__certificate
+          value: "/var/lib/neo4j/certificates/https/public.crt"
+
+        # 3. ENCRYPTION-AT-REST (DATABASE INTERNAL)
+        - name: NEO4J_dbms_security_database_encryption_enabled
+          value: "true"
+
+        volumeMounts:
+        - name: datadir
+          mountPath: /data
+        - name: certdir
+          mountPath: /var/lib/neo4j/certificates
+          readOnly: true
+          
+      volumes:
+      # Certificates loaded dynamically from Kubernetes TLS Secrets
+      - name: certdir
+        projected:
+          sources:
+          - secret:
+              name: neo4j-bolt-tls
+              items:
+              - key: tls.key
+                path: bolt/private.key
+              - key: tls.crt
+                path: bolt/public.crt
+          - secret:
+              name: neo4j-https-tls
+              items:
+              - key: tls.key
+                path: https/private.key
+              - key: tls.crt
+                path: https/public.crt
+                
+  # VolumeClaimTemplates utilizing KMS encrypted EBS gp3 StorageClass
+  volumeClaimTemplates:
+  - metadata:
+      name: datadir
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: encrypted-gp3
+      resources:
+        requests:
+          storage: 100Gi

@@ -1,0 +1,346 @@
+{
+    "deterministic_topo": [
+        {
+            "run": 1,
+            "plan": {
+                "Phase 1": [
+                    "order-db",
+                    "payment-db",
+                    "user-db"
+                ],
+                "Phase 2": [
+                    "auth-service",
+                    "payment-service"
+                ],
+                "Phase 3": [
+                    "order-service"
+                ],
+                "Phase 4": [
+                    "edge-gateway"
+                ]
+            },
+            "is_valid": true,
+            "conflicts": [],
+            "time_taken": 0.08228158950805664
+        },
+        {
+            "run": 2,
+            "plan": {
+                "Phase 1": [
+                    "order-db",
+                    "payment-db",
+                    "user-db"
+                ],
+                "Phase 2": [
+                    "auth-service",
+                    "payment-service"
+                ],
+                "Phase 3": [
+                    "order-service"
+                ],
+                "Phase 4": [
+                    "edge-gateway"
+                ]
+            },
+            "is_valid": true,
+            "conflicts": [],
+            "time_taken": 0.029462575912475586
+        },
+        {
+            "run": 3,
+            "plan": {
+                "Phase 1": [
+                    "order-db",
+                    "payment-db",
+                    "user-db"
+                ],
+                "Phase 2": [
+                    "auth-service",
+                    "payment-service"
+                ],
+                "Phase 3": [
+                    "order-service"
+                ],
+                "Phase 4": [
+                    "edge-gateway"
+                ]
+            },
+            "is_valid": true,
+            "conflicts": [],
+            "time_taken": 0.02211451530456543
+        }
+    ],
+    "baseline": [
+        {
+            "run": 1,
+            "plan": {},
+            "is_valid": false,
+            "conflicts": [
+                "Missing caller service 'auth-service' from execution plan.",
+                "Missing caller service 'payment-service' from execution plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'edge-gateway' from execution plan.",
+                "Missing caller service 'edge-gateway' from execution plan.",
+                "Missing service 'edge-gateway' entirely from plan.",
+                "Missing service 'user-db' entirely from plan.",
+                "Missing service 'order-db' entirely from plan.",
+                "Missing service 'auth-service' entirely from plan.",
+                "Missing service 'payment-service' entirely from plan.",
+                "Missing service 'order-service' entirely from plan.",
+                "Missing service 'payment-db' entirely from plan."
+            ],
+            "time_taken": 18.9345121383667
+        },
+        {
+            "run": 2,
+            "plan": {},
+            "is_valid": false,
+            "conflicts": [
+                "Missing caller service 'auth-service' from execution plan.",
+                "Missing caller service 'payment-service' from execution plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'edge-gateway' from execution plan.",
+                "Missing caller service 'edge-gateway' from execution plan.",
+                "Missing service 'edge-gateway' entirely from plan.",
+                "Missing service 'user-db' entirely from plan.",
+                "Missing service 'order-db' entirely from plan.",
+                "Missing service 'auth-service' entirely from plan.",
+                "Missing service 'payment-service' entirely from plan.",
+                "Missing service 'order-service' entirely from plan.",
+                "Missing service 'payment-db' entirely from plan."
+            ],
+            "time_taken": 16.4948673248291
+        },
+        {
+            "run": 3,
+            "plan": {},
+            "is_valid": false,
+            "conflicts": [
+                "Missing caller service 'auth-service' from execution plan.",
+                "Missing caller service 'payment-service' from execution plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'edge-gateway' from execution plan.",
+                "Missing caller service 'edge-gateway' from execution plan.",
+                "Missing service 'edge-gateway' entirely from plan.",
+                "Missing service 'user-db' entirely from plan.",
+                "Missing service 'order-db' entirely from plan.",
+                "Missing service 'auth-service' entirely from plan.",
+                "Missing service 'payment-service' entirely from plan.",
+                "Missing service 'order-service' entirely from plan.",
+                "Missing service 'payment-db' entirely from plan."
+            ],
+            "time_taken": 16.67673921585083
+        }
+    ],
+    "lattica": [
+        {
+            "run": 1,
+            "plan": {},
+            "is_valid": false,
+            "conflicts": [
+                "Missing caller service 'auth-service' from execution plan.",
+                "Missing caller service 'payment-service' from execution plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'edge-gateway' from execution plan.",
+                "Missing caller service 'edge-gateway' from execution plan.",
+                "Missing service 'edge-gateway' entirely from plan.",
+                "Missing service 'user-db' entirely from plan.",
+                "Missing service 'order-db' entirely from plan.",
+                "Missing service 'auth-service' entirely from plan.",
+                "Missing service 'payment-service' entirely from plan.",
+                "Missing service 'order-service' entirely from plan.",
+                "Missing service 'payment-db' entirely from plan."
+            ],
+            "time_taken": 16.86815905570984
+        },
+        {
+            "run": 2,
+            "plan": {},
+            "is_valid": false,
+            "conflicts": [
+                "Missing caller service 'auth-service' from execution plan.",
+                "Missing caller service 'payment-service' from execution plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'edge-gateway' from execution plan.",
+                "Missing caller service 'edge-gateway' from execution plan.",
+                "Missing service 'edge-gateway' entirely from plan.",
+                "Missing service 'user-db' entirely from plan.",
+                "Missing service 'order-db' entirely from plan.",
+                "Missing service 'auth-service' entirely from plan.",
+                "Missing service 'payment-service' entirely from plan.",
+                "Missing service 'order-service' entirely from plan.",
+                "Missing service 'payment-db' entirely from plan."
+            ],
+            "time_taken": 16.398311138153076
+        },
+        {
+            "run": 3,
+            "plan": {},
+            "is_valid": false,
+            "conflicts": [
+                "Missing caller service 'auth-service' from execution plan.",
+                "Missing caller service 'payment-service' from execution plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'edge-gateway' from execution plan.",
+                "Missing caller service 'edge-gateway' from execution plan.",
+                "Missing service 'edge-gateway' entirely from plan.",
+                "Missing service 'user-db' entirely from plan.",
+                "Missing service 'order-db' entirely from plan.",
+                "Missing service 'auth-service' entirely from plan.",
+                "Missing service 'payment-service' entirely from plan.",
+                "Missing service 'order-service' entirely from plan.",
+                "Missing service 'payment-db' entirely from plan."
+            ],
+            "time_taken": 16.317598342895508
+        }
+    ],
+    "federated_hybrid": [
+        {
+            "run": 1,
+            "plan": {
+                "Phase 1": {
+                    "Upgrade to Transition State": [
+                        "order-db",
+                        "payment-db",
+                        "user-db"
+                    ],
+                    "Enforce Target Configuration": []
+                },
+                "Phase 2": {
+                    "Upgrade to Transition State": [
+                        "auth-service",
+                        "payment-service"
+                    ],
+                    "Enforce Target Configuration": [
+                        "payment-db",
+                        "user-db"
+                    ]
+                },
+                "Phase 3": {
+                    "Upgrade to Transition State": [
+                        "order-service"
+                    ],
+                    "Enforce Target Configuration": [
+                        "order-db",
+                        "payment-service"
+                    ]
+                },
+                "Phase 4": {
+                    "Upgrade to Transition State": [
+                        "edge-gateway"
+                    ],
+                    "Enforce Target Configuration": [
+                        "auth-service",
+                        "edge-gateway",
+                        "order-service"
+                    ]
+                }
+            },
+            "is_valid": true,
+            "conflicts": [],
+            "time_taken": 4.07929539680481
+        },
+        {
+            "run": 2,
+            "plan": {
+                "Phase 1": {
+                    "Upgrade to Transition State": [
+                        "order-db",
+                        "payment-db",
+                        "user-db"
+                    ],
+                    "Enforce Target Configuration": []
+                },
+                "Phase 2": {
+                    "Upgrade to Transition State": [
+                        "auth-service",
+                        "payment-service"
+                    ],
+                    "Enforce Target Configuration": [
+                        "payment-db",
+                        "user-db"
+                    ]
+                },
+                "Phase 3": {
+                    "Upgrade to Transition State": [
+                        "order-service"
+                    ],
+                    "Enforce Target Configuration": [
+                        "order-db",
+                        "payment-service"
+                    ]
+                },
+                "Phase 4": {
+                    "Upgrade to Transition State": [
+                        "edge-gateway"
+                    ],
+                    "Enforce Target Configuration": [
+                        "auth-service",
+                        "edge-gateway",
+                        "order-service"
+                    ]
+                }
+            },
+            "is_valid": true,
+            "conflicts": [],
+            "time_taken": 4.099574565887451
+        },
+        {
+            "run": 3,
+            "plan": {
+                "Phase 1": {
+                    "Upgrade to Transition State": [
+                        "order-db",
+                        "payment-db",
+                        "user-db"
+                    ],
+                    "Enforce Target Configuration": []
+                },
+                "Phase 2": {
+                    "Upgrade to Transition State": [
+                        "auth-service",
+                        "payment-service"
+                    ],
+                    "Enforce Target Configuration": [
+                        "payment-db",
+                        "user-db"
+                    ]
+                },
+                "Phase 3": {
+                    "Upgrade to Transition State": [
+                        "order-service"
+                    ],
+                    "Enforce Target Configuration": [
+                        "order-db",
+                        "payment-service"
+                    ]
+                },
+                "Phase 4": {
+                    "Upgrade to Transition State": [
+                        "edge-gateway"
+                    ],
+                    "Enforce Target Configuration": [
+                        "auth-service",
+                        "edge-gateway",
+                        "order-service"
+                    ]
+                }
+            },
+            "is_valid": true,
+            "conflicts": [],
+            "time_taken": 4.094370126724243
+        }
+    ]
+}

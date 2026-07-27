@@ -1,0 +1,72 @@
+[
+    {
+        "service": "payment-db",
+        "algorithm": "AES-256-GCM",
+        "vulnerable": true,
+        "change_blast_radius": 0,
+        "quantum_blast_radius": 0,
+        "dependency_impact": 3,
+        "pagerank": 0.1857,
+        "betweenness_centrality": 0.0
+    },
+    {
+        "service": "payment-service",
+        "algorithm": "RSA-2048",
+        "vulnerable": true,
+        "change_blast_radius": 1,
+        "quantum_blast_radius": 1,
+        "dependency_impact": 2,
+        "pagerank": 0.1189,
+        "betweenness_centrality": 0.0667
+    },
+    {
+        "service": "user-db",
+        "algorithm": "AES-256-GCM",
+        "vulnerable": true,
+        "change_blast_radius": 0,
+        "quantum_blast_radius": 0,
+        "dependency_impact": 3,
+        "pagerank": 0.2163,
+        "betweenness_centrality": 0.0
+    },
+    {
+        "service": "auth-service",
+        "algorithm": "RSA-4096",
+        "vulnerable": true,
+        "change_blast_radius": 1,
+        "quantum_blast_radius": 1,
+        "dependency_impact": 2,
+        "pagerank": 0.1549,
+        "betweenness_centrality": 0.0667
+    },
+    {
+        "service": "edge-gateway",
+        "algorithm": "RSA-2048",
+        "vulnerable": true,
+        "change_blast_radius": 6,
+        "quantum_blast_radius": 6,
+        "dependency_impact": 0,
+        "pagerank": 0.0847,
+        "betweenness_centrality": 0.0
+    },
+    {
+        "service": "order-db",
+        "algorithm": "AES-256-GCM",
+        "vulnerable": true,
+        "change_blast_radius": 0,
+        "quantum_blast_radius": 0,
+        "dependency_impact": 2,
+        "pagerank": 0.1189,
+        "betweenness_centrality": 0.0
+    },
+    {
+        "service": "order-service",
+        "algorithm": "ECC-secp256r1",
+        "vulnerable": true,
+        "change_blast_radius": 5,
+        "quantum_blast_radius": 5,
+        "dependency_impact": 1,
+        "pagerank": 0.1207,
+        "betweenness_centrality": 0.1
+    }
+]

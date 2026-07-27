@@ -1,0 +1,37 @@
+[
+    {
+        "service": "auth-service",
+        "algorithm": "RSA-4096",
+        "vulnerable": true
+    },
+    {
+        "service": "edge-gateway",
+        "algorithm": "RSA-2048",
+        "vulnerable": true
+    },
+    {
+        "service": "order-db",
+        "algorithm": "AES-256-GCM",
+        "vulnerable": false
+    },
+    {
+        "service": "order-service",
+        "algorithm": "ECC-secp256r1",
+        "vulnerable": true
+    },
+    {
+        "service": "payment-db",
+        "algorithm": "AES-256-GCM",
+        "vulnerable": false
+    },
+    {
+        "service": "payment-service",
+        "algorithm": "RSA-2048",
+        "vulnerable": true
+    },
+    {
+        "service": "user-db",
+        "algorithm": "AES-256-GCM",
+        "vulnerable": false
+    }
+]
