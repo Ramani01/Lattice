@@ -15,11 +15,6 @@
         "vulnerable": true
     },
     {
-        "service": "admin-portal",
-        "algorithm": "RSA-4096",
-        "vulnerable": true
-    },
-    {
         "service": "auth-service",
         "algorithm": "RSA-4096",
         "vulnerable": true
@@ -55,21 +50,6 @@
         "vulnerable": false
     },
     {
-        "service": "inventory-service",
-        "algorithm": "RSA-2048",
-        "vulnerable": true
-    },
-    {
-        "service": "inventory-db",
-        "algorithm": "AES-256-GCM",
-        "vulnerable": false
-    },
-    {
-        "service": "warehouse-service",
-        "algorithm": "ECC-secp256r1",
-        "vulnerable": true
-    },
-    {
         "service": "order-service",
         "algorithm": "RSA-4096",
         "vulnerable": true
@@ -80,33 +60,38 @@
         "vulnerable": false
     },
     {
-        "service": "payment-service",
+        "service": "stripe-payment-connector",
         "algorithm": "RSA-4096",
         "vulnerable": true
     },
     {
-        "service": "payment-db",
+        "service": "payment-ledger-db",
         "algorithm": "AES-256-GCM",
         "vulnerable": false
     },
     {
-        "service": "notification-service",
-        "algorithm": "ECC-secp256r1",
-        "vulnerable": true
-    },
-    {
-        "service": "recommendation-service",
+        "service": "kafka-event-bus",
         "algorithm": "RSA-2048",
         "vulnerable": true
     },
     {
-        "service": "analytics-service",
+        "service": "notification-worker",
+        "algorithm": "ECC-secp256r1",
+        "vulnerable": true
+    },
+    {
+        "service": "sendgrid-api-ext",
+        "algorithm": "RSA-2048",
+        "vulnerable": false
+    },
+    {
+        "service": "audit-logger",
         "algorithm": "AES-256-GCM",
         "vulnerable": false
     },
     {
-        "service": "reconciliation-service",
-        "algorithm": "RSA-4096",
-        "vulnerable": true
+        "service": "s3-archive-storage",
+        "algorithm": "AES-256-GCM",
+        "vulnerable": false
     }
 ]
