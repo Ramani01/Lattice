@@ -1,8 +1,0 @@
-{
-    "service_name": "order-db",
-    "crypto_algorithm": "AES-256-GCM",
-    "target_version": "PostgreSQL 15",
-    "spring_boot_version": "N/A",
-    "protocols": ["TLSv1.3"],
-    "api_version": "v1"
-}

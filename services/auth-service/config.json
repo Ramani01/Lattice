@@ -1,8 +1,0 @@
-{
-    "service_name": "auth-service",
-    "crypto_algorithm": "RSA-4096",
-    "target_version": "Java 17",
-    "spring_boot_version": "Spring Boot 3",
-    "protocols": ["TLSv1.2"],
-    "api_version": "v1"
-}

@@ -3,14 +3,20 @@ import json
 import yaml
 import time
 import argparse
+import logging
 from typing import List, Tuple
 from neo4j import GraphDatabase
 
-NEO4J_URI = "bolt://127.0.0.1:7687"
-NEO4J_USER = "neo4j"
-NEO4J_PASSWORD = "password"
-INVENTORY_FILE = "inventory.json"
-ANALYZED_INVENTORY_FILE = "analyzed_inventory.json"
+from config import config
+from exceptions import DiscoveryError, GraphAnalysisError
+
+logger = logging.getLogger("lattice.discovery")
+
+NEO4J_URI = config.neo4j_uri
+NEO4J_USER = config.neo4j_user
+NEO4J_PASSWORD = config.neo4j_password
+INVENTORY_FILE = config.inventory_file
+ANALYZED_INVENTORY_FILE = config.analyzed_inventory_file
 
 class DiscoveryProvider:
     """Abstract Base Class for Dynamic Infrastructure Discovery Providers."""
@@ -25,9 +31,9 @@ class DockerComposeProvider(DiscoveryProvider):
         
     def fetch_nodes_and_edges(self) -> Tuple[List[str], List[Tuple[str, str]]]:
         if not os.path.exists(self.file_path):
-            raise FileNotFoundError(f"Docker Compose file not found at '{self.file_path}'")
+            raise DiscoveryError(f"Docker Compose file not found at '{self.file_path}'")
             
-        print(f"[DockerComposeProvider] Parsing '{self.file_path}'...")
+        logger.info(f"[DockerComposeProvider] Parsing '{self.file_path}'...")
         with open(self.file_path, "r") as f:
             compose_data = yaml.safe_load(f)
             
@@ -99,7 +105,9 @@ class EbpfLogsProvider(DiscoveryProvider):
         return list(set(nodes)), list(set(edges))
 
 class KialiIstioProvider(DiscoveryProvider):
-    """Fetches dependencies from Istio Kiali API."""
+    """Optional external integration connector for Kubernetes/Istio Kiali REST API.
+    Provides standard DiscoveryProvider interface structure for live cluster graph scraping.
+    """
     def __init__(self, kiali_url: str, namespace: str, token: str):
         self.kiali_url = kiali_url
         self.namespace = namespace
@@ -109,7 +117,9 @@ class KialiIstioProvider(DiscoveryProvider):
         return [], []
 
 class DatadogApmProvider(DiscoveryProvider):
-    """Fetches dependencies from Datadog APM API."""
+    """Optional external integration connector for Datadog APM REST API.
+    Provides standard DiscoveryProvider interface structure for live APM service trace scraping.
+    """
     def __init__(self, api_key: str, app_key: str, site: str):
         self.api_key = api_key
         self.app_key = app_key

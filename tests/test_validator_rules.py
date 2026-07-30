@@ -4,7 +4,7 @@ import os
 
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
-from live_app import validate_plan
+from planning import validate_plan
 
 class TestValidatorRules(unittest.TestCase):
     def setUp(self):

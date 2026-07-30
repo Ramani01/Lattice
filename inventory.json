@@ -1,12 +1,77 @@
 [
     {
+        "service": "api-gateway",
+        "algorithm": "RSA-2048",
+        "vulnerable": true
+    },
+    {
+        "service": "mobile-bff",
+        "algorithm": "RSA-2048",
+        "vulnerable": true
+    },
+    {
+        "service": "web-bff",
+        "algorithm": "RSA-2048",
+        "vulnerable": true
+    },
+    {
+        "service": "admin-portal",
+        "algorithm": "RSA-4096",
+        "vulnerable": true
+    },
+    {
         "service": "auth-service",
         "algorithm": "RSA-4096",
         "vulnerable": true
     },
     {
-        "service": "edge-gateway",
+        "service": "user-service",
+        "algorithm": "ECC-secp256r1",
+        "vulnerable": true
+    },
+    {
+        "service": "user-db",
+        "algorithm": "AES-256-GCM",
+        "vulnerable": false
+    },
+    {
+        "service": "catalog-service",
         "algorithm": "RSA-2048",
+        "vulnerable": true
+    },
+    {
+        "service": "catalog-db",
+        "algorithm": "AES-256-GCM",
+        "vulnerable": false
+    },
+    {
+        "service": "cart-service",
+        "algorithm": "ECC-secp256r1",
+        "vulnerable": true
+    },
+    {
+        "service": "cart-cache",
+        "algorithm": "AES-256-GCM",
+        "vulnerable": false
+    },
+    {
+        "service": "inventory-service",
+        "algorithm": "RSA-2048",
+        "vulnerable": true
+    },
+    {
+        "service": "inventory-db",
+        "algorithm": "AES-256-GCM",
+        "vulnerable": false
+    },
+    {
+        "service": "warehouse-service",
+        "algorithm": "ECC-secp256r1",
+        "vulnerable": true
+    },
+    {
+        "service": "order-service",
+        "algorithm": "RSA-4096",
         "vulnerable": true
     },
     {
@@ -15,8 +80,8 @@
         "vulnerable": false
     },
     {
-        "service": "order-service",
-        "algorithm": "ECC-secp256r1",
+        "service": "payment-service",
+        "algorithm": "RSA-4096",
         "vulnerable": true
     },
     {
@@ -25,13 +90,23 @@
         "vulnerable": false
     },
     {
-        "service": "payment-service",
+        "service": "notification-service",
+        "algorithm": "ECC-secp256r1",
+        "vulnerable": true
+    },
+    {
+        "service": "recommendation-service",
         "algorithm": "RSA-2048",
         "vulnerable": true
     },
     {
-        "service": "user-db",
+        "service": "analytics-service",
         "algorithm": "AES-256-GCM",
         "vulnerable": false
+    },
+    {
+        "service": "reconciliation-service",
+        "algorithm": "RSA-4096",
+        "vulnerable": true
     }
 ]

@@ -1,72 +1,222 @@
 [
     {
-        "service": "auth-service",
-        "algorithm": "RSA-4096",
-        "vulnerable": true,
-        "change_blast_radius": 1,
-        "quantum_blast_radius": 1,
-        "dependency_impact": 2,
-        "pagerank": 0.1549,
-        "betweenness_centrality": 0.0667
-    },
-    {
-        "service": "edge-gateway",
+        "service": "user-db",
         "algorithm": "RSA-2048",
         "vulnerable": true,
-        "change_blast_radius": 6,
-        "quantum_blast_radius": 6,
-        "dependency_impact": 0,
-        "pagerank": 0.0847,
+        "change_blast_radius": 0,
+        "quantum_blast_radius": 0,
+        "dependency_impact": 13,
+        "pagerank": 0.0885,
+        "betweenness_centrality": 0.0
+    },
+    {
+        "service": "catalog-db",
+        "algorithm": "RSA-2048",
+        "vulnerable": true,
+        "change_blast_radius": 0,
+        "quantum_blast_radius": 0,
+        "dependency_impact": 9,
+        "pagerank": 0.0696,
         "betweenness_centrality": 0.0
     },
     {
         "service": "order-db",
-        "algorithm": "AES-256-GCM",
+        "algorithm": "RSA-2048",
         "vulnerable": true,
         "change_blast_radius": 0,
         "quantum_blast_radius": 0,
-        "dependency_impact": 2,
-        "pagerank": 0.1189,
+        "dependency_impact": 10,
+        "pagerank": 0.0476,
         "betweenness_centrality": 0.0
-    },
-    {
-        "service": "order-service",
-        "algorithm": "ECC-secp256r1",
-        "vulnerable": true,
-        "change_blast_radius": 5,
-        "quantum_blast_radius": 5,
-        "dependency_impact": 1,
-        "pagerank": 0.1207,
-        "betweenness_centrality": 0.1
     },
     {
         "service": "payment-db",
-        "algorithm": "AES-256-GCM",
+        "algorithm": "RSA-2048",
         "vulnerable": true,
         "change_blast_radius": 0,
         "quantum_blast_radius": 0,
-        "dependency_impact": 3,
-        "pagerank": 0.1857,
+        "dependency_impact": 11,
+        "pagerank": 0.0513,
         "betweenness_centrality": 0.0
+    },
+    {
+        "service": "inventory-db",
+        "algorithm": "RSA-2048",
+        "vulnerable": true,
+        "change_blast_radius": 0,
+        "quantum_blast_radius": 0,
+        "dependency_impact": 6,
+        "pagerank": 0.0305,
+        "betweenness_centrality": 0.0
+    },
+    {
+        "service": "cart-cache",
+        "algorithm": "RSA-2048",
+        "vulnerable": true,
+        "change_blast_radius": 0,
+        "quantum_blast_radius": 0,
+        "dependency_impact": 4,
+        "pagerank": 0.031,
+        "betweenness_centrality": 0.0
+    },
+    {
+        "service": "user-service",
+        "algorithm": "RSA-2048",
+        "vulnerable": true,
+        "change_blast_radius": 3,
+        "quantum_blast_radius": 3,
+        "dependency_impact": 11,
+        "pagerank": 0.1382,
+        "betweenness_centrality": 0.028
+    },
+    {
+        "service": "auth-service",
+        "algorithm": "RSA-2048",
+        "vulnerable": true,
+        "change_blast_radius": 3,
+        "quantum_blast_radius": 3,
+        "dependency_impact": 11,
+        "pagerank": 0.0896,
+        "betweenness_centrality": 0.0097
+    },
+    {
+        "service": "catalog-service",
+        "algorithm": "RSA-2048",
+        "vulnerable": true,
+        "change_blast_radius": 1,
+        "quantum_blast_radius": 1,
+        "dependency_impact": 8,
+        "pagerank": 0.0594,
+        "betweenness_centrality": 0.019
+    },
+    {
+        "service": "cart-service",
+        "algorithm": "RSA-2048",
+        "vulnerable": true,
+        "change_blast_radius": 3,
+        "quantum_blast_radius": 3,
+        "dependency_impact": 3,
+        "pagerank": 0.028,
+        "betweenness_centrality": 0.0071
+    },
+    {
+        "service": "inventory-service",
+        "algorithm": "RSA-2048",
+        "vulnerable": true,
+        "change_blast_radius": 13,
+        "quantum_blast_radius": 13,
+        "dependency_impact": 6,
+        "pagerank": 0.0268,
+        "betweenness_centrality": 0.0214
+    },
+    {
+        "service": "warehouse-service",
+        "algorithm": "RSA-2048",
+        "vulnerable": true,
+        "change_blast_radius": 13,
+        "quantum_blast_radius": 13,
+        "dependency_impact": 6,
+        "pagerank": 0.0305,
+        "betweenness_centrality": 0.0238
     },
     {
         "service": "payment-service",
         "algorithm": "RSA-2048",
         "vulnerable": true,
-        "change_blast_radius": 1,
-        "quantum_blast_radius": 1,
-        "dependency_impact": 2,
-        "pagerank": 0.1189,
-        "betweenness_centrality": 0.0667
+        "change_blast_radius": 5,
+        "quantum_blast_radius": 5,
+        "dependency_impact": 6,
+        "pagerank": 0.0268,
+        "betweenness_centrality": 0.0095
     },
     {
-        "service": "user-db",
-        "algorithm": "AES-256-GCM",
+        "service": "notification-service",
+        "algorithm": "RSA-2048",
         "vulnerable": true,
-        "change_blast_radius": 0,
-        "quantum_blast_radius": 0,
+        "change_blast_radius": 3,
+        "quantum_blast_radius": 3,
+        "dependency_impact": 7,
+        "pagerank": 0.0381,
+        "betweenness_centrality": 0.0155
+    },
+    {
+        "service": "reconciliation-service",
+        "algorithm": "RSA-2048",
+        "vulnerable": true,
+        "change_blast_radius": 3,
+        "quantum_blast_radius": 3,
         "dependency_impact": 3,
-        "pagerank": 0.2163,
+        "pagerank": 0.0359,
+        "betweenness_centrality": 0.0042
+    },
+    {
+        "service": "order-service",
+        "algorithm": "RSA-2048",
+        "vulnerable": true,
+        "change_blast_radius": 13,
+        "quantum_blast_radius": 13,
+        "dependency_impact": 6,
+        "pagerank": 0.0539,
+        "betweenness_centrality": 0.0976
+    },
+    {
+        "service": "analytics-service",
+        "algorithm": "RSA-2048",
+        "vulnerable": true,
+        "change_blast_radius": 3,
+        "quantum_blast_radius": 3,
+        "dependency_impact": 5,
+        "pagerank": 0.0376,
+        "betweenness_centrality": 0.0179
+    },
+    {
+        "service": "recommendation-service",
+        "algorithm": "RSA-2048",
+        "vulnerable": true,
+        "change_blast_radius": 6,
+        "quantum_blast_radius": 6,
+        "dependency_impact": 3,
+        "pagerank": 0.028,
+        "betweenness_centrality": 0.0095
+    },
+    {
+        "service": "mobile-bff",
+        "algorithm": "RSA-2048",
+        "vulnerable": true,
+        "change_blast_radius": 17,
+        "quantum_blast_radius": 17,
+        "dependency_impact": 1,
+        "pagerank": 0.0232,
+        "betweenness_centrality": 0.0137
+    },
+    {
+        "service": "web-bff",
+        "algorithm": "RSA-2048",
+        "vulnerable": true,
+        "change_blast_radius": 17,
+        "quantum_blast_radius": 17,
+        "dependency_impact": 1,
+        "pagerank": 0.0232,
+        "betweenness_centrality": 0.0151
+    },
+    {
+        "service": "admin-portal",
+        "algorithm": "RSA-2048",
+        "vulnerable": true,
+        "change_blast_radius": 7,
+        "quantum_blast_radius": 7,
+        "dependency_impact": 1,
+        "pagerank": 0.0232,
+        "betweenness_centrality": 0.0103
+    },
+    {
+        "service": "api-gateway",
+        "algorithm": "RSA-2048",
+        "vulnerable": true,
+        "change_blast_radius": 21,
+        "quantum_blast_radius": 21,
+        "dependency_impact": 0,
+        "pagerank": 0.0191,
         "betweenness_centrality": 0.0
     }
 ]

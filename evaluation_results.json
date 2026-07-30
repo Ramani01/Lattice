@@ -4,70 +4,115 @@
             "run": 1,
             "plan": {
                 "Phase 1": [
+                    "user-db",
+                    "catalog-db",
                     "order-db",
                     "payment-db",
-                    "user-db"
+                    "inventory-db",
+                    "cart-cache"
                 ],
                 "Phase 2": [
                     "auth-service",
-                    "payment-service"
+                    "user-service",
+                    "catalog-service",
+                    "reconciliation-service",
+                    "analytics-service"
                 ],
                 "Phase 3": [
-                    "order-service"
+                    "cart-service",
+                    "notification-service",
+                    "recommendation-service",
+                    "admin-portal"
                 ],
                 "Phase 4": [
-                    "edge-gateway"
+                    "payment-service",
+                    "order-service",
+                    "warehouse-service",
+                    "inventory-service",
+                    "mobile-bff",
+                    "web-bff",
+                    "api-gateway"
                 ]
             },
             "is_valid": true,
             "conflicts": [],
-            "time_taken": 0.08228158950805664
+            "time_taken": 0.05299711227416992
         },
         {
             "run": 2,
             "plan": {
                 "Phase 1": [
+                    "user-db",
+                    "catalog-db",
                     "order-db",
                     "payment-db",
-                    "user-db"
+                    "inventory-db",
+                    "cart-cache"
                 ],
                 "Phase 2": [
                     "auth-service",
-                    "payment-service"
+                    "user-service",
+                    "catalog-service",
+                    "reconciliation-service",
+                    "analytics-service"
                 ],
                 "Phase 3": [
-                    "order-service"
+                    "cart-service",
+                    "notification-service",
+                    "recommendation-service",
+                    "admin-portal"
                 ],
                 "Phase 4": [
-                    "edge-gateway"
+                    "payment-service",
+                    "order-service",
+                    "warehouse-service",
+                    "inventory-service",
+                    "mobile-bff",
+                    "web-bff",
+                    "api-gateway"
                 ]
             },
             "is_valid": true,
             "conflicts": [],
-            "time_taken": 0.029462575912475586
+            "time_taken": 0.032738685607910156
         },
         {
             "run": 3,
             "plan": {
                 "Phase 1": [
+                    "user-db",
+                    "catalog-db",
                     "order-db",
                     "payment-db",
-                    "user-db"
+                    "inventory-db",
+                    "cart-cache"
                 ],
                 "Phase 2": [
                     "auth-service",
-                    "payment-service"
+                    "user-service",
+                    "catalog-service",
+                    "reconciliation-service",
+                    "analytics-service"
                 ],
                 "Phase 3": [
-                    "order-service"
+                    "cart-service",
+                    "notification-service",
+                    "recommendation-service",
+                    "admin-portal"
                 ],
                 "Phase 4": [
-                    "edge-gateway"
+                    "payment-service",
+                    "order-service",
+                    "warehouse-service",
+                    "inventory-service",
+                    "mobile-bff",
+                    "web-bff",
+                    "api-gateway"
                 ]
             },
             "is_valid": true,
             "conflicts": [],
-            "time_taken": 0.02211451530456543
+            "time_taken": 0.02968120574951172
         }
     ],
     "baseline": [
@@ -76,66 +121,216 @@
             "plan": {},
             "is_valid": false,
             "conflicts": [
+                "Missing caller service 'user-service' from execution plan.",
+                "Missing caller service 'user-service' from execution plan.",
                 "Missing caller service 'auth-service' from execution plan.",
+                "Missing caller service 'catalog-service' from execution plan.",
+                "Missing caller service 'cart-service' from execution plan.",
+                "Missing caller service 'cart-service' from execution plan.",
+                "Missing caller service 'inventory-service' from execution plan.",
+                "Missing caller service 'inventory-service' from execution plan.",
+                "Missing caller service 'warehouse-service' from execution plan.",
                 "Missing caller service 'payment-service' from execution plan.",
+                "Missing caller service 'payment-service' from execution plan.",
+                "Missing caller service 'notification-service' from execution plan.",
+                "Missing caller service 'reconciliation-service' from execution plan.",
+                "Missing caller service 'reconciliation-service' from execution plan.",
+                "Missing caller service 'reconciliation-service' from execution plan.",
                 "Missing caller service 'order-service' from execution plan.",
                 "Missing caller service 'order-service' from execution plan.",
                 "Missing caller service 'order-service' from execution plan.",
-                "Missing caller service 'edge-gateway' from execution plan.",
-                "Missing caller service 'edge-gateway' from execution plan.",
-                "Missing service 'edge-gateway' entirely from plan.",
-                "Missing service 'user-db' entirely from plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'analytics-service' from execution plan.",
+                "Missing caller service 'analytics-service' from execution plan.",
+                "Missing caller service 'analytics-service' from execution plan.",
+                "Missing caller service 'recommendation-service' from execution plan.",
+                "Missing caller service 'recommendation-service' from execution plan.",
+                "Missing caller service 'mobile-bff' from execution plan.",
+                "Missing caller service 'mobile-bff' from execution plan.",
+                "Missing caller service 'mobile-bff' from execution plan.",
+                "Missing caller service 'mobile-bff' from execution plan.",
+                "Missing caller service 'web-bff' from execution plan.",
+                "Missing caller service 'web-bff' from execution plan.",
+                "Missing caller service 'web-bff' from execution plan.",
+                "Missing caller service 'web-bff' from execution plan.",
+                "Missing caller service 'web-bff' from execution plan.",
+                "Missing caller service 'admin-portal' from execution plan.",
+                "Missing caller service 'admin-portal' from execution plan.",
+                "Missing caller service 'admin-portal' from execution plan.",
+                "Missing caller service 'api-gateway' from execution plan.",
+                "Missing caller service 'api-gateway' from execution plan.",
+                "Missing caller service 'api-gateway' from execution plan.",
+                "Missing caller service 'api-gateway' from execution plan.",
+                "Missing service 'inventory-service' entirely from plan.",
                 "Missing service 'order-db' entirely from plan.",
+                "Missing service 'analytics-service' entirely from plan.",
+                "Missing service 'mobile-bff' entirely from plan.",
+                "Missing service 'cart-cache' entirely from plan.",
+                "Missing service 'warehouse-service' entirely from plan.",
+                "Missing service 'catalog-db' entirely from plan.",
+                "Missing service 'cart-service' entirely from plan.",
                 "Missing service 'auth-service' entirely from plan.",
-                "Missing service 'payment-service' entirely from plan.",
+                "Missing service 'payment-db' entirely from plan.",
                 "Missing service 'order-service' entirely from plan.",
-                "Missing service 'payment-db' entirely from plan."
+                "Missing service 'web-bff' entirely from plan.",
+                "Missing service 'user-service' entirely from plan.",
+                "Missing service 'api-gateway' entirely from plan.",
+                "Missing service 'inventory-db' entirely from plan.",
+                "Missing service 'user-db' entirely from plan.",
+                "Missing service 'notification-service' entirely from plan.",
+                "Missing service 'payment-service' entirely from plan.",
+                "Missing service 'recommendation-service' entirely from plan.",
+                "Missing service 'admin-portal' entirely from plan.",
+                "Missing service 'catalog-service' entirely from plan.",
+                "Missing service 'reconciliation-service' entirely from plan."
             ],
-            "time_taken": 18.9345121383667
+            "time_taken": 0.04105043411254883
         },
         {
             "run": 2,
             "plan": {},
             "is_valid": false,
             "conflicts": [
+                "Missing caller service 'user-service' from execution plan.",
+                "Missing caller service 'user-service' from execution plan.",
                 "Missing caller service 'auth-service' from execution plan.",
+                "Missing caller service 'catalog-service' from execution plan.",
+                "Missing caller service 'cart-service' from execution plan.",
+                "Missing caller service 'cart-service' from execution plan.",
+                "Missing caller service 'inventory-service' from execution plan.",
+                "Missing caller service 'inventory-service' from execution plan.",
+                "Missing caller service 'warehouse-service' from execution plan.",
                 "Missing caller service 'payment-service' from execution plan.",
+                "Missing caller service 'payment-service' from execution plan.",
+                "Missing caller service 'notification-service' from execution plan.",
+                "Missing caller service 'reconciliation-service' from execution plan.",
+                "Missing caller service 'reconciliation-service' from execution plan.",
+                "Missing caller service 'reconciliation-service' from execution plan.",
                 "Missing caller service 'order-service' from execution plan.",
                 "Missing caller service 'order-service' from execution plan.",
                 "Missing caller service 'order-service' from execution plan.",
-                "Missing caller service 'edge-gateway' from execution plan.",
-                "Missing caller service 'edge-gateway' from execution plan.",
-                "Missing service 'edge-gateway' entirely from plan.",
-                "Missing service 'user-db' entirely from plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'analytics-service' from execution plan.",
+                "Missing caller service 'analytics-service' from execution plan.",
+                "Missing caller service 'analytics-service' from execution plan.",
+                "Missing caller service 'recommendation-service' from execution plan.",
+                "Missing caller service 'recommendation-service' from execution plan.",
+                "Missing caller service 'mobile-bff' from execution plan.",
+                "Missing caller service 'mobile-bff' from execution plan.",
+                "Missing caller service 'mobile-bff' from execution plan.",
+                "Missing caller service 'mobile-bff' from execution plan.",
+                "Missing caller service 'web-bff' from execution plan.",
+                "Missing caller service 'web-bff' from execution plan.",
+                "Missing caller service 'web-bff' from execution plan.",
+                "Missing caller service 'web-bff' from execution plan.",
+                "Missing caller service 'web-bff' from execution plan.",
+                "Missing caller service 'admin-portal' from execution plan.",
+                "Missing caller service 'admin-portal' from execution plan.",
+                "Missing caller service 'admin-portal' from execution plan.",
+                "Missing caller service 'api-gateway' from execution plan.",
+                "Missing caller service 'api-gateway' from execution plan.",
+                "Missing caller service 'api-gateway' from execution plan.",
+                "Missing caller service 'api-gateway' from execution plan.",
+                "Missing service 'inventory-service' entirely from plan.",
                 "Missing service 'order-db' entirely from plan.",
+                "Missing service 'analytics-service' entirely from plan.",
+                "Missing service 'mobile-bff' entirely from plan.",
+                "Missing service 'cart-cache' entirely from plan.",
+                "Missing service 'warehouse-service' entirely from plan.",
+                "Missing service 'catalog-db' entirely from plan.",
+                "Missing service 'cart-service' entirely from plan.",
                 "Missing service 'auth-service' entirely from plan.",
-                "Missing service 'payment-service' entirely from plan.",
+                "Missing service 'payment-db' entirely from plan.",
                 "Missing service 'order-service' entirely from plan.",
-                "Missing service 'payment-db' entirely from plan."
+                "Missing service 'web-bff' entirely from plan.",
+                "Missing service 'user-service' entirely from plan.",
+                "Missing service 'api-gateway' entirely from plan.",
+                "Missing service 'inventory-db' entirely from plan.",
+                "Missing service 'user-db' entirely from plan.",
+                "Missing service 'notification-service' entirely from plan.",
+                "Missing service 'payment-service' entirely from plan.",
+                "Missing service 'recommendation-service' entirely from plan.",
+                "Missing service 'admin-portal' entirely from plan.",
+                "Missing service 'catalog-service' entirely from plan.",
+                "Missing service 'reconciliation-service' entirely from plan."
             ],
-            "time_taken": 16.4948673248291
+            "time_taken": 0.0506136417388916
         },
         {
             "run": 3,
             "plan": {},
             "is_valid": false,
             "conflicts": [
+                "Missing caller service 'user-service' from execution plan.",
+                "Missing caller service 'user-service' from execution plan.",
                 "Missing caller service 'auth-service' from execution plan.",
+                "Missing caller service 'catalog-service' from execution plan.",
+                "Missing caller service 'cart-service' from execution plan.",
+                "Missing caller service 'cart-service' from execution plan.",
+                "Missing caller service 'inventory-service' from execution plan.",
+                "Missing caller service 'inventory-service' from execution plan.",
+                "Missing caller service 'warehouse-service' from execution plan.",
                 "Missing caller service 'payment-service' from execution plan.",
+                "Missing caller service 'payment-service' from execution plan.",
+                "Missing caller service 'notification-service' from execution plan.",
+                "Missing caller service 'reconciliation-service' from execution plan.",
+                "Missing caller service 'reconciliation-service' from execution plan.",
+                "Missing caller service 'reconciliation-service' from execution plan.",
                 "Missing caller service 'order-service' from execution plan.",
                 "Missing caller service 'order-service' from execution plan.",
                 "Missing caller service 'order-service' from execution plan.",
-                "Missing caller service 'edge-gateway' from execution plan.",
-                "Missing caller service 'edge-gateway' from execution plan.",
-                "Missing service 'edge-gateway' entirely from plan.",
-                "Missing service 'user-db' entirely from plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'analytics-service' from execution plan.",
+                "Missing caller service 'analytics-service' from execution plan.",
+                "Missing caller service 'analytics-service' from execution plan.",
+                "Missing caller service 'recommendation-service' from execution plan.",
+                "Missing caller service 'recommendation-service' from execution plan.",
+                "Missing caller service 'mobile-bff' from execution plan.",
+                "Missing caller service 'mobile-bff' from execution plan.",
+                "Missing caller service 'mobile-bff' from execution plan.",
+                "Missing caller service 'mobile-bff' from execution plan.",
+                "Missing caller service 'web-bff' from execution plan.",
+                "Missing caller service 'web-bff' from execution plan.",
+                "Missing caller service 'web-bff' from execution plan.",
+                "Missing caller service 'web-bff' from execution plan.",
+                "Missing caller service 'web-bff' from execution plan.",
+                "Missing caller service 'admin-portal' from execution plan.",
+                "Missing caller service 'admin-portal' from execution plan.",
+                "Missing caller service 'admin-portal' from execution plan.",
+                "Missing caller service 'api-gateway' from execution plan.",
+                "Missing caller service 'api-gateway' from execution plan.",
+                "Missing caller service 'api-gateway' from execution plan.",
+                "Missing caller service 'api-gateway' from execution plan.",
+                "Missing service 'inventory-service' entirely from plan.",
                 "Missing service 'order-db' entirely from plan.",
+                "Missing service 'analytics-service' entirely from plan.",
+                "Missing service 'mobile-bff' entirely from plan.",
+                "Missing service 'cart-cache' entirely from plan.",
+                "Missing service 'warehouse-service' entirely from plan.",
+                "Missing service 'catalog-db' entirely from plan.",
+                "Missing service 'cart-service' entirely from plan.",
                 "Missing service 'auth-service' entirely from plan.",
-                "Missing service 'payment-service' entirely from plan.",
+                "Missing service 'payment-db' entirely from plan.",
                 "Missing service 'order-service' entirely from plan.",
-                "Missing service 'payment-db' entirely from plan."
+                "Missing service 'web-bff' entirely from plan.",
+                "Missing service 'user-service' entirely from plan.",
+                "Missing service 'api-gateway' entirely from plan.",
+                "Missing service 'inventory-db' entirely from plan.",
+                "Missing service 'user-db' entirely from plan.",
+                "Missing service 'notification-service' entirely from plan.",
+                "Missing service 'payment-service' entirely from plan.",
+                "Missing service 'recommendation-service' entirely from plan.",
+                "Missing service 'admin-portal' entirely from plan.",
+                "Missing service 'catalog-service' entirely from plan.",
+                "Missing service 'reconciliation-service' entirely from plan."
             ],
-            "time_taken": 16.67673921585083
+            "time_taken": 0.034216880798339844
         }
     ],
     "lattica": [
@@ -144,66 +339,216 @@
             "plan": {},
             "is_valid": false,
             "conflicts": [
+                "Missing caller service 'user-service' from execution plan.",
+                "Missing caller service 'user-service' from execution plan.",
                 "Missing caller service 'auth-service' from execution plan.",
+                "Missing caller service 'catalog-service' from execution plan.",
+                "Missing caller service 'cart-service' from execution plan.",
+                "Missing caller service 'cart-service' from execution plan.",
+                "Missing caller service 'inventory-service' from execution plan.",
+                "Missing caller service 'inventory-service' from execution plan.",
+                "Missing caller service 'warehouse-service' from execution plan.",
                 "Missing caller service 'payment-service' from execution plan.",
+                "Missing caller service 'payment-service' from execution plan.",
+                "Missing caller service 'notification-service' from execution plan.",
+                "Missing caller service 'reconciliation-service' from execution plan.",
+                "Missing caller service 'reconciliation-service' from execution plan.",
+                "Missing caller service 'reconciliation-service' from execution plan.",
                 "Missing caller service 'order-service' from execution plan.",
                 "Missing caller service 'order-service' from execution plan.",
                 "Missing caller service 'order-service' from execution plan.",
-                "Missing caller service 'edge-gateway' from execution plan.",
-                "Missing caller service 'edge-gateway' from execution plan.",
-                "Missing service 'edge-gateway' entirely from plan.",
-                "Missing service 'user-db' entirely from plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'analytics-service' from execution plan.",
+                "Missing caller service 'analytics-service' from execution plan.",
+                "Missing caller service 'analytics-service' from execution plan.",
+                "Missing caller service 'recommendation-service' from execution plan.",
+                "Missing caller service 'recommendation-service' from execution plan.",
+                "Missing caller service 'mobile-bff' from execution plan.",
+                "Missing caller service 'mobile-bff' from execution plan.",
+                "Missing caller service 'mobile-bff' from execution plan.",
+                "Missing caller service 'mobile-bff' from execution plan.",
+                "Missing caller service 'web-bff' from execution plan.",
+                "Missing caller service 'web-bff' from execution plan.",
+                "Missing caller service 'web-bff' from execution plan.",
+                "Missing caller service 'web-bff' from execution plan.",
+                "Missing caller service 'web-bff' from execution plan.",
+                "Missing caller service 'admin-portal' from execution plan.",
+                "Missing caller service 'admin-portal' from execution plan.",
+                "Missing caller service 'admin-portal' from execution plan.",
+                "Missing caller service 'api-gateway' from execution plan.",
+                "Missing caller service 'api-gateway' from execution plan.",
+                "Missing caller service 'api-gateway' from execution plan.",
+                "Missing caller service 'api-gateway' from execution plan.",
+                "Missing service 'inventory-service' entirely from plan.",
                 "Missing service 'order-db' entirely from plan.",
+                "Missing service 'analytics-service' entirely from plan.",
+                "Missing service 'mobile-bff' entirely from plan.",
+                "Missing service 'cart-cache' entirely from plan.",
+                "Missing service 'warehouse-service' entirely from plan.",
+                "Missing service 'catalog-db' entirely from plan.",
+                "Missing service 'cart-service' entirely from plan.",
                 "Missing service 'auth-service' entirely from plan.",
-                "Missing service 'payment-service' entirely from plan.",
+                "Missing service 'payment-db' entirely from plan.",
                 "Missing service 'order-service' entirely from plan.",
-                "Missing service 'payment-db' entirely from plan."
+                "Missing service 'web-bff' entirely from plan.",
+                "Missing service 'user-service' entirely from plan.",
+                "Missing service 'api-gateway' entirely from plan.",
+                "Missing service 'inventory-db' entirely from plan.",
+                "Missing service 'user-db' entirely from plan.",
+                "Missing service 'notification-service' entirely from plan.",
+                "Missing service 'payment-service' entirely from plan.",
+                "Missing service 'recommendation-service' entirely from plan.",
+                "Missing service 'admin-portal' entirely from plan.",
+                "Missing service 'catalog-service' entirely from plan.",
+                "Missing service 'reconciliation-service' entirely from plan."
             ],
-            "time_taken": 16.86815905570984
+            "time_taken": 0.04963111877441406
         },
         {
             "run": 2,
             "plan": {},
             "is_valid": false,
             "conflicts": [
+                "Missing caller service 'user-service' from execution plan.",
+                "Missing caller service 'user-service' from execution plan.",
                 "Missing caller service 'auth-service' from execution plan.",
+                "Missing caller service 'catalog-service' from execution plan.",
+                "Missing caller service 'cart-service' from execution plan.",
+                "Missing caller service 'cart-service' from execution plan.",
+                "Missing caller service 'inventory-service' from execution plan.",
+                "Missing caller service 'inventory-service' from execution plan.",
+                "Missing caller service 'warehouse-service' from execution plan.",
                 "Missing caller service 'payment-service' from execution plan.",
+                "Missing caller service 'payment-service' from execution plan.",
+                "Missing caller service 'notification-service' from execution plan.",
+                "Missing caller service 'reconciliation-service' from execution plan.",
+                "Missing caller service 'reconciliation-service' from execution plan.",
+                "Missing caller service 'reconciliation-service' from execution plan.",
                 "Missing caller service 'order-service' from execution plan.",
                 "Missing caller service 'order-service' from execution plan.",
                 "Missing caller service 'order-service' from execution plan.",
-                "Missing caller service 'edge-gateway' from execution plan.",
-                "Missing caller service 'edge-gateway' from execution plan.",
-                "Missing service 'edge-gateway' entirely from plan.",
-                "Missing service 'user-db' entirely from plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'analytics-service' from execution plan.",
+                "Missing caller service 'analytics-service' from execution plan.",
+                "Missing caller service 'analytics-service' from execution plan.",
+                "Missing caller service 'recommendation-service' from execution plan.",
+                "Missing caller service 'recommendation-service' from execution plan.",
+                "Missing caller service 'mobile-bff' from execution plan.",
+                "Missing caller service 'mobile-bff' from execution plan.",
+                "Missing caller service 'mobile-bff' from execution plan.",
+                "Missing caller service 'mobile-bff' from execution plan.",
+                "Missing caller service 'web-bff' from execution plan.",
+                "Missing caller service 'web-bff' from execution plan.",
+                "Missing caller service 'web-bff' from execution plan.",
+                "Missing caller service 'web-bff' from execution plan.",
+                "Missing caller service 'web-bff' from execution plan.",
+                "Missing caller service 'admin-portal' from execution plan.",
+                "Missing caller service 'admin-portal' from execution plan.",
+                "Missing caller service 'admin-portal' from execution plan.",
+                "Missing caller service 'api-gateway' from execution plan.",
+                "Missing caller service 'api-gateway' from execution plan.",
+                "Missing caller service 'api-gateway' from execution plan.",
+                "Missing caller service 'api-gateway' from execution plan.",
+                "Missing service 'inventory-service' entirely from plan.",
                 "Missing service 'order-db' entirely from plan.",
+                "Missing service 'analytics-service' entirely from plan.",
+                "Missing service 'mobile-bff' entirely from plan.",
+                "Missing service 'cart-cache' entirely from plan.",
+                "Missing service 'warehouse-service' entirely from plan.",
+                "Missing service 'catalog-db' entirely from plan.",
+                "Missing service 'cart-service' entirely from plan.",
                 "Missing service 'auth-service' entirely from plan.",
-                "Missing service 'payment-service' entirely from plan.",
+                "Missing service 'payment-db' entirely from plan.",
                 "Missing service 'order-service' entirely from plan.",
-                "Missing service 'payment-db' entirely from plan."
+                "Missing service 'web-bff' entirely from plan.",
+                "Missing service 'user-service' entirely from plan.",
+                "Missing service 'api-gateway' entirely from plan.",
+                "Missing service 'inventory-db' entirely from plan.",
+                "Missing service 'user-db' entirely from plan.",
+                "Missing service 'notification-service' entirely from plan.",
+                "Missing service 'payment-service' entirely from plan.",
+                "Missing service 'recommendation-service' entirely from plan.",
+                "Missing service 'admin-portal' entirely from plan.",
+                "Missing service 'catalog-service' entirely from plan.",
+                "Missing service 'reconciliation-service' entirely from plan."
             ],
-            "time_taken": 16.398311138153076
+            "time_taken": 0.03233957290649414
         },
         {
             "run": 3,
             "plan": {},
             "is_valid": false,
             "conflicts": [
+                "Missing caller service 'user-service' from execution plan.",
+                "Missing caller service 'user-service' from execution plan.",
                 "Missing caller service 'auth-service' from execution plan.",
+                "Missing caller service 'catalog-service' from execution plan.",
+                "Missing caller service 'cart-service' from execution plan.",
+                "Missing caller service 'cart-service' from execution plan.",
+                "Missing caller service 'inventory-service' from execution plan.",
+                "Missing caller service 'inventory-service' from execution plan.",
+                "Missing caller service 'warehouse-service' from execution plan.",
                 "Missing caller service 'payment-service' from execution plan.",
+                "Missing caller service 'payment-service' from execution plan.",
+                "Missing caller service 'notification-service' from execution plan.",
+                "Missing caller service 'reconciliation-service' from execution plan.",
+                "Missing caller service 'reconciliation-service' from execution plan.",
+                "Missing caller service 'reconciliation-service' from execution plan.",
                 "Missing caller service 'order-service' from execution plan.",
                 "Missing caller service 'order-service' from execution plan.",
                 "Missing caller service 'order-service' from execution plan.",
-                "Missing caller service 'edge-gateway' from execution plan.",
-                "Missing caller service 'edge-gateway' from execution plan.",
-                "Missing service 'edge-gateway' entirely from plan.",
-                "Missing service 'user-db' entirely from plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'order-service' from execution plan.",
+                "Missing caller service 'analytics-service' from execution plan.",
+                "Missing caller service 'analytics-service' from execution plan.",
+                "Missing caller service 'analytics-service' from execution plan.",
+                "Missing caller service 'recommendation-service' from execution plan.",
+                "Missing caller service 'recommendation-service' from execution plan.",
+                "Missing caller service 'mobile-bff' from execution plan.",
+                "Missing caller service 'mobile-bff' from execution plan.",
+                "Missing caller service 'mobile-bff' from execution plan.",
+                "Missing caller service 'mobile-bff' from execution plan.",
+                "Missing caller service 'web-bff' from execution plan.",
+                "Missing caller service 'web-bff' from execution plan.",
+                "Missing caller service 'web-bff' from execution plan.",
+                "Missing caller service 'web-bff' from execution plan.",
+                "Missing caller service 'web-bff' from execution plan.",
+                "Missing caller service 'admin-portal' from execution plan.",
+                "Missing caller service 'admin-portal' from execution plan.",
+                "Missing caller service 'admin-portal' from execution plan.",
+                "Missing caller service 'api-gateway' from execution plan.",
+                "Missing caller service 'api-gateway' from execution plan.",
+                "Missing caller service 'api-gateway' from execution plan.",
+                "Missing caller service 'api-gateway' from execution plan.",
+                "Missing service 'inventory-service' entirely from plan.",
                 "Missing service 'order-db' entirely from plan.",
+                "Missing service 'analytics-service' entirely from plan.",
+                "Missing service 'mobile-bff' entirely from plan.",
+                "Missing service 'cart-cache' entirely from plan.",
+                "Missing service 'warehouse-service' entirely from plan.",
+                "Missing service 'catalog-db' entirely from plan.",
+                "Missing service 'cart-service' entirely from plan.",
                 "Missing service 'auth-service' entirely from plan.",
-                "Missing service 'payment-service' entirely from plan.",
+                "Missing service 'payment-db' entirely from plan.",
                 "Missing service 'order-service' entirely from plan.",
-                "Missing service 'payment-db' entirely from plan."
+                "Missing service 'web-bff' entirely from plan.",
+                "Missing service 'user-service' entirely from plan.",
+                "Missing service 'api-gateway' entirely from plan.",
+                "Missing service 'inventory-db' entirely from plan.",
+                "Missing service 'user-db' entirely from plan.",
+                "Missing service 'notification-service' entirely from plan.",
+                "Missing service 'payment-service' entirely from plan.",
+                "Missing service 'recommendation-service' entirely from plan.",
+                "Missing service 'admin-portal' entirely from plan.",
+                "Missing service 'catalog-service' entirely from plan.",
+                "Missing service 'reconciliation-service' entirely from plan."
             ],
-            "time_taken": 16.317598342895508
+            "time_taken": 0.0504000186920166
         }
     ],
     "federated_hybrid": [
@@ -212,135 +557,225 @@
             "plan": {
                 "Phase 1": {
                     "Upgrade to Transition State": [
+                        "user-db",
+                        "catalog-db",
                         "order-db",
                         "payment-db",
-                        "user-db"
+                        "inventory-db",
+                        "cart-cache"
                     ],
                     "Enforce Target Configuration": []
                 },
                 "Phase 2": {
                     "Upgrade to Transition State": [
-                        "auth-service",
-                        "payment-service"
+                        "catalog-service",
+                        "reconciliation-service",
+                        "analytics-service"
                     ],
                     "Enforce Target Configuration": [
-                        "payment-db",
-                        "user-db"
+                        "catalog-db"
                     ]
                 },
                 "Phase 3": {
                     "Upgrade to Transition State": [
-                        "order-service"
+                        "user-service",
+                        "auth-service",
+                        "cart-service",
+                        "recommendation-service"
                     ],
                     "Enforce Target Configuration": [
-                        "order-db",
-                        "payment-service"
+                        "user-db",
+                        "cart-cache"
                     ]
                 },
                 "Phase 4": {
                     "Upgrade to Transition State": [
-                        "edge-gateway"
+                        "inventory-service",
+                        "warehouse-service",
+                        "payment-service",
+                        "notification-service",
+                        "order-service",
+                        "mobile-bff",
+                        "web-bff",
+                        "admin-portal",
+                        "api-gateway"
                     ],
                     "Enforce Target Configuration": [
+                        "order-db",
+                        "payment-db",
+                        "inventory-db",
+                        "user-service",
                         "auth-service",
-                        "edge-gateway",
-                        "order-service"
+                        "catalog-service",
+                        "cart-service",
+                        "inventory-service",
+                        "warehouse-service",
+                        "payment-service",
+                        "notification-service",
+                        "reconciliation-service",
+                        "order-service",
+                        "analytics-service",
+                        "recommendation-service",
+                        "mobile-bff",
+                        "web-bff",
+                        "admin-portal",
+                        "api-gateway"
                     ]
                 }
             },
             "is_valid": true,
             "conflicts": [],
-            "time_taken": 4.07929539680481
+            "time_taken": 0.03158116340637207
         },
         {
             "run": 2,
             "plan": {
                 "Phase 1": {
                     "Upgrade to Transition State": [
+                        "user-db",
+                        "catalog-db",
                         "order-db",
                         "payment-db",
-                        "user-db"
+                        "inventory-db",
+                        "cart-cache"
                     ],
                     "Enforce Target Configuration": []
                 },
                 "Phase 2": {
                     "Upgrade to Transition State": [
-                        "auth-service",
-                        "payment-service"
+                        "catalog-service",
+                        "reconciliation-service",
+                        "analytics-service"
                     ],
                     "Enforce Target Configuration": [
-                        "payment-db",
-                        "user-db"
+                        "catalog-db"
                     ]
                 },
                 "Phase 3": {
                     "Upgrade to Transition State": [
-                        "order-service"
+                        "user-service",
+                        "auth-service",
+                        "cart-service",
+                        "recommendation-service"
                     ],
                     "Enforce Target Configuration": [
-                        "order-db",
-                        "payment-service"
+                        "user-db",
+                        "cart-cache"
                     ]
                 },
                 "Phase 4": {
                     "Upgrade to Transition State": [
-                        "edge-gateway"
+                        "inventory-service",
+                        "warehouse-service",
+                        "payment-service",
+                        "notification-service",
+                        "order-service",
+                        "mobile-bff",
+                        "web-bff",
+                        "admin-portal",
+                        "api-gateway"
                     ],
                     "Enforce Target Configuration": [
+                        "order-db",
+                        "payment-db",
+                        "inventory-db",
+                        "user-service",
                         "auth-service",
-                        "edge-gateway",
-                        "order-service"
+                        "catalog-service",
+                        "cart-service",
+                        "inventory-service",
+                        "warehouse-service",
+                        "payment-service",
+                        "notification-service",
+                        "reconciliation-service",
+                        "order-service",
+                        "analytics-service",
+                        "recommendation-service",
+                        "mobile-bff",
+                        "web-bff",
+                        "admin-portal",
+                        "api-gateway"
                     ]
                 }
             },
             "is_valid": true,
             "conflicts": [],
-            "time_taken": 4.099574565887451
+            "time_taken": 0.059615135192871094
         },
         {
             "run": 3,
             "plan": {
                 "Phase 1": {
                     "Upgrade to Transition State": [
+                        "user-db",
+                        "catalog-db",
                         "order-db",
                         "payment-db",
-                        "user-db"
+                        "inventory-db",
+                        "cart-cache"
                     ],
                     "Enforce Target Configuration": []
                 },
                 "Phase 2": {
                     "Upgrade to Transition State": [
-                        "auth-service",
-                        "payment-service"
+                        "catalog-service",
+                        "reconciliation-service",
+                        "analytics-service"
                     ],
                     "Enforce Target Configuration": [
-                        "payment-db",
-                        "user-db"
+                        "catalog-db"
                     ]
                 },
                 "Phase 3": {
                     "Upgrade to Transition State": [
-                        "order-service"
+                        "user-service",
+                        "auth-service",
+                        "cart-service",
+                        "recommendation-service"
                     ],
                     "Enforce Target Configuration": [
-                        "order-db",
-                        "payment-service"
+                        "user-db",
+                        "cart-cache"
                     ]
                 },
                 "Phase 4": {
                     "Upgrade to Transition State": [
-                        "edge-gateway"
+                        "inventory-service",
+                        "warehouse-service",
+                        "payment-service",
+                        "notification-service",
+                        "order-service",
+                        "mobile-bff",
+                        "web-bff",
+                        "admin-portal",
+                        "api-gateway"
                     ],
                     "Enforce Target Configuration": [
+                        "order-db",
+                        "payment-db",
+                        "inventory-db",
+                        "user-service",
                         "auth-service",
-                        "edge-gateway",
-                        "order-service"
+                        "catalog-service",
+                        "cart-service",
+                        "inventory-service",
+                        "warehouse-service",
+                        "payment-service",
+                        "notification-service",
+                        "reconciliation-service",
+                        "order-service",
+                        "analytics-service",
+                        "recommendation-service",
+                        "mobile-bff",
+                        "web-bff",
+                        "admin-portal",
+                        "api-gateway"
                     ]
                 }
             },
             "is_valid": true,
             "conflicts": [],
-            "time_taken": 4.094370126724243
+            "time_taken": 0.04177689552307129
         }
     ]
 }

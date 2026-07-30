@@ -2,17 +2,67 @@ graph TD
     classDef vulnerable stroke:#ef4444,stroke-width:2px,fill:#2d1414,color:#f87171
     classDef choke stroke:#8b5cf6,stroke-width:2px,fill:#231438,color:#c084fc
     classDef standard stroke:#00f2fe,stroke-width:1px,fill:#0d1829,color:#00f2fe
-    auth_service["auth-service ⚠️"]:::vulnerable
-    edge_gateway["edge-gateway ⚠️"]:::vulnerable
-    order_db["order-db ⚠️"]:::vulnerable
-    order_service["order-service ⚠️"]:::vulnerable
-    payment_db["payment-db ⚠️"]:::vulnerable
-    payment_service["payment-service ⚠️"]:::vulnerable
     user_db["user-db ⚠️"]:::vulnerable
-    auth_service --> user_db
+    catalog_db["catalog-db ⚠️"]:::vulnerable
+    order_db["order-db ⚠️"]:::vulnerable
+    payment_db["payment-db ⚠️"]:::vulnerable
+    inventory_db["inventory-db ⚠️"]:::vulnerable
+    cart_cache["cart-cache ⚠️"]:::vulnerable
+    user_service["user-service ⚠️"]:::vulnerable
+    auth_service["auth-service ⚠️"]:::vulnerable
+    catalog_service["catalog-service ⚠️"]:::vulnerable
+    cart_service["cart-service ⚠️"]:::vulnerable
+    inventory_service["inventory-service ⚠️"]:::vulnerable
+    warehouse_service["warehouse-service ⚠️"]:::vulnerable
+    payment_service["payment-service ⚠️"]:::vulnerable
+    notification_service["notification-service ⚠️"]:::vulnerable
+    reconciliation_service["reconciliation-service ⚠️"]:::vulnerable
+    order_service["order-service ⚠️"]:::vulnerable
+    analytics_service["analytics-service ⚠️"]:::vulnerable
+    recommendation_service["recommendation-service ⚠️"]:::vulnerable
+    mobile_bff["mobile-bff ⚠️"]:::vulnerable
+    web_bff["web-bff ⚠️"]:::vulnerable
+    admin_portal["admin-portal ⚠️"]:::vulnerable
+    api_gateway["api-gateway ⚠️"]:::vulnerable
+    user_service --> user_db
+    user_service --> auth_service
+    auth_service --> user_service
+    catalog_service --> catalog_db
+    cart_service --> cart_cache
+    cart_service --> catalog_service
+    inventory_service --> inventory_db
+    inventory_service --> warehouse_service
+    warehouse_service --> order_service
     payment_service --> payment_db
+    payment_service --> notification_service
+    notification_service --> user_service
+    reconciliation_service --> payment_db
+    reconciliation_service --> order_db
+    reconciliation_service --> reconciliation_service
     order_service --> auth_service
     order_service --> payment_service
+    order_service --> catalog_service
+    order_service --> inventory_service
     order_service --> order_db
-    edge_gateway --> auth_service
-    edge_gateway --> order_service
+    order_service --> notification_service
+    analytics_service --> order_db
+    analytics_service --> payment_db
+    analytics_service --> user_db
+    recommendation_service --> catalog_service
+    recommendation_service --> analytics_service
+    mobile_bff --> catalog_service
+    mobile_bff --> cart_service
+    mobile_bff --> order_service
+    mobile_bff --> recommendation_service
+    web_bff --> catalog_service
+    web_bff --> cart_service
+    web_bff --> order_service
+    web_bff --> user_service
+    web_bff --> recommendation_service
+    admin_portal --> analytics_service
+    admin_portal --> reconciliation_service
+    admin_portal --> user_service
+    api_gateway --> auth_service
+    api_gateway --> mobile_bff
+    api_gateway --> web_bff
+    api_gateway --> admin_portal

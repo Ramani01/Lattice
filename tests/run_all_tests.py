@@ -2,6 +2,12 @@ import unittest
 import sys
 import os
 
+if hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
+
 # Discover and run all test modules in tests/
 if __name__ == "__main__":
     test_dir = os.path.dirname(__file__)
@@ -13,11 +19,11 @@ if __name__ == "__main__":
     
     if result.wasSuccessful():
         print("\n==================================================")
-        print("ALL TESTS PASSED SUCCESSFULLY! (100% SUITE VERIFIED)")
+        print(f"ALL {result.testsRun} TESTS PASSED SUCCESSFULLY! (100% SUITE VERIFIED)")
         print("==================================================")
         sys.exit(0)
     else:
         print("\n==================================================")
-        print("SOME TESTS FAILED. PLEASE REVIEW LOG OUTPUT.")
+        print(f"SOME TESTS FAILED ({len(result.failures)} failures, {len(result.errors)} errors). PLEASE REVIEW LOG OUTPUT.")
         print("==================================================")
         sys.exit(1)

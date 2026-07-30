@@ -398,9 +398,9 @@ if __name__ == "__main__":
         import sys
         sys.exit(1)
 
-    services = [item["name"] for item in real_inventory]
-    phase1_transition = [s for s in services if s in ["auth-service", "payment-service", "user-db", "payment-db", "order-db"]]
-    phase2_transition = [s for s in services if s not in phase1_transition]
+    half = max(1, len(services) // 2) if services else 0
+    phase1_transition = services[:half]
+    phase2_transition = services[half:]
     
     dynamic_plan = {
         "Phase 1": {

@@ -40,41 +40,85 @@ Lattice combines a **100% constraint-safe deterministic graph engine** with **LL
 
 ---
 
-## 🛠️ Prerequisites
+## 🔌 Integration Classification Matrix
 
-- **Python**: 3.10 or higher
-- **Local LLM Engine** *(Optional for Offline Mode)*: [Ollama](https://ollama.ai) (`qwen2:1.5b`, `phi3:mini`, `gemma:7b-instruct-q4_K_M`)
-- **Graph Database** *(Optional - Pure Python Fallback Included)*: [Neo4j v5.0+](https://neo4j.com)
+To maintain transparent capstone boundaries, all components are explicitly classified across three implementation tiers:
+
+| Component Category | Integration Status | Provider / Module | Operational Behavior & Fallback Details |
+| :--- | :--- | :--- | :--- |
+| **Topology Discovery** | **Fully Implemented (Native)** | `DockerComposeProvider`, `EbpfLogsProvider`, AST Scanner | Native local parsing of `docker-compose.yml`, eBPF network trace log streams (`.jsonl`), and Python code AST parsing ([dynamic_discovery.py](file:///c:/Users/hp/Desktop/lattice_capstone/dynamic_discovery.py)). |
+| **Topology Discovery** | **Optional API Connectors** | `KialiIstioProvider`, `DatadogApmProvider` | Standardized interface connectors for Kubernetes/Istio Kiali REST API and Datadog APM API. |
+| **Graph Analytics** | **Live + Fallback** | Neo4j Engine & Pure Python Centrality | Connects to live Neo4j database (`bolt://127.0.0.1:7687`); falls back automatically to pure Python in-memory algorithms (`calculate_pagerank`, `calculate_betweenness_centrality`) if Neo4j is unreachable. |
+| **Migration Planning** | **Fully Implemented (Core)** | Deterministic Topo Planner & Tarjan SCC | Pure Python graph algorithms providing 100% constraint-safe execution DAG ordering and cycle condensation with 0 conflicts ([agent.py](file:///c:/Users/hp/Desktop/lattice_capstone/agent.py)). |
+| **LLM Enrichment** | **Optional Local LLM + Fallback** | `enrich_plan_with_llm` (Ollama integration) | Queries local [Ollama](https://ollama.ai) engine (`qwen2`, `phi3`) for release notes; falls back automatically to deterministic template enrichment if Ollama is unavailable. |
+| **Secrets Management** | **Live External Integration** | AWS Secrets Manager & HashiCorp Vault | Real-time live API/SDK integrations via `boto3` and HashiCorp Vault REST API ([secrets_manager.py](file:///c:/Users/hp/Desktop/lattice_capstone/secrets_manager.py)). |
+| **GitOps Delivery** | **Implemented + Dry-Run Safeguard** | Istio Manifest Generators & GitHub REST API | Generates 100% compliant Istio `DestinationRule` & `VirtualService` YAML manifests locally. GitHub REST API PR creation enforces mandatory `dry_run = True` safeguard ([gitops_pipeline.py](file:///c:/Users/hp/Desktop/lattice_capstone/gitops_pipeline.py)). |
 
 ---
 
-## ⚡ Quick Start (One-Command Demos)
+## 🛠️ Environment Setup & Reproducibility
 
-### 1. Run the Interactive Streamlit Web App
+### 1. Virtual Environment Setup
+
+#### Linux / macOS:
+```bash
+# Create a virtual environment
+python3 -m venv venv
+
+# Activate virtual environment
+source venv/bin/activate
+
+# Install editable package dependencies
+pip install -e .
+```
+
+#### Windows (PowerShell / CMD):
+```powershell
+# Create a virtual environment
+python -m venv venv
+
+# Activate virtual environment (PowerShell)
+.\venv\Scripts\Activate.ps1
+
+# Install editable package dependencies
+pip install -e .
+```
+
+---
+
+## ⚡ Quick Start & Verified Test Execution
+
+### 1. Run the Reproducible End-to-End System Demo
+```bash
+python run_demo.py
+```
+
+### 2. Run the Verified Automated Test Suite (19/19 Unit & Integration Tests)
+```bash
+python tests/run_all_tests.py
+```
+
+### 3. Run the Interactive Streamlit Web App
 ```bash
 python -m streamlit run live_app.py
 ```
 Open **[http://localhost:8501](http://localhost:8501)** in your browser to interact with the visual dashboard.
 
-### 2. Run the Full Automated Test Suite (12 Unit Tests)
-```bash
-python tests/run_all_tests.py
-```
-
-### 3. Run the 30-DAG Statistical Generalization Benchmark
+### 4. Run the 30-DAG Statistical Generalization Benchmark
 ```bash
 python synthetic_benchmark.py
 ```
 
 ---
 
-## 🔒 Safe / No-Credential Mode (Local Offline Lab)
+---
 
-Lattice runs completely **offline without requiring cloud API keys, AWS credentials, or HashiCorp Vault tokens**.
+## 🛡️ Security & Threat Model
 
-- **Provider**: Select `Local Docker Lab` or `eBPF Connection Logs` in the sidebar.
-- **Database Fallback**: If Neo4j is offline, Lattice automatically switches to the **Pure Python In-Memory Topological Engine** with zero configuration required.
-- **LLM Fallback**: If Ollama is offline or uninstalled, Lattice uses structured deterministic fallbacks so all UI features remain 100% operational.
+1. **Credential Handling & Token Masking**: All GitHub Personal Access Tokens (PATs), AWS secret keys, and HashiCorp Vault tokens are masked (`ghp_****`) in terminal logs and session states.
+2. **Unsafe PR Generation Safeguard**: Mandatory `dry_run = True` default enforces local YAML preview generation, requiring explicit `--apply` user confirmation before executing remote GitHub REST API commits.
+3. **Untrusted Repository Scanning**: The AST code scanner operates strictly read-only, parsing local ASTs without executing untrusted third-party code.
+
 
 ---
 

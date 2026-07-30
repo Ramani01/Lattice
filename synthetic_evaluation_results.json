@@ -7,7 +7,7 @@
                 "edges": 15,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.05139923095703125
+                "latency": 0.026271820068359375
             },
             {
                 "dag_id": "Small (N=10)_DAG_2",
@@ -15,7 +15,7 @@
                 "edges": 11,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.19469857215881348
+                "latency": 0.07591390609741211
             },
             {
                 "dag_id": "Small (N=10)_DAG_3",
@@ -23,7 +23,7 @@
                 "edges": 12,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.017217636108398438
+                "latency": 0.0138397216796875
             },
             {
                 "dag_id": "Small (N=10)_DAG_4",
@@ -31,7 +31,7 @@
                 "edges": 12,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.0164947509765625
+                "latency": 0.01818680763244629
             },
             {
                 "dag_id": "Small (N=10)_DAG_5",
@@ -39,7 +39,7 @@
                 "edges": 14,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.017243146896362305
+                "latency": 0.007205963134765625
             },
             {
                 "dag_id": "Small (N=10)_DAG_6",
@@ -47,7 +47,7 @@
                 "edges": 11,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.01984572410583496
+                "latency": 0.01679396629333496
             },
             {
                 "dag_id": "Small (N=10)_DAG_7",
@@ -55,7 +55,7 @@
                 "edges": 12,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.01873946189880371
+                "latency": 0.015031814575195312
             },
             {
                 "dag_id": "Small (N=10)_DAG_8",
@@ -63,7 +63,7 @@
                 "edges": 6,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.02289605140686035
+                "latency": 0.022665023803710938
             },
             {
                 "dag_id": "Small (N=10)_DAG_9",
@@ -71,7 +71,7 @@
                 "edges": 6,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.017319440841674805
+                "latency": 0.027227163314819336
             },
             {
                 "dag_id": "Small (N=10)_DAG_10",
@@ -79,7 +79,7 @@
                 "edges": 11,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.01741623878479004
+                "latency": 0.01717400550842285
             }
         ],
         "baseline": [
@@ -89,7 +89,7 @@
                 "edges": 15,
                 "is_valid": false,
                 "conflicts_count": 25,
-                "latency": 0.3191959857940674
+                "latency": 0.029805660247802734
             },
             {
                 "dag_id": "Small (N=10)_DAG_2",
@@ -97,7 +97,7 @@
                 "edges": 11,
                 "is_valid": false,
                 "conflicts_count": 21,
-                "latency": 0.04989743232727051
+                "latency": 0.034375905990600586
             },
             {
                 "dag_id": "Small (N=10)_DAG_3",
@@ -105,7 +105,7 @@
                 "edges": 12,
                 "is_valid": false,
                 "conflicts_count": 22,
-                "latency": 0.028143644332885742
+                "latency": 0.035515546798706055
             },
             {
                 "dag_id": "Small (N=10)_DAG_4",
@@ -113,7 +113,7 @@
                 "edges": 12,
                 "is_valid": false,
                 "conflicts_count": 22,
-                "latency": 0.04522824287414551
+                "latency": 0.04256749153137207
             },
             {
                 "dag_id": "Small (N=10)_DAG_5",
@@ -121,7 +121,7 @@
                 "edges": 14,
                 "is_valid": false,
                 "conflicts_count": 24,
-                "latency": 0.03476428985595703
+                "latency": 0.03297066688537598
             },
             {
                 "dag_id": "Small (N=10)_DAG_6",
@@ -129,7 +129,7 @@
                 "edges": 11,
                 "is_valid": false,
                 "conflicts_count": 21,
-                "latency": 0.03504371643066406
+                "latency": 0.03313279151916504
             },
             {
                 "dag_id": "Small (N=10)_DAG_7",
@@ -137,7 +137,7 @@
                 "edges": 12,
                 "is_valid": false,
                 "conflicts_count": 22,
-                "latency": 0.04769182205200195
+                "latency": 0.034639596939086914
             },
             {
                 "dag_id": "Small (N=10)_DAG_8",
@@ -145,7 +145,7 @@
                 "edges": 6,
                 "is_valid": false,
                 "conflicts_count": 16,
-                "latency": 0.028660058975219727
+                "latency": 0.032692670822143555
             },
             {
                 "dag_id": "Small (N=10)_DAG_9",
@@ -153,7 +153,7 @@
                 "edges": 6,
                 "is_valid": false,
                 "conflicts_count": 16,
-                "latency": 0.035550832748413086
+                "latency": 0.04529261589050293
             },
             {
                 "dag_id": "Small (N=10)_DAG_10",
@@ -161,7 +161,7 @@
                 "edges": 11,
                 "is_valid": false,
                 "conflicts_count": 21,
-                "latency": 0.03766036033630371
+                "latency": 0.040189504623413086
             }
         ],
         "lattica": [
@@ -171,7 +171,7 @@
                 "edges": 15,
                 "is_valid": false,
                 "conflicts_count": 25,
-                "latency": 0.07053804397583008
+                "latency": 0.024625301361083984
             },
             {
                 "dag_id": "Small (N=10)_DAG_2",
@@ -179,7 +179,7 @@
                 "edges": 11,
                 "is_valid": false,
                 "conflicts_count": 21,
-                "latency": 0.03176617622375488
+                "latency": 0.0196075439453125
             },
             {
                 "dag_id": "Small (N=10)_DAG_3",
@@ -187,7 +187,7 @@
                 "edges": 12,
                 "is_valid": false,
                 "conflicts_count": 22,
-                "latency": 0.029738664627075195
+                "latency": 0.02642059326171875
             },
             {
                 "dag_id": "Small (N=10)_DAG_4",
@@ -195,7 +195,7 @@
                 "edges": 12,
                 "is_valid": false,
                 "conflicts_count": 22,
-                "latency": 0.026448488235473633
+                "latency": 0.022630691528320312
             },
             {
                 "dag_id": "Small (N=10)_DAG_5",
@@ -203,7 +203,7 @@
                 "edges": 14,
                 "is_valid": false,
                 "conflicts_count": 24,
-                "latency": 0.04860639572143555
+                "latency": 0.023517847061157227
             },
             {
                 "dag_id": "Small (N=10)_DAG_6",
@@ -211,7 +211,7 @@
                 "edges": 11,
                 "is_valid": false,
                 "conflicts_count": 21,
-                "latency": 0.044756174087524414
+                "latency": 0.041223764419555664
             },
             {
                 "dag_id": "Small (N=10)_DAG_7",
@@ -219,7 +219,7 @@
                 "edges": 12,
                 "is_valid": false,
                 "conflicts_count": 22,
-                "latency": 0.049631357192993164
+                "latency": 0.035147666931152344
             },
             {
                 "dag_id": "Small (N=10)_DAG_8",
@@ -227,7 +227,7 @@
                 "edges": 6,
                 "is_valid": false,
                 "conflicts_count": 16,
-                "latency": 0.03132796287536621
+                "latency": 0.032108306884765625
             },
             {
                 "dag_id": "Small (N=10)_DAG_9",
@@ -235,7 +235,7 @@
                 "edges": 6,
                 "is_valid": false,
                 "conflicts_count": 16,
-                "latency": 0.07636260986328125
+                "latency": 0.021785736083984375
             },
             {
                 "dag_id": "Small (N=10)_DAG_10",
@@ -243,7 +243,7 @@
                 "edges": 11,
                 "is_valid": false,
                 "conflicts_count": 21,
-                "latency": 0.13486003875732422
+                "latency": 0.02551436424255371
             }
         ],
         "federated_hybrid": [
@@ -253,7 +253,7 @@
                 "edges": 15,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.052538394927978516
+                "latency": 0.030650615692138672
             },
             {
                 "dag_id": "Small (N=10)_DAG_2",
@@ -261,7 +261,7 @@
                 "edges": 11,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.03356289863586426
+                "latency": 0.029736757278442383
             },
             {
                 "dag_id": "Small (N=10)_DAG_3",
@@ -269,7 +269,7 @@
                 "edges": 12,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.08149957656860352
+                "latency": 0.07969284057617188
             },
             {
                 "dag_id": "Small (N=10)_DAG_4",
@@ -277,7 +277,7 @@
                 "edges": 12,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.13447260856628418
+                "latency": 0.05221915245056152
             },
             {
                 "dag_id": "Small (N=10)_DAG_5",
@@ -285,7 +285,7 @@
                 "edges": 14,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.03337287902832031
+                "latency": 0.028602123260498047
             },
             {
                 "dag_id": "Small (N=10)_DAG_6",
@@ -293,7 +293,7 @@
                 "edges": 11,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.04944205284118652
+                "latency": 0.059293508529663086
             },
             {
                 "dag_id": "Small (N=10)_DAG_7",
@@ -301,7 +301,7 @@
                 "edges": 12,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.06674551963806152
+                "latency": 0.0796670913696289
             },
             {
                 "dag_id": "Small (N=10)_DAG_8",
@@ -309,7 +309,7 @@
                 "edges": 6,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.09015989303588867
+                "latency": 0.05761003494262695
             },
             {
                 "dag_id": "Small (N=10)_DAG_9",
@@ -317,7 +317,7 @@
                 "edges": 6,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.061029672622680664
+                "latency": 0.08556890487670898
             },
             {
                 "dag_id": "Small (N=10)_DAG_10",
@@ -325,7 +325,7 @@
                 "edges": 11,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.039301156997680664
+                "latency": 0.043743133544921875
             }
         ]
     },
@@ -337,7 +337,7 @@
                 "edges": 48,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.021439790725708008
+                "latency": 0.016968488693237305
             },
             {
                 "dag_id": "Medium (N=25)_DAG_2",
@@ -345,7 +345,7 @@
                 "edges": 46,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.08311223983764648
+                "latency": 0.015130281448364258
             },
             {
                 "dag_id": "Medium (N=25)_DAG_3",
@@ -353,7 +353,7 @@
                 "edges": 39,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.02575993537902832
+                "latency": 0.015544414520263672
             },
             {
                 "dag_id": "Medium (N=25)_DAG_4",
@@ -361,7 +361,7 @@
                 "edges": 41,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.02144002914428711
+                "latency": 0.02533102035522461
             },
             {
                 "dag_id": "Medium (N=25)_DAG_5",
@@ -369,7 +369,7 @@
                 "edges": 67,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.025659799575805664
+                "latency": 0.02923107147216797
             },
             {
                 "dag_id": "Medium (N=25)_DAG_6",
@@ -377,7 +377,7 @@
                 "edges": 41,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.0245821475982666
+                "latency": 0.018777132034301758
             },
             {
                 "dag_id": "Medium (N=25)_DAG_7",
@@ -385,7 +385,7 @@
                 "edges": 48,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.026409387588500977
+                "latency": 0.018132686614990234
             },
             {
                 "dag_id": "Medium (N=25)_DAG_8",
@@ -393,7 +393,7 @@
                 "edges": 45,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.02102351188659668
+                "latency": 0.017438173294067383
             },
             {
                 "dag_id": "Medium (N=25)_DAG_9",
@@ -401,7 +401,7 @@
                 "edges": 43,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.013297080993652344
+                "latency": 0.019869565963745117
             },
             {
                 "dag_id": "Medium (N=25)_DAG_10",
@@ -409,7 +409,7 @@
                 "edges": 44,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.023296356201171875
+                "latency": 0.02045607566833496
             }
         ],
         "baseline": [
@@ -419,7 +419,7 @@
                 "edges": 48,
                 "is_valid": false,
                 "conflicts_count": 73,
-                "latency": 0.028102874755859375
+                "latency": 0.032558441162109375
             },
             {
                 "dag_id": "Medium (N=25)_DAG_2",
@@ -427,7 +427,7 @@
                 "edges": 46,
                 "is_valid": false,
                 "conflicts_count": 71,
-                "latency": 0.039513349533081055
+                "latency": 0.03873801231384277
             },
             {
                 "dag_id": "Medium (N=25)_DAG_3",
@@ -435,7 +435,7 @@
                 "edges": 39,
                 "is_valid": false,
                 "conflicts_count": 64,
-                "latency": 0.033263444900512695
+                "latency": 0.052248477935791016
             },
             {
                 "dag_id": "Medium (N=25)_DAG_4",
@@ -443,7 +443,7 @@
                 "edges": 41,
                 "is_valid": false,
                 "conflicts_count": 66,
-                "latency": 0.03899955749511719
+                "latency": 0.035173892974853516
             },
             {
                 "dag_id": "Medium (N=25)_DAG_5",
@@ -451,7 +451,7 @@
                 "edges": 67,
                 "is_valid": false,
                 "conflicts_count": 92,
-                "latency": 0.061480045318603516
+                "latency": 0.03447842597961426
             },
             {
                 "dag_id": "Medium (N=25)_DAG_6",
@@ -459,7 +459,7 @@
                 "edges": 41,
                 "is_valid": false,
                 "conflicts_count": 66,
-                "latency": 0.03321075439453125
+                "latency": 0.03156161308288574
             },
             {
                 "dag_id": "Medium (N=25)_DAG_7",
@@ -467,7 +467,7 @@
                 "edges": 48,
                 "is_valid": false,
                 "conflicts_count": 73,
-                "latency": 0.034895896911621094
+                "latency": 0.02234506607055664
             },
             {
                 "dag_id": "Medium (N=25)_DAG_8",
@@ -475,7 +475,7 @@
                 "edges": 45,
                 "is_valid": false,
                 "conflicts_count": 70,
-                "latency": 0.031336307525634766
+                "latency": 0.03346824645996094
             },
             {
                 "dag_id": "Medium (N=25)_DAG_9",
@@ -483,7 +483,7 @@
                 "edges": 43,
                 "is_valid": false,
                 "conflicts_count": 68,
-                "latency": 0.03011322021484375
+                "latency": 0.025687217712402344
             },
             {
                 "dag_id": "Medium (N=25)_DAG_10",
@@ -491,7 +491,7 @@
                 "edges": 44,
                 "is_valid": false,
                 "conflicts_count": 69,
-                "latency": 0.0346529483795166
+                "latency": 0.027051210403442383
             }
         ],
         "lattica": [
@@ -501,7 +501,7 @@
                 "edges": 48,
                 "is_valid": false,
                 "conflicts_count": 73,
-                "latency": 0.033327341079711914
+                "latency": 0.03237032890319824
             },
             {
                 "dag_id": "Medium (N=25)_DAG_2",
@@ -509,7 +509,7 @@
                 "edges": 46,
                 "is_valid": false,
                 "conflicts_count": 71,
-                "latency": 0.03366518020629883
+                "latency": 0.046839237213134766
             },
             {
                 "dag_id": "Medium (N=25)_DAG_3",
@@ -517,7 +517,7 @@
                 "edges": 39,
                 "is_valid": false,
                 "conflicts_count": 64,
-                "latency": 0.04780459403991699
+                "latency": 0.02603316307067871
             },
             {
                 "dag_id": "Medium (N=25)_DAG_4",
@@ -525,7 +525,7 @@
                 "edges": 41,
                 "is_valid": false,
                 "conflicts_count": 66,
-                "latency": 0.036347150802612305
+                "latency": 0.02531886100769043
             },
             {
                 "dag_id": "Medium (N=25)_DAG_5",
@@ -533,7 +533,7 @@
                 "edges": 67,
                 "is_valid": false,
                 "conflicts_count": 92,
-                "latency": 0.036133527755737305
+                "latency": 0.04138541221618652
             },
             {
                 "dag_id": "Medium (N=25)_DAG_6",
@@ -541,7 +541,7 @@
                 "edges": 41,
                 "is_valid": false,
                 "conflicts_count": 66,
-                "latency": 0.030321598052978516
+                "latency": 0.02593827247619629
             },
             {
                 "dag_id": "Medium (N=25)_DAG_7",
@@ -549,7 +549,7 @@
                 "edges": 48,
                 "is_valid": false,
                 "conflicts_count": 73,
-                "latency": 0.10187125205993652
+                "latency": 0.02094292640686035
             },
             {
                 "dag_id": "Medium (N=25)_DAG_8",
@@ -557,7 +557,7 @@
                 "edges": 45,
                 "is_valid": false,
                 "conflicts_count": 70,
-                "latency": 0.02587723731994629
+                "latency": 0.031871795654296875
             },
             {
                 "dag_id": "Medium (N=25)_DAG_9",
@@ -565,7 +565,7 @@
                 "edges": 43,
                 "is_valid": false,
                 "conflicts_count": 68,
-                "latency": 0.0440974235534668
+                "latency": 0.029638290405273438
             },
             {
                 "dag_id": "Medium (N=25)_DAG_10",
@@ -573,7 +573,7 @@
                 "edges": 44,
                 "is_valid": false,
                 "conflicts_count": 69,
-                "latency": 0.03435039520263672
+                "latency": 0.031549930572509766
             }
         ],
         "federated_hybrid": [
@@ -583,7 +583,7 @@
                 "edges": 48,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.041974544525146484
+                "latency": 0.032044410705566406
             },
             {
                 "dag_id": "Medium (N=25)_DAG_2",
@@ -591,7 +591,7 @@
                 "edges": 46,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.03917717933654785
+                "latency": 0.03395676612854004
             },
             {
                 "dag_id": "Medium (N=25)_DAG_3",
@@ -599,7 +599,7 @@
                 "edges": 39,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.10919952392578125
+                "latency": 0.06048417091369629
             },
             {
                 "dag_id": "Medium (N=25)_DAG_4",
@@ -607,7 +607,7 @@
                 "edges": 41,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.05031847953796387
+                "latency": 0.03741955757141113
             },
             {
                 "dag_id": "Medium (N=25)_DAG_5",
@@ -615,7 +615,7 @@
                 "edges": 67,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.05247902870178223
+                "latency": 0.03437542915344238
             },
             {
                 "dag_id": "Medium (N=25)_DAG_6",
@@ -623,7 +623,7 @@
                 "edges": 41,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.053020477294921875
+                "latency": 0.03766965866088867
             },
             {
                 "dag_id": "Medium (N=25)_DAG_7",
@@ -631,7 +631,7 @@
                 "edges": 48,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.028448104858398438
+                "latency": 0.0244140625
             },
             {
                 "dag_id": "Medium (N=25)_DAG_8",
@@ -639,7 +639,7 @@
                 "edges": 45,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.050194740295410156
+                "latency": 0.05179095268249512
             },
             {
                 "dag_id": "Medium (N=25)_DAG_9",
@@ -647,7 +647,7 @@
                 "edges": 43,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.029081344604492188
+                "latency": 0.033400535583496094
             },
             {
                 "dag_id": "Medium (N=25)_DAG_10",
@@ -655,7 +655,7 @@
                 "edges": 44,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.04400134086608887
+                "latency": 0.043077707290649414
             }
         ]
     },
@@ -667,7 +667,7 @@
                 "edges": 100,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.020955324172973633
+                "latency": 0.02024054527282715
             },
             {
                 "dag_id": "Large (N=50)_DAG_2",
@@ -675,7 +675,7 @@
                 "edges": 94,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.0235748291015625
+                "latency": 0.016769886016845703
             },
             {
                 "dag_id": "Large (N=50)_DAG_3",
@@ -683,7 +683,7 @@
                 "edges": 91,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.02051544189453125
+                "latency": 0.01260519027709961
             },
             {
                 "dag_id": "Large (N=50)_DAG_4",
@@ -691,7 +691,7 @@
                 "edges": 102,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.026513338088989258
+                "latency": 0.013825654983520508
             },
             {
                 "dag_id": "Large (N=50)_DAG_5",
@@ -699,7 +699,7 @@
                 "edges": 117,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.019079923629760742
+                "latency": 0.02168893814086914
             },
             {
                 "dag_id": "Large (N=50)_DAG_6",
@@ -707,7 +707,7 @@
                 "edges": 86,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.02394723892211914
+                "latency": 0.013965368270874023
             },
             {
                 "dag_id": "Large (N=50)_DAG_7",
@@ -715,7 +715,7 @@
                 "edges": 88,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.02686619758605957
+                "latency": 0.01305532455444336
             },
             {
                 "dag_id": "Large (N=50)_DAG_8",
@@ -723,7 +723,7 @@
                 "edges": 109,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.024239540100097656
+                "latency": 0.015359163284301758
             },
             {
                 "dag_id": "Large (N=50)_DAG_9",
@@ -731,7 +731,7 @@
                 "edges": 98,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.026665210723876953
+                "latency": 0.018068790435791016
             },
             {
                 "dag_id": "Large (N=50)_DAG_10",
@@ -739,7 +739,7 @@
                 "edges": 116,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.027808427810668945
+                "latency": 0.012956619262695312
             }
         ],
         "baseline": [
@@ -749,7 +749,7 @@
                 "edges": 100,
                 "is_valid": false,
                 "conflicts_count": 150,
-                "latency": 0.05850672721862793
+                "latency": 0.044992685317993164
             },
             {
                 "dag_id": "Large (N=50)_DAG_2",
@@ -757,7 +757,7 @@
                 "edges": 94,
                 "is_valid": false,
                 "conflicts_count": 144,
-                "latency": 0.04089927673339844
+                "latency": 0.035613059997558594
             },
             {
                 "dag_id": "Large (N=50)_DAG_3",
@@ -765,7 +765,7 @@
                 "edges": 91,
                 "is_valid": false,
                 "conflicts_count": 141,
-                "latency": 0.03007030487060547
+                "latency": 0.02363109588623047
             },
             {
                 "dag_id": "Large (N=50)_DAG_4",
@@ -773,7 +773,7 @@
                 "edges": 102,
                 "is_valid": false,
                 "conflicts_count": 152,
-                "latency": 0.0503237247467041
+                "latency": 0.024896621704101562
             },
             {
                 "dag_id": "Large (N=50)_DAG_5",
@@ -781,7 +781,7 @@
                 "edges": 117,
                 "is_valid": false,
                 "conflicts_count": 167,
-                "latency": 0.041823625564575195
+                "latency": 0.0296478271484375
             },
             {
                 "dag_id": "Large (N=50)_DAG_6",
@@ -789,7 +789,7 @@
                 "edges": 86,
                 "is_valid": false,
                 "conflicts_count": 136,
-                "latency": 0.04086947441101074
+                "latency": 0.039299964904785156
             },
             {
                 "dag_id": "Large (N=50)_DAG_7",
@@ -797,7 +797,7 @@
                 "edges": 88,
                 "is_valid": false,
                 "conflicts_count": 138,
-                "latency": 0.04218459129333496
+                "latency": 0.036539316177368164
             },
             {
                 "dag_id": "Large (N=50)_DAG_8",
@@ -805,7 +805,7 @@
                 "edges": 109,
                 "is_valid": false,
                 "conflicts_count": 159,
-                "latency": 0.04163193702697754
+                "latency": 0.036049604415893555
             },
             {
                 "dag_id": "Large (N=50)_DAG_9",
@@ -813,7 +813,7 @@
                 "edges": 98,
                 "is_valid": false,
                 "conflicts_count": 148,
-                "latency": 0.029317378997802734
+                "latency": 0.03142189979553223
             },
             {
                 "dag_id": "Large (N=50)_DAG_10",
@@ -821,7 +821,7 @@
                 "edges": 116,
                 "is_valid": false,
                 "conflicts_count": 166,
-                "latency": 0.03235292434692383
+                "latency": 0.023031949996948242
             }
         ],
         "lattica": [
@@ -831,7 +831,7 @@
                 "edges": 100,
                 "is_valid": false,
                 "conflicts_count": 150,
-                "latency": 0.026060104370117188
+                "latency": 0.02070450782775879
             },
             {
                 "dag_id": "Large (N=50)_DAG_2",
@@ -839,7 +839,7 @@
                 "edges": 94,
                 "is_valid": false,
                 "conflicts_count": 144,
-                "latency": 0.028632640838623047
+                "latency": 0.02770376205444336
             },
             {
                 "dag_id": "Large (N=50)_DAG_3",
@@ -847,7 +847,7 @@
                 "edges": 91,
                 "is_valid": false,
                 "conflicts_count": 141,
-                "latency": 0.05290532112121582
+                "latency": 0.02835392951965332
             },
             {
                 "dag_id": "Large (N=50)_DAG_4",
@@ -855,7 +855,7 @@
                 "edges": 102,
                 "is_valid": false,
                 "conflicts_count": 152,
-                "latency": 0.026716947555541992
+                "latency": 0.04417991638183594
             },
             {
                 "dag_id": "Large (N=50)_DAG_5",
@@ -863,7 +863,7 @@
                 "edges": 117,
                 "is_valid": false,
                 "conflicts_count": 167,
-                "latency": 0.045531272888183594
+                "latency": 0.023941516876220703
             },
             {
                 "dag_id": "Large (N=50)_DAG_6",
@@ -871,7 +871,7 @@
                 "edges": 86,
                 "is_valid": false,
                 "conflicts_count": 136,
-                "latency": 0.04645180702209473
+                "latency": 0.04766273498535156
             },
             {
                 "dag_id": "Large (N=50)_DAG_7",
@@ -879,7 +879,7 @@
                 "edges": 88,
                 "is_valid": false,
                 "conflicts_count": 138,
-                "latency": 0.04523468017578125
+                "latency": 0.04774928092956543
             },
             {
                 "dag_id": "Large (N=50)_DAG_8",
@@ -887,7 +887,7 @@
                 "edges": 109,
                 "is_valid": false,
                 "conflicts_count": 159,
-                "latency": 0.02965545654296875
+                "latency": 0.03425931930541992
             },
             {
                 "dag_id": "Large (N=50)_DAG_9",
@@ -895,7 +895,7 @@
                 "edges": 98,
                 "is_valid": false,
                 "conflicts_count": 148,
-                "latency": 0.03766489028930664
+                "latency": 0.03380441665649414
             },
             {
                 "dag_id": "Large (N=50)_DAG_10",
@@ -903,7 +903,7 @@
                 "edges": 116,
                 "is_valid": false,
                 "conflicts_count": 166,
-                "latency": 0.036286115646362305
+                "latency": 0.024501323699951172
             }
         ],
         "federated_hybrid": [
@@ -913,7 +913,7 @@
                 "edges": 100,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.057383060455322266
+                "latency": 0.06499409675598145
             },
             {
                 "dag_id": "Large (N=50)_DAG_2",
@@ -921,7 +921,7 @@
                 "edges": 94,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.13718676567077637
+                "latency": 0.05316329002380371
             },
             {
                 "dag_id": "Large (N=50)_DAG_3",
@@ -929,7 +929,7 @@
                 "edges": 91,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.03767991065979004
+                "latency": 0.06646609306335449
             },
             {
                 "dag_id": "Large (N=50)_DAG_4",
@@ -937,7 +937,7 @@
                 "edges": 102,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.06832051277160645
+                "latency": 0.10146379470825195
             },
             {
                 "dag_id": "Large (N=50)_DAG_5",
@@ -945,7 +945,7 @@
                 "edges": 117,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.03343486785888672
+                "latency": 0.05703997611999512
             },
             {
                 "dag_id": "Large (N=50)_DAG_6",
@@ -953,7 +953,7 @@
                 "edges": 86,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.051831722259521484
+                "latency": 0.11725854873657227
             },
             {
                 "dag_id": "Large (N=50)_DAG_7",
@@ -961,7 +961,7 @@
                 "edges": 88,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.06617307662963867
+                "latency": 0.09930157661437988
             },
             {
                 "dag_id": "Large (N=50)_DAG_8",
@@ -969,7 +969,7 @@
                 "edges": 109,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.030525684356689453
+                "latency": 0.04902386665344238
             },
             {
                 "dag_id": "Large (N=50)_DAG_9",
@@ -977,7 +977,7 @@
                 "edges": 98,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.037212371826171875
+                "latency": 0.03185582160949707
             },
             {
                 "dag_id": "Large (N=50)_DAG_10",
@@ -985,7 +985,7 @@
                 "edges": 116,
                 "is_valid": true,
                 "conflicts_count": 0,
-                "latency": 0.04757499694824219
+                "latency": 0.024377107620239258
             }
         ]
     }

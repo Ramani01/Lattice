@@ -27,7 +27,8 @@ class TestSCCAndProvenance(unittest.TestCase):
             ("service-c", "database")
         ]
 
-        sccs, condensed_edges = compute_scc_condensation(nodes, edges)
+        sccs, condensed_edges, cycle_flags = compute_scc_condensation(nodes, edges)
+        self.assertTrue(cycle_flags["service-a"])
 
         # There should be 2 SCCs: [database] and [service-a, service-b, service-c]
         self.assertEqual(len(sccs), 2)

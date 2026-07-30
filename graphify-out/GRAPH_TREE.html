@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>/ — graphify tree viewer</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f9f9f9;
+      color: #333;
+    }
+    h1 {
+      margin: 20px 0 0 24px;
+      font-size: 2.2rem;
+      font-weight: bold;
+      color: #1e3a56;
+    }
+    .controls {
+      margin: 20px 0 15px 24px;
+    }
+    button {
+      margin-right: 10px;
+      padding: 8px 18px;
+      background: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s ease-in-out;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    button:hover {
+      background: #0056b3;
+    }
+    button:active {
+      background: #004085;
+    }
+    #tree-container {
+      width: calc(100vw - 48px); /* Adjust for body margin/padding */
+      height: 85vh;
+      overflow: auto;
+      border-radius: 8px;
+      background: #fff;
+      margin-left: 24px;
+      margin-right: 24px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      border: 1px solid #ddd;
+    }
+    svg {
+      background: #fff;
+      border-radius: 8px;
+      display: block; /* Important for D3 */
+    }
+    .node circle {
+      stroke-width: 2.5px;
+    }
+    .node text { /* Base style for the <text> container */
+      font: 13px 'Segoe UI', sans-serif;
+      paint-order: stroke fill; /* Ensures text is readable over lines */
+      stroke: #fff; /* White halo */
+      stroke-width: 3px; /* Halo thickness */
+      stroke-linejoin: round;
+      stroke-opacity: 0.85; /* Halo opacity */
+    }
+    .link {
+      fill: none;
+      stroke-opacity: 0.7;
+      stroke-width: 2px;
+    }
+  </style>
+</head>
+<body>
+  <h1>/ — Knowledge Graph</h1>
+  <div class="controls">
+    <button onclick="expandAll()">Expand All</button>
+    <button onclick="collapseAll()">Collapse All</button>
+    <button onclick="resetView()">Reset View</button>
+  </div>
+  <div id="tree-container">
+    <svg id="tree-svg" width="6000" height="8000"></svg>
+  </div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script>
+    const initialJsonData = {"name":"/","total_count":193,"children":[{"name":"agent.py","total_count":31,"children":[{"name":"_generate_single_plan()","total_count":1,"children":[]},{"name":"AgentState","total_count":1,"children":[]},{"name":"build_agent_graph()","total_count":1,"children":[]},{"name":"calculate_betweenness_centrality()","total_count":1,"children":[]},{"name":"calculate_pagerank()","total_count":1,"children":[]},{"name":"calculate_risk_score()","total_count":1,"children":[]},{"name":"Calculates a composite asset Risk Score (0 - 100) combining Change Blast Radius\u2026","total_count":1,"children":[]},{"name":"Calculates Betweenness Centrality metrics using pure Python Brandes' algorithm.","total_count":1,"children":[]},{"name":"Calculates PageRank metrics using pure Python power iteration.","total_count":1,"children":[]},{"name":"call_ollama()","total_count":1,"children":[]},{"name":"compute_deterministic_topo_plan()","total_count":1,"children":[]},{"name":"compute_scc_condensation()","total_count":1,"children":[]},{"name":"Computes a 100% constraint-safe execution plan deterministically using Tarjan's\u2026","total_count":1,"children":[]},{"name":"Computes Strongly Connected Components (SCCs) using Tarjan's algorithm.\u2026","total_count":1,"children":[]},{"name":"create_provenance_edge()","total_count":1,"children":[]},{"name":"Creates an Edge Provenance record attaching source, timestamp, confidence\u2026","total_count":1,"children":[]},{"name":"enrich_plan_with_llm()","total_count":1,"children":[]},{"name":"Enriches a mathematically safe deterministic execution plan with human-readable\u2026","total_count":1,"children":[]},{"name":"Extract and parse JSON from LLM text output using substring boundaries.","total_count":1,"children":[]},{"name":"generate_plan()","total_count":1,"children":[]},{"name":"Interface to run the LangGraph agent for a given mode.","total_count":1,"children":[]},{"name":"label_propagation_partition()","total_count":1,"children":[]},{"name":"load_context()","total_count":1,"children":[]},{"name":"parse_json_from_response()","total_count":1,"children":[]},{"name":"Partitions nodes into architectural domains using Label Propagation.","total_count":1,"children":[]},{"name":"prepare_prompt()","total_count":1,"children":[]},{"name":"run_agent()","total_count":1,"children":[]},{"name":"Send request to local Ollama instance with specified timeout and retries.","total_count":1,"children":[]},{"name":"Validate execution plan containing both Transition and Target stages.","total_count":1,"children":[]},{"name":"validate_execution_plan()","total_count":1,"children":[]},{"name":"validate_plan()","total_count":1,"children":[]}]},{"name":"analyze.py","total_count":5,"children":[{"name":"calculate_betweenness_centrality()","total_count":1,"children":[]},{"name":"calculate_pagerank()","total_count":1,"children":[]},{"name":"Calculates Betweenness Centrality metrics using pure Python Brandes' algorithm.","total_count":1,"children":[]},{"name":"Calculates PageRank metrics using pure Python power iteration.","total_count":1,"children":[]},{"name":"run_blast_radius_analysis()","total_count":1,"children":[]}]},{"name":"benchmark","total_count":1,"children":[{"name":"__init__.py","total_count":1,"children":[{"name":"Lattice Benchmark Package Contains 30-DAG statistical generalization suite and\u2026","total_count":1,"children":[]}]}]},{"name":"config.py","total_count":2,"children":[{"name":"Lattice Enterprise Configuration System Centralized, environment-aware\u2026","total_count":1,"children":[]},{"name":"LatticeConfig","total_count":1,"children":[]}]},{"name":"discovery","total_count":1,"children":[{"name":"__init__.py","total_count":1,"children":[{"name":"Lattice Discovery Package Contains dynamic infrastructure and codebase\u2026","total_count":1,"children":[]}]}]},{"name":"discovery.py","total_count":2,"children":[{"name":"Scan the services directory for crypto configurations.","total_count":1,"children":[]},{"name":"scan_services()","total_count":1,"children":[]}]},{"name":"dynamic_discovery.py","total_count":26,"children":[{"name":".__init__()","total_count":1,"children":[]},{"name":".__init__()","total_count":1,"children":[]},{"name":".__init__()","total_count":1,"children":[]},{"name":".__init__()","total_count":1,"children":[]},{"name":".fetch_nodes_and_edges()","total_count":1,"children":[]},{"name":".fetch_nodes_and_edges()","total_count":1,"children":[]},{"name":".fetch_nodes_and_edges()","total_count":1,"children":[]},{"name":".fetch_nodes_and_edges()","total_count":1,"children":[]},{"name":".fetch_nodes_and_edges()","total_count":1,"children":[]},{"name":"Abstract Base Class for Dynamic Infrastructure Discovery Providers.","total_count":1,"children":[]},{"name":"calculate_betweenness_centrality()","total_count":1,"children":[]},{"name":"calculate_pagerank()","total_count":1,"children":[]},{"name":"Calculates Betweenness Centrality metrics using pure Python Brandes' algorithm.","total_count":1,"children":[]},{"name":"Calculates PageRank metrics using pure Python power iteration.","total_count":1,"children":[]},{"name":"DatadogApmProvider","total_count":1,"children":[]},{"name":"DiscoveryProvider","total_count":1,"children":[]},{"name":"DockerComposeProvider","total_count":1,"children":[]},{"name":"EbpfLogsProvider","total_count":1,"children":[]},{"name":"Executes the pipeline: fetch nodes/edges -> connect to Neo4j -> clear ->\u2026","total_count":1,"children":[]},{"name":"KialiIstioProvider","total_count":1,"children":[]},{"name":"Optional external integration connector for Datadog APM REST API. Provides\u2026","total_count":1,"children":[]},{"name":"Optional external integration connector for Kubernetes/Istio Kiali REST API.\u2026","total_count":1,"children":[]},{"name":"Parses local docker-compose.yml to extract dependencies.","total_count":1,"children":[]},{"name":"Parses real filesystem connection logs captured via eBPF kernel instrumentation.","total_count":1,"children":[]},{"name":"Returns: (list_of_services, list_of_dependency_tuples_as_caller_callee)","total_count":1,"children":[]},{"name":"run_ingestion_and_analysis()","total_count":1,"children":[]}]},{"name":"evaluator.py","total_count":1,"children":[{"name":"run_experiment()","total_count":1,"children":[]}]},{"name":"exceptions.py","total_count":13,"children":[{"name":"Base exception for all Lattice domain errors.","total_count":1,"children":[]},{"name":"ConfigurationError","total_count":1,"children":[]},{"name":"DiscoveryError","total_count":1,"children":[]},{"name":"GitOpsError","total_count":1,"children":[]},{"name":"GraphAnalysisError","total_count":1,"children":[]},{"name":"Lattice Enterprise Custom Exception Hierarchy Provides structured domain\u2026","total_count":1,"children":[]},{"name":"LatticeError","total_count":1,"children":[]},{"name":"PlanningError","total_count":1,"children":[]},{"name":"Raised during Istio manifest generation or GitOps integration failures.","total_count":1,"children":[]},{"name":"Raised during topological planning, SCC condensation, or reconciliation\u2026","total_count":1,"children":[]},{"name":"Raised when configuration parameters or secrets are invalid or missing.","total_count":1,"children":[]},{"name":"Raised when dynamic infrastructure discovery fails.","total_count":1,"children":[]},{"name":"Raised when graph analytics or Neo4j execution fails.","total_count":1,"children":[]}]},{"name":"gitops","total_count":1,"children":[{"name":"__init__.py","total_count":1,"children":[{"name":"Lattice GitOps Package Contains Istio traffic-shadowing manifest generators,\u2026","total_count":1,"children":[]}]}]},{"name":"gitops_pipeline.py","total_count":14,"children":[{"name":"apply_local_git_changes()","total_count":1,"children":[]},{"name":"create_github_pull_request()","total_count":1,"children":[]},{"name":"extract_service_context()","total_count":1,"children":[]},{"name":"generate_destination_rule()","total_count":1,"children":[]},{"name":"generate_gitops_pipeline()","total_count":1,"children":[]},{"name":"generate_virtual_service()","total_count":1,"children":[]},{"name":"Generates an Istio DestinationRule YAML content based on target state.","total_count":1,"children":[]},{"name":"Generates an Istio VirtualService YAML content with traffic shadowing for\u2026","total_count":1,"children":[]},{"name":"Interfaces with GitHub REST API. Enforces mandatory dry_run=True default\u2026","total_count":1,"children":[]},{"name":"Iterates through execution phases to update configs and output branches/PRs.","total_count":1,"children":[]},{"name":"Modifies local service configuration files to update TLS profiles. Returns:\u2026","total_count":1,"children":[]},{"name":"Resolves the namespace for a service dynamically based on discovery location.","total_count":1,"children":[]},{"name":"update_local_config_file()","total_count":1,"children":[]},{"name":"Uses git CLI to create a local branch and commit the configuration changes.","total_count":1,"children":[]}]},{"name":"graph","total_count":1,"children":[{"name":"__init__.py","total_count":1,"children":[{"name":"Lattice Graph Package Contains graph analytics, PageRank, Betweenness\u2026","total_count":1,"children":[]}]}]},{"name":"ingest.py","total_count":6,"children":[{"name":"Ingest inventory and dependencies into Neo4j.","total_count":1,"children":[]},{"name":"ingest_to_neo4j()","total_count":1,"children":[]},{"name":"Load discovery inventory JSON.","total_count":1,"children":[]},{"name":"load_inventory()","total_count":1,"children":[]},{"name":"Parse docker-compose.yml to extract service dependencies.","total_count":1,"children":[]},{"name":"parse_docker_compose()","total_count":1,"children":[]}]},{"name":"live_app.py","total_count":31,"children":[{"name":"calculate_betweenness_centrality()","total_count":1,"children":[]},{"name":"calculate_pagerank()","total_count":1,"children":[]},{"name":"Calculates Betweenness Centrality metrics using pure Python Brandes' algorithm.","total_count":1,"children":[]},{"name":"Calculates PageRank metrics using pure Python power iteration.","total_count":1,"children":[]},{"name":"call_ollama()","total_count":1,"children":[]},{"name":"call_ollama_stream()","total_count":1,"children":[]},{"name":"check_neo4j_status()","total_count":1,"children":[]},{"name":"check_ollama_status()","total_count":1,"children":[]},{"name":"connect_neo4j()","total_count":1,"children":[]},{"name":"Extract and parse JSON from LLM text output using substring boundaries.","total_count":1,"children":[]},{"name":"Fetch installed models dynamically from local Ollama service.","total_count":1,"children":[]},{"name":"generate_mermaid_flowchart()","total_count":1,"children":[]},{"name":"Generates a valid Mermaid flowchart markup with colored node styling based on\u2026","total_count":1,"children":[]},{"name":"get_depth()","total_count":1,"children":[]},{"name":"get_ollama_models()","total_count":1,"children":[]},{"name":"Helper to connect to Neo4j with retries.","total_count":1,"children":[]},{"name":"label_propagation_partition()","total_count":1,"children":[]},{"name":"parse_json_from_response()","total_count":1,"children":[]},{"name":"Partitions nodes into architectural domains using Label Propagation.","total_count":1,"children":[]},{"name":"render_4way_comparison_ui()","total_count":1,"children":[]},{"name":"render_mermaid()","total_count":1,"children":[]},{"name":"Renders a Mermaid flowchart inside an iframe using Streamlit html components.","total_count":1,"children":[]},{"name":"Renders a sleek, state-of-the-art 4-Way Scientific Benchmark Comparison view.","total_count":1,"children":[]},{"name":"run_local_discovery()","total_count":1,"children":[]},{"name":"run_real_github_scanning()","total_count":1,"children":[]},{"name":"Scan local mock services config files.","total_count":1,"children":[]},{"name":"Scans the repository to dynamically discover services, API routes, database\u2026","total_count":1,"children":[]},{"name":"Send request to local Ollama instance and stream tokens to UI.","total_count":1,"children":[]},{"name":"Send request to local Ollama instance.","total_count":1,"children":[]},{"name":"simulate_upgrade_timeline()","total_count":1,"children":[]},{"name":"Simulates upgrade phases step by step and catches calling compatibility outages.","total_count":1,"children":[]}]},{"name":"planning","total_count":6,"children":[{"name":"__init__.py","total_count":1,"children":[{"name":"Lattice Planning Package Contains deterministic DAG planner, Tarjan SCC cycle\u2026","total_count":1,"children":[]}]},{"name":"validator.py","total_count":5,"children":[{"name":"Lattice Deterministic Plan Validator Decoupled validation logic for execution\u2026","total_count":1,"children":[]},{"name":"Validate execution plan containing both Transition and Target stages.","total_count":1,"children":[]},{"name":"Validate plan for dependency violations, routing to binary or execution\u2026","total_count":1,"children":[]},{"name":"validate_execution_plan()","total_count":1,"children":[]},{"name":"validate_plan()","total_count":1,"children":[]}]}]},{"name":"pyproject.toml","total_count":1,"children":[{"name":"lattice-capstone","total_count":1,"children":[]}]},{"name":"run_demo.py","total_count":2,"children":[{"name":"Lattice Reproducible End-to-End System Demonstration (run_demo.py) Executes a\u2026","total_count":1,"children":[]},{"name":"run_reproducible_demo()","total_count":1,"children":[]}]},{"name":"secrets_manager.py","total_count":6,"children":[{"name":"fetch_vault_secrets()","total_count":1,"children":[]},{"name":"get_aws_secret()","total_count":1,"children":[]},{"name":"get_hashicorp_secret()","total_count":1,"children":[]},{"name":"Retrieves credentials from HashiCorp Vault via requests GET.","total_count":1,"children":[]},{"name":"Retrieves credentials in real-time from AWS Secrets Manager using boto3. Raises\u2026","total_count":1,"children":[]},{"name":"Unified entrypoint to fetch secrets in real-time. No mock data or static\u2026","total_count":1,"children":[]}]},{"name":"synthetic_benchmark.py","total_count":8,"children":[{"name":"compute_stats()","total_count":1,"children":[]},{"name":"Computes mean, variance, std dev, and 95% confidence interval.","total_count":1,"children":[]},{"name":"Executes the 30-DAG statistical generalization benchmark across 3 graph scales:\u2026","total_count":1,"children":[]},{"name":"generate_synthetic_dag()","total_count":1,"children":[]},{"name":"Generates a 4-panel publication plot detailing statistical rigor across DAG\u2026","total_count":1,"children":[]},{"name":"Generates a directed acyclic graph (DAG) representing microservice architecture\u2026","total_count":1,"children":[]},{"name":"plot_synthetic_rigor_chart()","total_count":1,"children":[]},{"name":"run_synthetic_benchmark()","total_count":1,"children":[]}]},{"name":"tests","total_count":34,"children":[{"name":"test_cycle_detection.py","total_count":3,"children":[{"name":".test_acyclic_dag_ordering()","total_count":1,"children":[]},{"name":".test_cycle_fallback()","total_count":1,"children":[]},{"name":"TestCycleDetection","total_count":1,"children":[]}]},{"name":"test_discovery_parsers.py","total_count":5,"children":[{"name":".setUp()","total_count":1,"children":[]},{"name":".tearDown()","total_count":1,"children":[]},{"name":".test_docker_compose_parser()","total_count":1,"children":[]},{"name":".test_ebpf_parser()","total_count":1,"children":[]},{"name":"TestDiscoveryParsers","total_count":1,"children":[]}]},{"name":"test_gitops_manifests.py","total_count":3,"children":[{"name":".test_destination_rule_generation()","total_count":1,"children":[]},{"name":".test_virtual_service_traffic_mirroring()","total_count":1,"children":[]},{"name":"TestGitOpsManifests","total_count":1,"children":[]}]},{"name":"test_graph_metrics.py","total_count":5,"children":[{"name":".setUp()","total_count":1,"children":[]},{"name":".test_betweenness_centrality_keys()","total_count":1,"children":[]},{"name":".test_empty_graph()","total_count":1,"children":[]},{"name":".test_pagerank_sum_to_one()","total_count":1,"children":[]},{"name":"TestGraphMetrics","total_count":1,"children":[]}]},{"name":"test_identity_resolution.py","total_count":4,"children":[{"name":".test_canonical_identity_alias_resolution()","total_count":1,"children":[]},{"name":".test_composite_risk_score_calculation()","total_count":1,"children":[]},{"name":".test_self_loop_scc_detection()","total_count":1,"children":[]},{"name":"TestIdentityResolutionAndRiskScore","total_count":1,"children":[]}]},{"name":"test_integration_pipeline.py","total_count":5,"children":[{"name":".test_end_to_end_planning_pipeline()","total_count":1,"children":[]},{"name":".test_package_exports_and_aliases()","total_count":1,"children":[]},{"name":"Test full pipeline: graph metrics -> Tarjan SCC -> topo plan -> Istio manifest\u2026","total_count":1,"children":[]},{"name":"TestEnterpriseIntegrationPipeline","total_count":1,"children":[]},{"name":"Verify all package facade __init__.py exports and backward compatibility\u2026","total_count":1,"children":[]}]},{"name":"test_scc_provenance.py","total_count":3,"children":[{"name":".test_edge_provenance_structure()","total_count":1,"children":[]},{"name":".test_tarjan_scc_cyclic_condensation()","total_count":1,"children":[]},{"name":"TestSCCAndProvenance","total_count":1,"children":[]}]},{"name":"test_validator_rules.py","total_count":5,"children":[{"name":".setUp()","total_count":1,"children":[]},{"name":".test_inverted_dependency_fails()","total_count":1,"children":[]},{"name":".test_missing_service_fails()","total_count":1,"children":[]},{"name":".test_valid_plan_passes()","total_count":1,"children":[]},{"name":"TestValidatorRules","total_count":1,"children":[]}]},{"name":"run_all_tests.py","total_count":1,"children":[]}]},{"name":"utils","total_count":1,"children":[{"name":"__init__.py","total_count":1,"children":[{"name":"Lattice Utilities Package Contains secrets manager integrations for AWS Secrets\u2026","total_count":1,"children":[]}]}]}]};
+
+    function transformData(jsonData) {
+        // Helper function to recursively build the children structure
+        function processNode(node, parentL1StageName) {
+            let displayName = node.name;
+            // Append total_count if it exists and is not already in the name
+            if (node.total_count !== undefined) {
+                if (!/\(Total Count: \d+\)$/.test(displayName)) {
+                    displayName += ` (Total Count: ${node.total_count})`;
+                }
+            }
+
+            const newNode = { name: displayName };
+
+            if (parentL1StageName === "Root") {
+                 newNode.originalStageName = node.name;
+            } else {
+                newNode.originalStageName = parentL1StageName;
+            }
+
+            if (node.children && node.children.length > 0) {
+                const stageNameToPass = (parentL1StageName === "Root") ? node.name : parentL1StageName;
+                newNode.children = node.children.map(child => processNode(child, stageNameToPass));
+            }
+
+            return newNode;
+        }
+
+        let rootDisplayName = jsonData.name;
+        if (jsonData.total_count !== undefined && !/\(Total Count: \d+\)$/.test(rootDisplayName)) {
+            rootDisplayName += ` (Total Count: ${jsonData.total_count})`;
+        }
+
+        return {
+            name: rootDisplayName,
+            originalStageName: "Root",
+            children: (jsonData.children || []).map(child => processNode(child, "Root"))
+        };
+    }
+
+    const treeData = transformData(initialJsonData);
+
+    // Auto-populated phaseColors: every depth-1 child of the root gets
+    // a stable colour from a bigger palette so all top-level dirs are
+    // distinguishable.
+    const PALETTE = [
+      ["#3498DB","#2980B9","#AED6F1"], ["#2ECC71","#27AE60","#A9DFBF"],
+      ["#E74C3C","#C0392B","#F5B7B1"], ["#9B59B6","#8E44AD","#D7BDE2"],
+      ["#F39C12","#D68910","#FAD7A0"], ["#1ABC9C","#117864","#A2D9CE"],
+      ["#34495E","#1B2631","#ABB2B9"], ["#E67E22","#BA4A00","#F5CBA7"],
+      ["#16A085","#0E6655","#A2D9CE"], ["#D35400","#A04000","#EDBB99"],
+      ["#7F8C8D","#566573","#D5DBDB"], ["#C0392B","#7B241C","#F5B7B1"],
+      ["#2E86C1","#1B4F72","#A9CCE3"], ["#28B463","#196F3D","#A9DFBF"],
+      ["#AF7AC5","#6C3483","#D2B4DE"],
+    ];
+    const phaseColors = { "Root": { fill: "#4A4A4A", stroke: "#333333", collapsedFill: "#6C757D" },
+                          "Default": { fill: "#BDC3C7", stroke: "#95A5A6", collapsedFill: "#ECF0F1" } };
+    (initialJsonData.children || []).forEach((c, i) => {
+      const pal = PALETTE[i % PALETTE.length];
+      phaseColors[c.name] = { fill: pal[0], stroke: pal[1], collapsedFill: pal[2] };
+    });
+
+    const levelSpecificPalettes = {
+      0: { fill: "#4A4A4A", stroke: "#333333", collapsedFill: "#6C757D" },
+      2: { fill: "#6ab04c", stroke: "#508a38", collapsedFill: "#a3d391" },
+      3: { fill: "#f0932b", stroke: "#d0730f", collapsedFill: "#f6c07e" },
+      4: { fill: "#be2edd", stroke: "#a01cb3", collapsedFill: "#e08bf2" },
+      5: { fill: "#00a8ff", stroke: "#007ac1", collapsedFill: "#74d2ff" },
+      6: { fill: "#e55039", stroke: "#c23620", collapsedFill: "#f09a8d" },
+      default: { fill: "#747d8c", stroke: "#57606f", collapsedFill: "#a4b0be" }
+    };
+
+    const svgElement = d3.select("#tree-svg");
+    const initialSvgWidth = +svgElement.attr("width");
+    const initialSvgHeight = +svgElement.attr("height");
+    const margin = { top: 40, right: 120, bottom: 80, left: 450 };
+    let width = initialSvgWidth - margin.left - margin.right;
+    let height = initialSvgHeight - margin.top - margin.bottom;
+    const duration = 500;
+    let nodeCounter = 0;
+    const g = svgElement.append("g").attr("transform", `translate(${margin.left},${margin.top})`);
+    const treemap = d3.tree().nodeSize([40, 0]);
+    let rootNode = d3.hierarchy(treeData, d => d.children);
+    rootNode.x0 = 0;
+    rootNode.y0 = 0;
+
+    if (rootNode.children) {
+      rootNode.children.forEach(d_child => {
+        if (d_child.children) { collapseBranch(d_child); }
+      });
+    }
+    updateTree(rootNode);
+
+    function collapseBranch(d) { if (d.children) { d._children = d.children; d._children.forEach(collapseBranch); d.children = null; } }
+    function expandBranch(d) { if (d._children) { d.children = d._children; d._children = null; } if (d.children) { d.children.forEach(expandBranch); } }
+    window.expandAll = () => { expandBranch(rootNode); updateTree(rootNode); };
+    window.collapseAll = () => { if (rootNode.children) { rootNode.children.forEach(collapseBranch); } updateTree(rootNode); };
+    window.resetView = () => { if (rootNode.children) { rootNode.children.forEach(d_child => { if (d_child.children || d_child._children) { collapseBranch(d_child); } }); } if (rootNode._children && !rootNode.children) { rootNode.children = rootNode._children; rootNode._children = null; } updateTree(rootNode); };
+
+    function updateTree(source) {
+      const treeLayoutData = treemap(rootNode);
+      let nodes = treeLayoutData.descendants();
+      let links = treeLayoutData.descendants().slice(1);
+
+      let minX = 0;
+      let maxX = 0;
+      if (nodes.length > 0) {
+        minX = d3.min(nodes, d => d.x);
+        maxX = d3.max(nodes, d => d.x);
+      }
+
+      let neededHeight = Math.max(initialSvgHeight, maxX - minX + margin.top + margin.bottom + 100);
+      svgElement.transition().duration(duration / 2).attr("height", neededHeight);
+      g.transition().duration(duration / 2).attr("transform", `translate(${margin.left},${margin.top - minX + 40})`);
+
+      nodes.forEach(d => { d.y = d.depth * 400; }); // Adjust horizontal separation if needed
+
+      const node = g.selectAll('g.node').data(nodes, d => d.id || (d.id = ++nodeCounter));
+      const nodeEnter = node.enter().append('g')
+        .attr('class', d => "node" + (d.children || d._children ? " node--internal" : " node--leaf") + (d._children ? " _children" : ""))
+        .attr('transform', d => `translate(${source.y0},${source.x0})`)
+        .on('click', (event, d) => { if (d.children) { d._children = d.children; d.children = null; } else if (d._children) { d.children = d._children; d._children = null; } updateTree(d); })
+        .style('cursor', d => (d.children || d._children) ? 'pointer' : 'default');
+
+      nodeEnter.append('circle').attr('r', 1e-6);
+
+      nodeEnter.append('text')
+        .attr('dy', '.35em')
+        .attr('x', d => d.children || d._children ? -14 : 14)
+        .attr('text-anchor', d => d.children || d._children ? 'end' : 'start')
+        .style("fill-opacity", 1e-6)
+        .call(wrapText, 380);
+
+      const nodeUpdate = nodeEnter.merge(node);
+      nodeUpdate.transition().duration(duration)
+        .attr('transform', d => `translate(${d.y},${d.x})`)
+        .attr('class', d => "node" + (d.children ? " node--internal" : " node--leaf") + (d._children ? " node--internal _children" : ""));
+
+      nodeUpdate.select('circle').attr('r', 8.5)
+        .style('fill', d => {
+            let palette;
+            if (d.depth === 0) {
+                palette = levelSpecificPalettes[0];
+            } else if (d.depth === 1) {
+                palette = phaseColors[d.data.originalStageName] || phaseColors.Default;
+            } else {
+                palette = levelSpecificPalettes[d.depth] || levelSpecificPalettes.default;
+            }
+            if (d._children) return palette.collapsedFill;
+            if (d.children) return palette.fill;
+            return "#fff";
+        })
+        .style('stroke', d => {
+            let palette;
+            if (d.depth === 0) {
+                palette = levelSpecificPalettes[0];
+            } else if (d.depth === 1) {
+                palette = phaseColors[d.data.originalStageName] || phaseColors.Default;
+            } else {
+                palette = levelSpecificPalettes[d.depth] || levelSpecificPalettes.default;
+            }
+            return palette.stroke;
+        });
+      nodeUpdate.select('text').style("fill-opacity", 1).call(wrapText, 380);
+
+      const nodeExit = node.exit().transition().duration(duration).attr('transform', d => `translate(${source.y},${source.x})`).remove();
+      nodeExit.select('circle').attr('r', 1e-6);
+      nodeExit.select('text').style('fill-opacity', 1e-6);
+
+      const link = g.selectAll('path.link').data(links, d => d.id);
+      const linkEnter = link.enter().insert('path', "g").attr('class', 'link').attr('d', d => { const o = { x: source.x0, y: source.y0 }; return diagonal(o, o); });
+
+      linkEnter.merge(link).transition().duration(duration).attr('d', d => diagonal(d, d.parent))
+        .style('stroke', d => {
+            const sourceNode = d.parent;
+            if (!sourceNode) return phaseColors.Default.stroke;
+            const l1AncestorName = sourceNode.data.originalStageName;
+            const colorPalette = phaseColors[l1AncestorName] || phaseColors.Default;
+            return colorPalette.stroke;
+        });
+      link.exit().transition().duration(duration).attr('d', d => { const o = { x: source.x, y: source.y }; return diagonal(o, o); }).remove();
+      nodes.forEach(d => { d.x0 = d.x; d.y0 = d.y; });
+    }
+
+    function diagonal(s, d) { return `M ${s.y} ${s.x} C ${(s.y + d.y) / 2} ${s.x}, ${(s.y + d.y) / 2} ${d.x}, ${d.y} ${d.x}`; }
+
+    function wrapText(textElements, maxWidth) {
+        const textPartColors = {
+            name: '#343a40',
+            count: '#0056b3'
+        };
+        const countRegex = /(\s\(Total Count: \d+\))$/;
+
+        textElements.each(function () {
+            const textD3 = d3.select(this);
+            const originalNodeText = textD3.datum().data.name;
+            const x = parseFloat(textD3.attr("x") || 0);
+            const initialDy = textD3.attr("dy");
+            const textAnchor = textD3.attr("text-anchor");
+            const lineHeight = 1.1;
+
+            textD3.text(null);
+
+            let namePart = originalNodeText;
+            let countPartText = "";
+
+            const countMatch = originalNodeText.match(countRegex);
+            if (countMatch && originalNodeText.endsWith(countMatch[0])) {
+                namePart = originalNodeText.substring(0, originalNodeText.length - countMatch[0].length).trim();
+                countPartText = countMatch[0].trim();
+            }
+
+            const tokens = [];
+            namePart.split(/\s+/).filter(Boolean).forEach(word => {
+                tokens.push({ text: word, type: 'name' });
+            });
+            if (countPartText) {
+                tokens.push({ text: countPartText, type: 'count' });
+            }
+
+            if (tokens.length === 0 && originalNodeText) {
+                tokens.push({ text: originalNodeText, type: 'name' });
+            }
+
+            let currentTspan = textD3.append("tspan").attr("x", x).attr("dy", initialDy);
+            if (textAnchor === "end") currentTspan.attr("text-anchor", "end");
+
+            let lineTokens = [];
+
+            for (let i = 0; i < tokens.length; i++) {
+                const tokenObj = tokens[i];
+
+                lineTokens.push(tokenObj);
+                currentTspan.text(lineTokens.map(t => t.text).join(" "));
+
+                if (currentTspan.node().getComputedTextLength() > maxWidth && lineTokens.length > 1) {
+                    lineTokens.pop();
+
+                    currentTspan.text(null);
+                    lineTokens.forEach((prevToken, idx) => {
+                        currentTspan.append("tspan")
+                            .text((idx > 0 ? " " : "") + prevToken.text)
+                            .style("fill", textPartColors[prevToken.type] || textPartColors.name)
+                            .style("font-weight", prevToken.type === 'count' ? "bold" : "normal");
+                    });
+
+                    lineTokens = [tokenObj];
+                    currentTspan = textD3.append("tspan").attr("x", x).attr("dy", lineHeight + "em");
+                    if (textAnchor === "end") currentTspan.attr("text-anchor", "end");
+                }
+            }
+
+            currentTspan.text(null);
+            lineTokens.forEach((token, idx) => {
+                currentTspan.append("tspan")
+                    .text((idx > 0 ? " " : "") + token.text)
+                    .style("fill", textPartColors[token.type] || textPartColors.name)
+                    .style("font-weight", token.type === 'count' ? "bold" : "normal");
+            });
+
+            if (textD3.selectAll("tspan > tspan").empty() && textD3.select("tspan").text().length === 0 && originalNodeText) {
+                let t = textD3.select("tspan");
+                let displayText = originalNodeText;
+                t.text(displayText).style("fill", textPartColors.name);
+                if (t.node() && t.node().getComputedTextLength() > maxWidth && displayText.length > 20) {
+                    let estimatedChars = Math.floor(maxWidth / (t.node().getComputedTextLength()/displayText.length) );
+                    displayText = displayText.substring(0, Math.max(0, estimatedChars - 3)) + "...";
+                    t.text(displayText);
+                }
+            }
+        });
+    }
+  </script>
+</body>
+</html>

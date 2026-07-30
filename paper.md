@@ -7,7 +7,7 @@
 ---
 
 ### Abstract
-The modern microservice architecture necessitates frequent, complex infrastructure changes (e.g., library upgrades, framework changes, API migrations, and cryptographic updates). While modern observability tools excel at *Asset Discovery* (producing flat asset inventories), they fail at *Execution Sequencing*. Upgrading an upstream service in a microservice network before its downstream dependencies are ready leads to API incompatibilities, handshake failures, and system outages. In this paper, we present **Lattica**, an AI framework that models system topology in a Neo4j graph database, calculates the **"Change Blast Radius"** of assets using graph traversal, and injects this context into a LangGraph-driven multi-agent planner (GraphRAG pattern). We validate Lattica using a controlled Docker Compose microservices lab. Our experiments show that while a baseline LLM planner suffers from a **100.0%** dependency conflict rate due to lack of network context, Lattica Single-Agent achieves a **100.0%** conflict rate, and AI Execution Planner achieves a **0.0%** conflict rate by grounding agent decisions in Neo4j topology.
+Microservice migrations are difficult to execute safely because service dependencies, hidden communication paths, and cyclic interactions can lead to incorrect upgrade ordering and service disruption. This paper presents **Lattice**, a graph-based microservice migration planning framework that discovers service dependencies from sources such as Docker Compose configurations, eBPF network traces, AST code scanning, and APM connectors. Lattice models the system as a directed dependency graph in Neo4j, computes graph metrics for impact analysis, and applies Tarjan’s strongly connected component algorithm to group cyclic services before generating a deterministic topological migration plan. A rule-based validator checks service coverage and dependency-order constraints before delivery. Large language models are used only to enrich validated plans with release notes and operational rationale, while migration sequencing remains 100% deterministic. The framework also generates Istio traffic-management manifests to support controlled transition and target configurations. Evaluation uses automated unit and integration tests together with synthetic microservice dependency graphs. The results show that deterministic graph-based planning produces dependency-consistent migration sequences under the project’s validation rules, demonstrating a practical approach to combining reliable graph algorithms with LLM-assisted operational documentation.
 
 ---
 
@@ -114,8 +114,8 @@ The results of the evaluation runs are summarized in the table below:
 | **Total Runs** | 3 | 3 | 3 | 3 |
 | **Successful Plans (0 Conflicts)** | 3 | 0 | 0 | 3 |
 | **Conflict Rate (%)** | **0.0%** | **100.0%** | **100.0%** | **0.0%** |
-| **Avg Conflicts per Run** | 0.00 | 14.00 | 14.00 | 0.00 |
-| **Avg Latency per Run** | 0.0446s | 17.37s | 16.53s | 4.09s |
+| **Avg Conflicts per Run** | 0.00 | 64.00 | 64.00 | 0.00 |
+| **Avg Latency per Run** | 0.0385s | 0.04s | 0.04s | 0.04s |
 
 Our results demonstrate a stark difference in planning performance. 
 The **Control Group (Baseline)** failed to generate valid plans consistently, yielding a conflict rate of **100.0%** and averaging 171.00 conflicts per run. This is because the LLM was forced to guess dependencies or ignore them due to lack of network context.
@@ -131,26 +131,27 @@ To evaluate statistical generalization beyond fixed topologies, Lattica was eval
 - **Medium Topologies ($N=25$ nodes, $p=0.15$):** 10 random DAGs
 - **Large Enterprise Topologies ($N=50$ nodes, $p=0.08$):** 10 random DAGs
 
-For each DAG, all 4 experimental planning strategies were executed. We report the Mean ($\mu$), 95% Confidence Intervals ($\text{CI}_{95\%}$), Variance ($\sigma^2$), and Mean Execution Latency in the table below:
+For each DAG, all 4 experimental planning strategies were evaluated. We report the Mean ($\mu$), 95% Confidence Intervals ($\text{CI}_{95\%}$), Variance ($\sigma^2$), and Execution Latency Mode (distinguishing sub-second pure algorithmic topological sorting from live LLM inference time) in the table below:
 
-| Graph Scale | Planning Strategy | Success Rate (%) | Mean Conflicts (95% CI) | Variance ($\sigma^2$) | Mean Latency (95% CI) |
+| Graph Scale | Planning Strategy | Success Rate (%) | Dependency Conflicts (Inferred Outage Risk) | Variance ($\sigma^2$) | Execution Latency Mode |
 | :--- | :--- | :---: | :---: | :---: | :---: |
-| **Small ($N=10$)** | 1. Deterministic Topo (No LLM) | **100.0%** | **0.00 ± 0.00** | 0.00 | 0.0003s ± 0.0003s |
-| **Small ($N=10$)** | 2. Baseline LLM (Control) | 0.0% | 9.40 ± 2.97 | 19.38 | 16.3243s ± 0.6976s |
-| **Small ($N=10$)** | 3. Lattica Single-Agent | 0.0% | 9.40 ± 2.97 | 19.38 | 16.2941s ± 0.4437s |
-| **Small ($N=10$)** | 4. AI Execution Planner | **100.0%** | **0.00 ± 0.00** | 0.00 | 4.1030s ± 0.0402s |
-| **Medium ($N=25$)** | 1. Deterministic Topo (No LLM) | **100.0%** | **0.00 ± 0.00** | 0.00 | 0.0003s ± 0.0003s |
-| **Medium ($N=25$)** | 2. Baseline LLM (Control) | 0.0% | 43.60 ± 5.61 | 69.16 | 16.3571s ± 0.4452s |
-| **Medium ($N=25$)** | 3. Lattica Single-Agent | 0.0% | 43.60 ± 5.61 | 69.16 | 16.2981s ± 0.3667s |
-| **Medium ($N=25$)** | 4. AI Execution Planner | **100.0%** | **0.00 ± 0.00** | 0.00 | 4.0959s ± 0.0422s |
-| **Large ($N=50$)** | 1. Deterministic Topo (No LLM) | **100.0%** | **0.00 ± 0.00** | 0.00 | 0.0006s ± 0.0003s |
-| **Large ($N=50$)** | 2. Baseline LLM (Control) | 0.0% | 149.90 ± 9.06 | 180.32 | 16.2894s ± 0.5050s |
-| **Large ($N=50$)** | 3. Lattica Single-Agent | 0.0% | 149.90 ± 9.06 | 180.32 | 16.4883s ± 0.7712s |
-| **Large ($N=50$)** | 4. AI Execution Planner | **100.0%** | **0.00 ± 0.00** | 0.00 | 4.1030s ± 0.0478s |
+| **Small ($N=10$)** | 1. Deterministic Topo (No LLM) | **100.0%** | **0.00 ± 0.00** | 0.00 | 0.0003s ± 0.0003s (Algorithmic) |
+| **Small ($N=10$)** | 2. Baseline LLM (Control) | 0.0% | 9.40 ± 2.97 | 19.38 | 16.3243s ± 0.6976s (LLM Inference) |
+| **Small ($N=10$)** | 3. Lattica Single-Agent | 0.0% | 9.40 ± 2.97 | 19.38 | 16.2941s ± 0.4437s (LLM Inference) |
+| **Small ($N=10$)** | 4. AI Execution Planner (Reconciled) | **100.0%** | **0.00 ± 0.00** | 0.00 | 4.1030s ± 0.0402s (LLM Enriched) |
+| **Medium ($N=25$)** | 1. Deterministic Topo (No LLM) | **100.0%** | **0.00 ± 0.00** | 0.00 | 0.0003s ± 0.0003s (Algorithmic) |
+| **Medium ($N=25$)** | 2. Baseline LLM (Control) | 0.0% | 43.60 ± 5.61 | 69.16 | 16.3571s ± 0.4452s (LLM Inference) |
+| **Medium ($N=25$)** | 3. Lattica Single-Agent | 0.0% | 43.60 ± 5.61 | 69.16 | 16.2981s ± 0.3667s (LLM Inference) |
+| **Medium ($N=25$)** | 4. AI Execution Planner (Reconciled) | **100.0%** | **0.00 ± 0.00** | 0.00 | 4.0959s ± 0.0422s (LLM Enriched) |
+| **Large ($N=50$)** | 1. Deterministic Topo (No LLM) | **100.0%** | **0.00 ± 0.00** | 0.00 | 0.0006s ± 0.0003s (Algorithmic) |
+| **Large ($N=50$)** | 2. Baseline LLM (Control) | 0.0% | 149.90 ± 9.06 | 180.32 | 16.2894s ± 0.5050s (LLM Inference) |
+| **Large ($N=50$)** | 3. Lattica Single-Agent | 0.0% | 149.90 ± 9.06 | 180.32 | 16.4883s ± 0.7712s (LLM Inference) |
+| **Large ($N=50$)** | 4. AI Execution Planner (Reconciled) | **100.0%** | **0.00 ± 0.00** | 0.00 | 4.1030s ± 0.0478s (LLM Enriched) |
 
 The statistical evaluation confirms:
 1. **Scale Invariance:** As graph size grows from $N=10$ to $N=50$, baseline conflict count explodes quadratically ($\mu = 9.40 \rightarrow 149.90$), whereas the AI Execution Planner maintains a **100.0% success rate with 0.00 ± 0.00 conflicts**.
 2. **Zero Variance ($\sigma^2 = 0.00$):** Both Deterministic Topo Sort and the Reconciled AI Execution Planner achieve perfect zero variance across all synthetic DAG scales.
+3. **Execution Latency Delineation:** Sub-second algorithmic execution represents pure Python topological sorting ($< 1\text{ms}$), whereas multi-second latency reflects live LLM prompt evaluation and release note enrichment.
 
 ---
 
@@ -166,10 +167,13 @@ While standard Lattica Single-Agent reduces the sorting problem to numerical ord
 ---
 
 ## VI. Threats to Validity & Limitations
-While the 0% conflict rate demonstrates the efficacy of GraphRAG in execution sequencing, several limitations must be acknowledged:
-1. **Simulated Environment:** The evaluation was conducted on a deterministic Docker Compose topology rather than a live, dynamic enterprise network. In production, service meshes (e.g., Istio) and dynamic auto-scaling introduce transient dependencies that may alter blast radius calculations.
-2. **LLM Determinism:** Although the local `gemma3:4b` model showed a clear delineation between baseline and graph-aware prompts, larger proprietary models (e.g., GPT-4) might possess enough implicit "world knowledge" of standard architectures to occasionally guess the correct inside-out migration order, potentially lowering the baseline conflict rate in real-world scenarios.
-3. **Granularity of Migration:** This proof-of-concept treats migration as a binary phase switch. It does not account for hybrid transition states (e.g., dual-listening simultaneously), which is how enterprise migrations are actually executed.
+While the 0% conflict rate demonstrates the efficacy of topology-aware execution planning, several threats to validity and operational limitations must be acknowledged:
+
+1. **Synthetic & Controlled Lab Benchmarks**: While the evaluation benchmarks 30 synthetic DAG topologies ($N=10, 25, 50$) and a 7-service microservice lab, synthetic DAGs may not represent all complex legacy enterprise production architectures (e.g. multi-region hybrid clouds or non-standard protocols).
+2. **Upstream Discovery Quality Sensitivity**: The precision and logical safety of the generated execution plan is directly dependent on the completeness of upstream topology discovery (e.g. eBPF, AST, or APM log quality). Missing dependency edges in the discovery input lead to unconstrained placement.
+3. **Live External Integration Boundaries**: Connectors for Kiali Istio REST API and Datadog APM API provide standardized interface contracts; full operational validation requires active connection credentials to live production clusters when deployed outside local lab simulations.
+4. **GitOps Manifest Human-in-the-Loop Review**: While generated Istio `VirtualService` 10% traffic-mirroring and `DestinationRule` manifests conform to CNCF service mesh specifications, organization-specific review and peer approval via GitOps PR gates are required before promotion to live clusters.
+5. **Logical Consistency vs. Operational Risk Delineation**: The Tarjan-Kahn topological validator proves 100% logical and structural dependency consistency (eliminating API contract mismatch outages). However, it does not eliminate external operational risks such as underlying cloud infrastructure hardware failures or unannounced third-party API downtime.
 
 ---
 
@@ -180,3 +184,14 @@ Future work will focus on:
 1. Scaling Lattica to enterprise-level graphs with thousands of nodes.
 2. Integrating dynamic traffic monitoring tools (e.g. eBPF, service meshes) to automate edge generation.
 3. Supporting mixed-mode configuration profiles in transition phases.
+
+---
+
+## VIII. References
+
+1. Kahn, A. B. (1962). Topological sorting of large networks. *Communications of the ACM*, 5(11), 558-562.
+2. Tarjan, R. (1972). Depth-first search and linear graph algorithms. *SIAM Journal on Computing*, 1(2), 146-160.
+3. Page, L., Brin, S., Motwani, R., & Winograd, T. (1999). *The PageRank citation ranking: Bringing order to the web*. Stanford InfoLab Technical Report.
+4. Edge, D., Trinh, H., Cheng, N., Bradley, J., Chao, A., Mody, A., ... & Larson, J. (2024). From local to global: A GraphRAG approach to query-focused summarization. *arXiv preprint arXiv:2404.16130*.
+5. Istio Authors. (2023). *Istio Service Mesh Architecture & Traffic Management Specification*. Cloud Native Computing Foundation (CNCF).
+6. LangChain Engineering. (2024). *LangGraph: Building Multi-Agent Stateful Applications with Large Language Models*. https://langchain-ai.github.io/langgraph/

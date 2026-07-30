@@ -13,16 +13,21 @@ import os
 import json
 import time
 
+if hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8")
+    except Exception:
+        pass
+
 sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 
 from graph import calculate_pagerank, calculate_betweenness_centrality
-from planning import compute_scc_condensation, compute_deterministic_topo_plan, enrich_plan_with_llm, create_provenance_edge
+from planning import compute_scc_condensation, compute_deterministic_topo_plan, enrich_plan_with_llm, create_provenance_edge, validate_plan
 from gitops import generate_destination_rule, generate_virtual_service
-from live_app import validate_plan
 
 def run_reproducible_demo():
     print("=" * 80)
-    print("🚀 LATTICE MICROSERVICES MIGRATION PLANNER - END-TO-END DEMO")
+    print("[START] LATTICE MICROSERVICES MIGRATION PLANNER - END-TO-END DEMO")
     print("=" * 80)
     
     # 1. Shared Microservice Topology Models & Fixtures
@@ -50,7 +55,7 @@ def run_reproducible_demo():
 
     # 3. Tarjan SCC Cycle Condensation & Deterministic Topological Planning
     print("\n--- [STAGE 3] TARJAN SCC CONDENSATION & DETERMINISTIC TOPOLOGICAL PLANNING ---")
-    sccs, condensed_edges = compute_scc_condensation(services, raw_edges)
+    sccs, condensed_edges, cycle_flags = compute_scc_condensation(services, raw_edges)
     print(f"Detected {len(sccs)} Strongly Connected Components (SCCs).")
     
     deterministic_plan = compute_deterministic_topo_plan(services, raw_edges)
@@ -61,7 +66,7 @@ def run_reproducible_demo():
     # 4. Deterministic Rule Validation
     inventory_models = [{"name": s} for s in services]
     is_valid, conflicts = validate_plan(deterministic_plan, raw_edges, inventory_models)
-    print(f"\nPlan Validation Result: {'✅ PASSED (0 Conflicts)' if is_valid else '❌ FAILED'}")
+    print(f"\nPlan Validation Result: {'[PASSED] (0 Conflicts)' if is_valid else '[FAILED]'}")
 
     # 5. LLM Plan Explanation & Enrichment
     print("\n--- [STAGE 4] LLM RELEASE NOTES & RATIONALE ENRICHMENT ---")
@@ -77,7 +82,7 @@ def run_reproducible_demo():
     print("\n".join(vs_yaml.split("\n")[:12]))
 
     print("\n" + "=" * 80)
-    print("✅ REPRODUCIBLE END-TO-END DEMO COMPLETED SUCCESSFULLY!")
+    print("[SUCCESS] REPRODUCIBLE END-TO-END DEMO COMPLETED SUCCESSFULLY!")
     print("=" * 80)
 
 if __name__ == "__main__":

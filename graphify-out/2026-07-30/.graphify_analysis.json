@@ -1,0 +1,408 @@
+{
+  "communities": {
+    "0": [
+      "discovery_init",
+      "discovery_init_rationale_1",
+      "dynamic_discovery",
+      "dynamic_discovery_datadogapmprovider",
+      "dynamic_discovery_datadogapmprovider_fetch_nodes_and_edges",
+      "dynamic_discovery_datadogapmprovider_init",
+      "dynamic_discovery_discoveryprovider",
+      "dynamic_discovery_discoveryprovider_fetch_nodes_and_edges",
+      "dynamic_discovery_dockercomposeprovider",
+      "dynamic_discovery_dockercomposeprovider_fetch_nodes_and_edges",
+      "dynamic_discovery_dockercomposeprovider_init",
+      "dynamic_discovery_ebpflogsprovider",
+      "dynamic_discovery_ebpflogsprovider_fetch_nodes_and_edges",
+      "dynamic_discovery_ebpflogsprovider_init",
+      "dynamic_discovery_kialiistioprovider",
+      "dynamic_discovery_kialiistioprovider_fetch_nodes_and_edges",
+      "dynamic_discovery_kialiistioprovider_init",
+      "dynamic_discovery_rationale_108",
+      "dynamic_discovery_rationale_120",
+      "dynamic_discovery_rationale_204",
+      "dynamic_discovery_rationale_22",
+      "dynamic_discovery_rationale_24",
+      "dynamic_discovery_rationale_28",
+      "dynamic_discovery_rationale_71",
+      "dynamic_discovery_run_ingestion_and_analysis",
+      "exception",
+      "exceptions",
+      "exceptions_configurationerror",
+      "exceptions_discoveryerror",
+      "exceptions_gitopserror",
+      "exceptions_graphanalysiserror",
+      "exceptions_latticeerror",
+      "exceptions_planningerror",
+      "exceptions_rationale_1",
+      "exceptions_rationale_11",
+      "exceptions_rationale_15",
+      "exceptions_rationale_19",
+      "exceptions_rationale_23",
+      "exceptions_rationale_27",
+      "exceptions_rationale_7",
+      "graph_init",
+      "graph_init_rationale_1",
+      "tests_test_discovery_parsers",
+      "tests_test_discovery_parsers_testdiscoveryparsers",
+      "tests_test_discovery_parsers_testdiscoveryparsers_setup",
+      "tests_test_discovery_parsers_testdiscoveryparsers_teardown",
+      "tests_test_discovery_parsers_testdiscoveryparsers_test_docker_compose_parser",
+      "tests_test_discovery_parsers_testdiscoveryparsers_test_ebpf_parser"
+    ],
+    "1": [
+      "agent_compute_deterministic_topo_plan",
+      "agent_compute_scc_condensation",
+      "agent_create_provenance_edge",
+      "agent_rationale_531",
+      "agent_rationale_564",
+      "agent_rationale_644",
+      "config",
+      "config_latticeconfig",
+      "config_rationale_1",
+      "dynamic_discovery_calculate_betweenness_centrality",
+      "dynamic_discovery_calculate_pagerank",
+      "dynamic_discovery_rationale_132",
+      "dynamic_discovery_rationale_160",
+      "planning_init",
+      "planning_init_rationale_1",
+      "run_demo",
+      "run_demo_rationale_1",
+      "run_demo_run_reproducible_demo",
+      "tests_test_cycle_detection",
+      "tests_test_cycle_detection_testcycledetection",
+      "tests_test_cycle_detection_testcycledetection_test_acyclic_dag_ordering",
+      "tests_test_cycle_detection_testcycledetection_test_cycle_fallback",
+      "tests_test_graph_metrics",
+      "tests_test_graph_metrics_testgraphmetrics",
+      "tests_test_graph_metrics_testgraphmetrics_setup",
+      "tests_test_graph_metrics_testgraphmetrics_test_betweenness_centrality_keys",
+      "tests_test_graph_metrics_testgraphmetrics_test_empty_graph",
+      "tests_test_graph_metrics_testgraphmetrics_test_pagerank_sum_to_one",
+      "tests_test_integration_pipeline",
+      "tests_test_integration_pipeline_rationale_19",
+      "tests_test_integration_pipeline_testenterpriseintegrationpipeline",
+      "tests_test_integration_pipeline_testenterpriseintegrationpipeline_test_package_exports_and_aliases",
+      "tests_test_scc_provenance",
+      "tests_test_scc_provenance_testsccandprovenance",
+      "tests_test_scc_provenance_testsccandprovenance_test_edge_provenance_structure",
+      "tests_test_scc_provenance_testsccandprovenance_test_tarjan_scc_cyclic_condensation"
+    ],
+    "2": [
+      "live_app",
+      "live_app_calculate_betweenness_centrality",
+      "live_app_calculate_pagerank",
+      "live_app_call_ollama",
+      "live_app_call_ollama_stream",
+      "live_app_check_neo4j_status",
+      "live_app_check_ollama_status",
+      "live_app_connect_neo4j",
+      "live_app_generate_mermaid_flowchart",
+      "live_app_get_depth",
+      "live_app_get_ollama_models",
+      "live_app_label_propagation_partition",
+      "live_app_parse_json_from_response",
+      "live_app_rationale_1022",
+      "live_app_rationale_1056",
+      "live_app_rationale_1111",
+      "live_app_rationale_412",
+      "live_app_rationale_438",
+      "live_app_rationale_453",
+      "live_app_rationale_483",
+      "live_app_rationale_511",
+      "live_app_rationale_555",
+      "live_app_rationale_608",
+      "live_app_rationale_660",
+      "live_app_rationale_714",
+      "live_app_rationale_783",
+      "live_app_rationale_801",
+      "live_app_render_mermaid",
+      "live_app_render_simulator_banner",
+      "live_app_run_local_discovery",
+      "live_app_run_real_github_scanning",
+      "live_app_simulate_upgrade_timeline"
+    ],
+    "3": [
+      "agent",
+      "agent_agentstate",
+      "agent_build_agent_graph",
+      "agent_calculate_betweenness_centrality",
+      "agent_calculate_pagerank",
+      "agent_call_ollama",
+      "agent_enrich_plan_with_llm",
+      "agent_generate_plan",
+      "agent_generate_single_plan",
+      "agent_label_propagation_partition",
+      "agent_load_context",
+      "agent_parse_json_from_response",
+      "agent_prepare_prompt",
+      "agent_py_any",
+      "agent_rationale_1082",
+      "agent_rationale_22",
+      "agent_rationale_258",
+      "agent_rationale_35",
+      "agent_rationale_55",
+      "agent_rationale_679",
+      "agent_rationale_83",
+      "agent_rationale_924",
+      "agent_run_agent",
+      "agent_validate_execution_plan",
+      "agent_validate_plan",
+      "evaluator",
+      "evaluator_run_experiment",
+      "typeddict"
+    ],
+    "4": [
+      "gitops_init",
+      "gitops_init_rationale_1",
+      "gitops_pipeline",
+      "gitops_pipeline_apply_local_git_changes",
+      "gitops_pipeline_create_github_pull_request",
+      "gitops_pipeline_extract_service_context",
+      "gitops_pipeline_generate_destination_rule",
+      "gitops_pipeline_generate_gitops_pipeline",
+      "gitops_pipeline_generate_virtual_service",
+      "gitops_pipeline_py_any",
+      "gitops_pipeline_rationale_104",
+      "gitops_pipeline_rationale_134",
+      "gitops_pipeline_rationale_174",
+      "gitops_pipeline_rationale_25",
+      "gitops_pipeline_rationale_262",
+      "gitops_pipeline_rationale_41",
+      "gitops_pipeline_rationale_70",
+      "gitops_pipeline_update_local_config_file",
+      "tests_test_gitops_manifests",
+      "tests_test_gitops_manifests_testgitopsmanifests",
+      "tests_test_gitops_manifests_testgitopsmanifests_test_destination_rule_generation",
+      "tests_test_gitops_manifests_testgitopsmanifests_test_virtual_service_traffic_mirroring",
+      "tests_test_integration_pipeline_rationale_27",
+      "tests_test_integration_pipeline_testenterpriseintegrationpipeline_test_end_to_end_planning_pipeline"
+    ],
+    "5": [
+      "benchmark_init",
+      "benchmark_init_rationale_1",
+      "live_app_rationale_826",
+      "live_app_render_4way_comparison_ui",
+      "synthetic_benchmark",
+      "synthetic_benchmark_compute_stats",
+      "synthetic_benchmark_generate_synthetic_dag",
+      "synthetic_benchmark_plot_synthetic_rigor_chart",
+      "synthetic_benchmark_rationale_205",
+      "synthetic_benchmark_rationale_25",
+      "synthetic_benchmark_rationale_64",
+      "synthetic_benchmark_rationale_81",
+      "synthetic_benchmark_run_synthetic_benchmark"
+    ],
+    "6": [
+      "planning_validator",
+      "planning_validator_py_any",
+      "planning_validator_rationale_1",
+      "planning_validator_rationale_85",
+      "planning_validator_rationale_9",
+      "planning_validator_validate_execution_plan",
+      "planning_validator_validate_plan",
+      "tests_test_validator_rules",
+      "tests_test_validator_rules_testvalidatorrules",
+      "tests_test_validator_rules_testvalidatorrules_setup",
+      "tests_test_validator_rules_testvalidatorrules_test_inverted_dependency_fails",
+      "tests_test_validator_rules_testvalidatorrules_test_missing_service_fails",
+      "tests_test_validator_rules_testvalidatorrules_test_valid_plan_passes"
+    ],
+    "7": [
+      "build_research_doc",
+      "build_research_doc_add_markdown",
+      "build_research_doc_add_page_number",
+      "build_research_doc_add_table",
+      "build_research_doc_build",
+      "build_research_doc_configure",
+      "build_research_doc_is_table_line",
+      "build_research_doc_parse_table_line",
+      "build_research_doc_rationale_1",
+      "build_research_doc_set_cell_margins",
+      "build_research_doc_shade"
+    ],
+    "8": [
+      "secrets_manager",
+      "secrets_manager_fetch_vault_secrets",
+      "secrets_manager_get_aws_secret",
+      "secrets_manager_get_hashicorp_secret",
+      "secrets_manager_py_any",
+      "secrets_manager_rationale_14",
+      "secrets_manager_rationale_43",
+      "secrets_manager_rationale_60",
+      "utils_init",
+      "utils_init_rationale_1"
+    ],
+    "9": [
+      "analyze",
+      "analyze_calculate_betweenness_centrality",
+      "analyze_calculate_pagerank",
+      "analyze_rationale_14",
+      "analyze_rationale_42",
+      "analyze_run_blast_radius_analysis",
+      "discovery",
+      "discovery_rationale_9",
+      "discovery_scan_services"
+    ],
+    "10": [
+      "agent_calculate_risk_score",
+      "agent_rationale_554",
+      "tests_test_identity_resolution",
+      "tests_test_identity_resolution_testidentityresolutionandriskscore",
+      "tests_test_identity_resolution_testidentityresolutionandriskscore_test_canonical_identity_alias_resolution",
+      "tests_test_identity_resolution_testidentityresolutionandriskscore_test_composite_risk_score_calculation",
+      "tests_test_identity_resolution_testidentityresolutionandriskscore_test_self_loop_scc_detection"
+    ],
+    "11": [
+      "ingest",
+      "ingest_ingest_to_neo4j",
+      "ingest_load_inventory",
+      "ingest_parse_docker_compose",
+      "ingest_rationale_13",
+      "ingest_rationale_44",
+      "ingest_rationale_50"
+    ],
+    "12": [
+      "clean_docx_asterisks",
+      "clean_docx_asterisks_clean_paragraphs",
+      "clean_docx_asterisks_clean_table",
+      "clean_docx_asterisks_rationale_1"
+    ],
+    "13": [
+      "pkg_lattice_capstone"
+    ],
+    "14": [
+      "tests_run_all_tests"
+    ]
+  },
+  "cohesion": {
+    "0": 0.07446808510638298,
+    "1": 0.09682539682539683,
+    "2": 0.0625,
+    "3": 0.15343915343915343,
+    "4": 0.14492753623188406,
+    "5": 0.24358974358974358,
+    "6": 0.21794871794871795,
+    "7": 0.32727272727272727,
+    "8": 0.35555555555555557,
+    "9": 0.2777777777777778,
+    "10": 0.3333333333333333,
+    "11": 0.2857142857142857,
+    "12": 0.6666666666666666,
+    "13": 1.0,
+    "14": 1.0
+  },
+  "gods": [
+    {
+      "id": "agent_compute_deterministic_topo_plan",
+      "label": "compute_deterministic_topo_plan()",
+      "degree": 15
+    },
+    {
+      "id": "agent_compute_scc_condensation",
+      "label": "compute_scc_condensation()",
+      "degree": 13
+    },
+    {
+      "id": "dynamic_discovery_discoveryprovider",
+      "label": "DiscoveryProvider",
+      "degree": 12
+    },
+    {
+      "id": "dynamic_discovery_dockercomposeprovider",
+      "label": "DockerComposeProvider",
+      "degree": 12
+    },
+    {
+      "id": "dynamic_discovery_ebpflogsprovider",
+      "label": "EbpfLogsProvider",
+      "degree": 12
+    },
+    {
+      "id": "dynamic_discovery_calculate_pagerank",
+      "label": "calculate_pagerank()",
+      "degree": 12
+    },
+    {
+      "id": "dynamic_discovery_calculate_betweenness_centrality",
+      "label": "calculate_betweenness_centrality()",
+      "degree": 12
+    },
+    {
+      "id": "planning_validator_validate_plan",
+      "label": "validate_plan()",
+      "degree": 12
+    },
+    {
+      "id": "gitops_pipeline_generate_gitops_pipeline",
+      "label": "generate_gitops_pipeline()",
+      "degree": 11
+    },
+    {
+      "id": "agent_run_agent",
+      "label": "run_agent()",
+      "degree": 10
+    }
+  ],
+  "surprises": [
+    {
+      "source": "_generate_single_plan()",
+      "target": "get_depth()",
+      "source_files": [
+        "agent.py",
+        "live_app.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities; peripheral node `get_depth()` unexpectedly reaches hub `_generate_single_plan()`"
+    },
+    {
+      "source": "load_context()",
+      "target": "scan_services()",
+      "source_files": [
+        "agent.py",
+        "discovery.py"
+      ],
+      "confidence": "INFERRED",
+      "relation": "calls",
+      "why": "inferred connection - not explicitly stated in source; connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "run_reproducible_demo()",
+      "target": "enrich_plan_with_llm()",
+      "source_files": [
+        "run_demo.py",
+        "agent.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; bridges separate communities"
+    },
+    {
+      "source": "run_experiment()",
+      "target": "run_agent()",
+      "source_files": [
+        "evaluator.py",
+        "agent.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; peripheral node `run_experiment()` unexpectedly reaches hub `run_agent()`"
+    },
+    {
+      "source": "run_synthetic_benchmark()",
+      "target": "run_agent()",
+      "source_files": [
+        "synthetic_benchmark.py",
+        "agent.py"
+      ],
+      "confidence": "EXTRACTED",
+      "relation": "calls",
+      "why": "connects across different repos/directories; bridges separate communities"
+    }
+  ],
+  "tokens": {
+    "input": 0,
+    "output": 0
+  }
+}

@@ -550,13 +550,24 @@ def create_provenance_edge(caller: str, callee: str, source: str = "eBPF", confi
         "observations": [obs_record]
     }
 
-def compute_scc_condensation(service_names: List[str], dependencies: Any) -> Tuple[List[List[str]], List[Tuple[int, int]]]:
+def calculate_risk_score(cbr: float, di: float, confidence: float = 1.0, is_in_cycle: bool = False) -> float:
+    """
+    Calculates a composite asset Risk Score (0 - 100) combining Change Blast Radius (CBR),
+    Dependency Impact (DI), discovery confidence score, and cycle membership flag.
+    """
+    base_score = (cbr * 25.0) + (di * 15.0)
+    confidence_penalty = (1.0 - max(min(confidence, 1.0), 0.0)) * 20.0
+    cycle_penalty = 15.0 if is_in_cycle else 0.0
+    return round(min(base_score + confidence_penalty + cycle_penalty, 100.0), 2)
+
+def compute_scc_condensation(service_names: List[str], dependencies: Any) -> Tuple[List[List[str]], List[Tuple[int, int]], Dict[str, bool]]:
     """
     Computes Strongly Connected Components (SCCs) using Tarjan's algorithm.
-    Collapses cyclic microservice loops into condensed super-nodes to handle real-world cyclic service graphs.
-    Returns: (list_of_scc_components, condensed_dag_edges)
+    Collapses cyclic microservice loops (including self-loops) into condensed super-nodes.
+    Returns: (list_of_scc_components, condensed_dag_edges, dict_of_cycle_flags)
     """
     adj = {node: [] for node in service_names}
+    self_loops = set()
     for edge in dependencies:
         if isinstance(edge, (tuple, list)):
             caller, callee = edge[0], edge[1]
@@ -566,6 +577,8 @@ def compute_scc_condensation(service_names: List[str], dependencies: Any) -> Tup
             continue
         if caller in adj and callee in adj:
             adj[caller].append(callee)
+            if caller == callee:
+                self_loops.add(caller)
 
     index = 0
     indices = {}
@@ -604,9 +617,12 @@ def compute_scc_condensation(service_names: List[str], dependencies: Any) -> Tup
             strongconnect(node)
 
     scc_map = {}
+    cycle_flags = {node: False for node in service_names}
     for idx, scc in enumerate(sccs):
+        is_cycle = len(scc) > 1 or any(n in self_loops for n in scc)
         for node in scc:
             scc_map[node] = idx
+            cycle_flags[node] = is_cycle
 
     condensed_edges = set()
     for edge in dependencies:
@@ -622,15 +638,14 @@ def compute_scc_condensation(service_names: List[str], dependencies: Any) -> Tup
             if u_scc != v_scc:
                 condensed_edges.add((u_scc, v_scc))
 
-    return sccs, list(condensed_edges)
+    return sccs, list(condensed_edges), cycle_flags
 
-def compute_deterministic_topo_plan(service_names: List[str], dependencies: Any, max_phases: int = 4) -> Dict[str, List[str]]:
+def compute_deterministic_topo_plan(service_names: List[str], dependencies: Any, max_phases: Optional[int] = 4) -> Dict[str, List[str]]:
     """
     Computes a 100% constraint-safe execution plan deterministically using Tarjan's SCC condensation
-    and topological depth binning. Handles cyclic microservice graphs seamlessly by assigning cyclic
-    co-dependent services to the same phase.
+    and topological depth binning. Handles arbitrary graph depths dynamically.
     """
-    sccs, condensed_edges = compute_scc_condensation(service_names, dependencies)
+    sccs, condensed_edges, _ = compute_scc_condensation(service_names, dependencies)
     num_sccs = len(sccs)
     scc_adj = {i: [] for i in range(num_sccs)}
     for u, v in condensed_edges:
@@ -643,14 +658,18 @@ def compute_deterministic_topo_plan(service_names: List[str], dependencies: Any,
         if not scc_adj[scc_idx]:
             depth = 0
         else:
-            depth = 1 + max(get_scc_depth(child) for child in scc_adj[scc_idx])
+            depth = 1 + max((get_scc_depth(child) for child in scc_adj[scc_idx]), default=0)
         memo[scc_idx] = depth
         return depth
 
-    plan = {f"Phase {i+1}": [] for i in range(max_phases)}
+    scc_depths = [get_scc_depth(i) for i in range(num_sccs)]
+    max_depth = max(scc_depths) if scc_depths else 0
+    total_phases = max_phases if max_phases is not None else max(1, max_depth + 1)
+
+    plan = {f"Phase {i+1}": [] for i in range(total_phases)}
     for scc_idx, scc_nodes in enumerate(sccs):
-        depth = get_scc_depth(scc_idx)
-        phase_num = min(depth + 1, max_phases)
+        depth = scc_depths[scc_idx]
+        phase_num = min(depth + 1, total_phases)
         plan[f"Phase {phase_num}"].extend(scc_nodes)
 
     return plan
@@ -766,13 +785,19 @@ def _generate_single_plan(state: AgentState) -> Dict[str, Any]:
                 adj[caller].append(callee)
                 
         memo = {}
-        def get_depth(node):
+        def get_depth(node, visited=None):
+            if visited is None:
+                visited = set()
             if node in memo:
                 return memo[node]
+            if node in visited:
+                return 0  # Break cycle
             if not adj[node]:
                 memo[node] = 0
                 return 0
-            max_child = max(get_depth(child) for child in adj[node])
+            visited.add(node)
+            max_child = max((get_depth(child, visited) for child in adj[node]), default=0)
+            visited.remove(node)
             memo[node] = 1 + max_child
             return memo[node]
             
